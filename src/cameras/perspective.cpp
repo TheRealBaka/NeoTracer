@@ -12,23 +12,52 @@ namespace lightwave {
  * normalized.y < 0 @endcode ) are directed in negative y direction ( @code
  * ray.direction.y < 0 ).
  */
+
+// Warping technique considered from:
+// https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-generating-camera-rays/generating-camera-rays.html
+
 class Perspective : public Camera {
+
+private:
+    float cam_fov, ar;
+    std::string fovAxis;
+
 public:
     Perspective(const Properties &properties) : Camera(properties) {
-        NOT_IMPLEMENTED
+        // NOT_IMPLEMENTED
 
         // hints:
         // * precompute any expensive operations here (most importantly
         // trigonometric functions)
         // * use m_resolution to find the aspect ratio of the image
+        cam_fov = tan(properties.get<float>("fov") * Deg2Rad * 0.5f);
+        ar = m_resolution.x() / (float) m_resolution.y();
+        fovAxis = properties.get<std::string>("fovAxis");
     }
 
     CameraSample sample(const Point2 &normalized, Sampler &rng) const override {
-        NOT_IMPLEMENTED
+        // NOT_IMPLEMENTED
 
         // hints:
         // * use m_transform to transform the local camera coordinate system
         // into the world coordinate system
+
+        // Assignment 0
+        //     return CameraSample{
+        //         .ray = Ray(Vector(normalized.x(), normalized.x(), 0.f),
+        //         Vector(0.f, 0.f, 1.f)),
+        //         .weight = Color(1.0f)};
+        // }
+
+        Vector warped_points = Vector(
+            normalized.x() * cam_fov * (fovAxis == "x" ? 1.0f: ar),
+            normalized.y() * cam_fov * (fovAxis == "x" ? 1.0f / ar : 1.0f),
+            1.0f
+        ).normalized();
+        
+        return CameraSample{
+            .ray = m_transform->apply(Ray(Vector(0.0f), warped_points)).normalized(),
+            .weight = Color(1.0f)};
     }
 
     std::string toString() const override {

@@ -11,3 +11,7 @@ __pycache__
 /docs/latex
 
 .DS_Store
+
+*.pdf
+*.exr
+*.xml
