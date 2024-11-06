@@ -4,32 +4,25 @@ namespace lightwave {
 
 /// @brief Code structure for a sphere
 // Reference: https://pbr-book.org/4ed/Shapes/Spheres
+// UV map reference: https://en.wikipedia.org/wiki/UV_mapping
 
 class Sphere : public Shape {
 
 public:
     inline void populate(SurfaceEvent &surf, const Point &position) const {
 
-        // Frame shading_frame = surf.shadingFrame(); (?)
-        // surf.position = position;
-        surf.shadingNormal = Vector(position);
+        surf.shadingNormal = (position - getCentroid()).normalized();
 
-        // buildOrthonormalBasis(shading_frame.normal, shading_frame.tangent, shading_frame.bitangent);
+        Frame shading_frame = surf.shadingFrame();
 
-        // surf.uv.x() = acos(position.y()) * Inv2Pi;
-        // surf.uv.y() = atan2(position.x(), position.z());
+        // Creating shading frame coordinate representation (CCW, as in Assignment 1)
+        buildOrthonormalBasis(shading_frame.normal, shading_frame.tangent, shading_frame.bitangent);
 
-        // cross product between tangent and bi-tangent provides normal direction (CCW)
-        // surf.tangent = shading_frame.tangent;
-        // and accordingly, the normal always points in the positive z direction
-        // surf.shadingNormal  = shading_frame.normal;
-        // surf.geometryNormal = shading_frame.normal;
+        surf.tangent = shading_frame.tangent;
+        surf.geometryNormal = shading_frame.normal;
 
-        // surf.uv.x() = atan2(shading_frame.normal.x(), shading_frame.normal.z()) * Inv2Pi;
-        // surf.uv.y() = acos(shading_frame.normal.y()) * InvPi;
-
-        // surf.uv.x() = 0.5f - (float) atan2(shading_frame.normal.z(), shading_frame.normal.x()) * Inv2Pi;
-        // surf.uv.y() = 0.5f - (float) asin(shading_frame.normal.y()) * InvPi;
+        surf.uv.x() = atan2(shading_frame.normal.z(), shading_frame.normal.x()) * Inv2Pi + 0.5;
+        surf.uv.y() = asin(shading_frame.normal.y()) * InvPi + 0.5; // radius is once, else n_y would be divided with it
 
         surf.pdf = 0.0f;
         }
@@ -41,9 +34,8 @@ public:
         PROFILE("Sphere")
 
         const float radius = 1.0f;
-        Point center = getCentroid();
 
-        Vector orig_centered = ray.origin - center;
+        Vector orig_centered = ray.origin - getCentroid();
 
         // Calculate sphere quadratic coefficients
         float a = ray.direction.lengthSquared(); // ||d||^2

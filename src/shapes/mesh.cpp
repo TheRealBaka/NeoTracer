@@ -48,6 +48,23 @@ protected:
         //   * make sure that your shading frame stays orthonormal!
         // * if m_smoothNormals is false, use the geometrical normal (can be
         // computed from the vertex positions)
+        int i0, i1, i2;
+        i0 = m_triangles[primitiveIndex][0];
+        i1 = m_triangles[primitiveIndex][1];
+        i2 = m_triangles[primitiveIndex][2];
+
+        Vertex p0 = m_vertices[i0];
+        Vertex p1 = m_vertices[i1];
+        Vertex p2 = m_vertices[i2];
+
+        if ((p2.position - p0.position).cross(p1.position - p0.position).lengthSquared() == 0)
+            return false;
+
+        Point p0t = p0.position - ray.origin;
+        Point p1t = p1.position - ray.origin;
+        Point p2t = p2.position - ray.origin;
+        
+
     }
 
     Bounds getBoundingBox(int primitiveIndex) const override {
