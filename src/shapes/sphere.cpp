@@ -10,25 +10,26 @@ class Sphere : public Shape {
 public:
     inline void populate(SurfaceEvent &surf, const Point &position) const {
 
-        Frame shading_frame = surf.shadingFrame();
-        surf.position = shading_frame.normal;
+        // Frame shading_frame = surf.shadingFrame(); (?)
+        // surf.position = position;
+        surf.shadingNormal = Vector(position);
 
-        buildOrthonormalBasis(shading_frame.normal, shading_frame.tangent, shading_frame.bitangent);
+        // buildOrthonormalBasis(shading_frame.normal, shading_frame.tangent, shading_frame.bitangent);
 
         // surf.uv.x() = acos(position.y()) * Inv2Pi;
         // surf.uv.y() = atan2(position.x(), position.z());
 
         // cross product between tangent and bi-tangent provides normal direction (CCW)
-        surf.tangent = shading_frame.tangent;
+        // surf.tangent = shading_frame.tangent;
         // and accordingly, the normal always points in the positive z direction
-        surf.shadingNormal  = shading_frame.normal;
-        surf.geometryNormal = shading_frame.normal;
+        // surf.shadingNormal  = shading_frame.normal;
+        // surf.geometryNormal = shading_frame.normal;
 
         // surf.uv.x() = atan2(shading_frame.normal.x(), shading_frame.normal.z()) * Inv2Pi;
         // surf.uv.y() = acos(shading_frame.normal.y()) * InvPi;
 
-        surf.uv.x() = 0.5f - (float) atan2(shading_frame.normal.z(), shading_frame.normal.x()) * Inv2Pi;
-        surf.uv.y() = 0.5f - (float) asin(shading_frame.normal.y()) * InvPi;
+        // surf.uv.x() = 0.5f - (float) atan2(shading_frame.normal.z(), shading_frame.normal.x()) * Inv2Pi;
+        // surf.uv.y() = 0.5f - (float) asin(shading_frame.normal.y()) * InvPi;
 
         surf.pdf = 0.0f;
         }
@@ -53,8 +54,6 @@ public:
 
         if(D < Epsilon)
             return false;
-
-        // TODO: Use the more accurate quadratic approach from pbrt. Using classical definition for now.
 
         D = sqrt(D);
 
