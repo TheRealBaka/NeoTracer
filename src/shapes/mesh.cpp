@@ -38,7 +38,7 @@ protected:
 
     bool intersect(int primitiveIndex, const Ray &ray, Intersection &its,
                    Sampler &rng) const override {
-        NOT_IMPLEMENTED
+        // NOT_IMPLEMENTED
 
         // hints:
         // * use m_triangles[primitiveIndex] to get the vertex indices of the
@@ -48,31 +48,102 @@ protected:
         //   * make sure that your shading frame stays orthonormal!
         // * if m_smoothNormals is false, use the geometrical normal (can be
         // computed from the vertex positions)
-        int i0, i1, i2;
-        i0 = m_triangles[primitiveIndex][0];
-        i1 = m_triangles[primitiveIndex][1];
-        i2 = m_triangles[primitiveIndex][2];
+        
+        int i0 = m_triangles[primitiveIndex][0];
+        int i1 = m_triangles[primitiveIndex][1];
+        int i2 = m_triangles[primitiveIndex][2];
 
         Vertex p0 = m_vertices[i0];
         Vertex p1 = m_vertices[i1];
         Vertex p2 = m_vertices[i2];
 
-        if ((p2.position - p0.position).cross(p1.position - p0.position).lengthSquared() == 0)
+        Vector normal = (p2.position - p0.position).cross(p1.position - p0.position).normalized();
+
+        //check if triangle is degenerate 
+        if (normal.lengthSquared() == 0)
             return false;
 
-        Point p0t = p0.position - ray.origin;
-        Point p1t = p1.position - ray.origin;
-        Point p2t = p2.position - ray.origin;
-        
+        // compute edges
+        Vector e0 = p1.position - p0.position;
+        Vector e1 = p2.position - p0.position;
 
+        Vector p_vec = ray.direction.cross(e1);
+        float det = e0.dot(p_vec);
+
+        //check for backface culling
+        if (det < Epsilon) return false;
+
+        if (fabs(det) < Epsilon) return false;
+
+        float inv_det = 1 / det;
+
+        Vector t_vec = ray.origin - p2.position;
+        float u = t_vec.dot(p_vec) * inv_det;
+        if (u < 0 || u > 1) return false;
+
+        Vector q_vec = t_vec.cross(e0);
+        float v = ray.direction.dot(q_vec) * inv_det;
+        if (v < 0 || u + v > 1) return false;
+        
+        float t = e1.dot(q_vec) * inv_det;
+        its.t = t;
+        its.geometryNormal = normal;
+
+        if (m_smoothNormals)
+            its.shadingNormal = ((1 - u - v) * p0.normal + u * p1.normal + v * p2.normal).normalized();
+        else
+            its.shadingNormal = normal;
+
+        // Choose an arbitrary vector to create the tangent
+        // Vector V = (fabs(its.shadingNormal[0]) < 0.9) ? Vector(1, 0, 0) : Vector(0, 1, 0);
+
+        // // Compute tangent and normalize
+        // its.tangent = its.shadingNormal.cross(V).normalized();
+        
+        return true;
+    
     }
 
     Bounds getBoundingBox(int primitiveIndex) const override {
-        NOT_IMPLEMENTED
+        // NOT_IMPLEMENTED
+        int i0 = m_triangles[primitiveIndex][0];
+        int i1 = m_triangles[primitiveIndex][1];
+        int i2 = m_triangles[primitiveIndex][2];
+
+        Vertex p0 = m_vertices[i0];
+        Vertex p1 = m_vertices[i1];
+        Vertex p2 = m_vertices[i2];
+
+        auto x_min = std::min({p0.position[0], p1.position[0], p2.position[0]});
+        auto y_min = std::min({p0.position[1], p1.position[1], p2.position[1]});
+        auto z_min = std::min({p0.position[2], p1.position[2], p2.position[2]});
+
+        
+        auto x_max = std::max({p0.position[0], p1.position[0], p2.position[0]});
+        auto y_max = std::max({p0.position[1], p1.position[1], p2.position[1]});
+        auto z_max = std::max({p0.position[2], p1.position[2], p2.position[2]});
+
+        return Bounds(Point(x_min, y_min, z_min), Point(x_max, y_max, z_max));
     }
 
     Point getCentroid(int primitiveIndex) const override {
-        NOT_IMPLEMENTED
+        // NOT_IMPLEMENTED
+
+        int i0 = m_triangles[primitiveIndex][0];
+        int i1 = m_triangles[primitiveIndex][1];
+        int i2 = m_triangles[primitiveIndex][2];
+
+        Vertex p0 = m_vertices[i0];
+        Vertex p1 = m_vertices[i1];
+        Vertex p2 = m_vertices[i2];
+
+        auto x = (p0.position[0] + p1.position[0] + p2.position[0]) / 3;
+        auto y = (p0.position[1] + p1.position[1] + p2.position[1]) / 3;
+        auto z = (p0.position[2] + p1.position[2] + p2.position[2]) / 3;
+
+        Point centroid = Point(x, y, z);
+        return centroid;
+
     }
 
 public:
