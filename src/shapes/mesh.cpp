@@ -36,6 +36,11 @@ class TriangleMesh : public AccelerationStructure {
 protected:
     int numberOfPrimitives() const override { return int(m_triangles.size()); }
 
+    inline void populate(SurfaceEvent &surf, const Point &position) const
+    {
+        surf.pdf = 0.0f;
+    }
+
     bool intersect(int primitiveIndex, const Ray &ray, Intersection &its,
                    Sampler &rng) const override {
         // NOT_IMPLEMENTED
@@ -57,27 +62,27 @@ protected:
         Vertex p1 = m_vertices[i1];
         Vertex p2 = m_vertices[i2];
 
-        Vector normal = (p2.position - p0.position).cross(p1.position - p0.position).normalized();
+        // compute edges
+        Vector e0 = p1.position - p0.position;
+        Vector e1 = p2.position - p0.position;
+
+        Vector normal = e0.cross(e1).normalized();
 
         //check if triangle is degenerate 
         if (normal.lengthSquared() == 0)
             return false;
 
-        // compute edges
-        Vector e0 = p1.position - p0.position;
-        Vector e1 = p2.position - p0.position;
-
         Vector p_vec = ray.direction.cross(e1);
         float det = e0.dot(p_vec);
 
         //check for backface culling
-        if (det < Epsilon) return false;
+        // if (det < Epsilon) return false;
 
-        if (fabs(det) < Epsilon) return false;
+        if (fabs(det) < 1e-6) return false; // Reducing epsilon made it work for bunny (?)
 
         float inv_det = 1 / det;
 
-        Vector t_vec = ray.origin - p2.position;
+        Vector t_vec = ray.origin - p0.position;
         float u = t_vec.dot(p_vec) * inv_det;
         if (u < 0 || u > 1) return false;
 
@@ -86,14 +91,22 @@ protected:
         if (v < 0 || u + v > 1) return false;
         
         float t = e1.dot(q_vec) * inv_det;
+
+        if (t < Epsilon || t > its.t) return false;
+
         its.t = t;
+        Point position = ray(t);
         its.geometryNormal = normal;
 
+        its.uv = interpolateBarycentric(Vector2(u, v), p0.uv, p1.uv, p2.uv);
+
         if (m_smoothNormals)
-            its.shadingNormal = ((1 - u - v) * p0.normal + u * p1.normal + v * p2.normal).normalized();
+            // its.shadingNormal = ((1 - u - v) * p0.normal + u * p1.normal + v * p2.normal).normalized();
+            its.shadingNormal = interpolateBarycentric(Vector2(u, v), p0.normal, p1.normal, p2.normal).normalized();
         else
             its.shadingNormal = normal;
 
+        populate(its, position);
         // Choose an arbitrary vector to create the tangent
         // Vector V = (fabs(its.shadingNormal[0]) < 0.9) ? Vector(1, 0, 0) : Vector(0, 1, 0);
 
