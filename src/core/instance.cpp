@@ -6,6 +6,31 @@
 namespace lightwave {
 
 void Instance::transformFrame(SurfaceEvent &surf, const Vector &wo) const {
+
+    // Create shading frame in object space
+
+    Frame shading_frame = surf.shadingFrame();
+
+    if (shading_frame.normal.dot(wo) < 0){
+        shading_frame.bitangent *= -1;
+        shading_frame.tangent *= -1;
+        shading_frame.normal *= -1;
+    }
+    
+    // Transform to world coordinate space
+    surf.position = m_transform->apply(surf.position);
+    shading_frame.normal = m_transform->applyNormal(shading_frame.normal).normalized();
+    shading_frame.tangent = m_transform->apply(shading_frame.tangent).normalized();
+    shading_frame.bitangent = m_transform->apply(shading_frame.bitangent).normalized();
+
+    // Create orthonormal basis (updates bitangent)
+    buildOrthonormalBasis(shading_frame.normal, shading_frame.tangent, shading_frame.bitangent);
+
+    // Vectors already normalized. Need not normalize again
+    surf.shadingNormal = shading_frame.tangent.cross(shading_frame.bitangent);
+    surf.tangent = shading_frame.tangent;
+
+    surf.pdf = 0.0f;
 }
 
 inline void validateIntersection(const Intersection &its) {
@@ -50,7 +75,11 @@ bool Instance::intersect(const Ray &worldRay, Intersection &its,
 
     const float previousT = its.t;
     Ray localRay;
-    NOT_IMPLEMENTED
+    // NOT_IMPLEMENTED
+    localRay = m_transform->inverse(worldRay);
+    const float ray_length = localRay.direction.length();
+    localRay = localRay.normalized();
+    its.t = previousT * ray_length;
 
     // hints:
     // * transform the ray (do not forget to normalize!)
@@ -61,6 +90,7 @@ bool Instance::intersect(const Ray &worldRay, Intersection &its,
         its.instance = this;
         validateIntersection(its);
         // hint: how does its.t need to change?
+        its.t = its.t / ray_length;
 
         // if (its.frame.normal.dot(localRay.direction) > 0) {
         //     /// TODO: hack, just for testing
