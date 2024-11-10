@@ -106,12 +106,9 @@ protected:
         else
             its.shadingNormal = normal;
 
-        populate(its, position);
-        // Choose an arbitrary vector to create the tangent
-        // Vector V = (fabs(its.shadingNormal[0]) < 0.9) ? Vector(1, 0, 0) : Vector(0, 1, 0);
+        its.tangent = e0.normalized(); // Creating tangent from a vector on the mesh plane
 
-        // // Compute tangent and normalize
-        // its.tangent = its.shadingNormal.cross(V).normalized();
+        populate(its, position);
         
         return true;
     
