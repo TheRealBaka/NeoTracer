@@ -92,27 +92,7 @@ bool Instance::intersect(const Ray &worldRay, Intersection &its,
         // hint: how does its.t need to change?
         its.t = its.t / ray_length;
 
-        // if (its.frame.normal.dot(localRay.direction) > 0) {
-        //     /// TODO: hack, just for testing
-        //     its.frame.tangent *= -1;
-        //     its.frame.bitangent *= -1;
-        //     its.frame.normal *= -1;
-
-        //     its.geoFrame.tangent *= -1;
-        //     its.geoFrame.bitangent *= -1;
-        //     its.geoFrame.normal *= -1;
-        // }
         transformFrame(its, -localRay.direction);
-        // if (its.frame.normal.dot(worldRay.direction) > 0) {
-        //     /// TODO: hack, just for testing
-        //     its.frame.tangent *= -1;
-        //     its.frame.bitangent *= -1;
-        //     its.frame.normal *= -1;
-
-        //     its.geoFrame.tangent *= -1;
-        //     its.geoFrame.bitangent *= -1;
-        //     its.geoFrame.normal *= -1;
-        // }
     } else {
         its.t = previousT;
     }
