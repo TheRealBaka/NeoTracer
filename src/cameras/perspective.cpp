@@ -21,6 +21,7 @@ class Perspective : public Camera {
 private:
     float cam_fov, ar;
     std::string fovAxis;
+    Vector fov_multiplier;
 
 public:
     Perspective(const Properties &properties) : Camera(properties) {
@@ -33,6 +34,12 @@ public:
         cam_fov = tan(properties.get<float>("fov") * Deg2Rad * 0.5f);
         ar = m_resolution.x() / (float) m_resolution.y();
         fovAxis = properties.get<std::string>("fovAxis");
+        fov_multiplier = Vector(
+            cam_fov * (fovAxis == "x" ? 1.0f: ar),
+            cam_fov * (fovAxis == "x" ? 1.0f / ar : 1.0f),
+            1.0f
+        );
+
     }
 
     CameraSample sample(const Point2 &normalized, Sampler &rng) const override {
@@ -50,13 +57,13 @@ public:
         // }
 
         Vector warped_points = Vector(
-            normalized.x() * cam_fov * (fovAxis == "x" ? 1.0f: ar),
-            normalized.y() * cam_fov * (fovAxis == "x" ? 1.0f / ar : 1.0f),
+            normalized.x(),
+            normalized.y(),
             1.0f
-        ).normalized();
+        ) * fov_multiplier;
         
         return CameraSample{
-            .ray = m_transform->apply(Ray(Vector(0.0f), warped_points)).normalized(),
+            .ray = m_transform->apply(Ray(Vector(0.0f), warped_points.normalized())).normalized(),
             .weight = Color(1.0f)};
     }
 

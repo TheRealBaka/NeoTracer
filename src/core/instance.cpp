@@ -27,7 +27,10 @@ void Instance::transformFrame(SurfaceEvent &surf, const Vector &wo) const {
     buildOrthonormalBasis(shading_frame.normal, shading_frame.tangent, shading_frame.bitangent);
 
     // Vectors already normalized. Need not normalize again
-    surf.shadingNormal = shading_frame.tangent.cross(shading_frame.bitangent);
+    Vector normal = shading_frame.tangent.cross(shading_frame.bitangent);
+    
+    surf.shadingNormal = normal;
+    surf.geometryNormal = normal;
     surf.tangent = shading_frame.tangent;
 
     surf.pdf = 0.0f;

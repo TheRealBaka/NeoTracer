@@ -24,9 +24,9 @@ public:
      */
     Color Li(const Ray &ray, Sampler &rng) override {
         Intersection its = m_scene->intersect(ray, rng);
+        if(!its && !remap) return Color(0.f); // return 0 for no intersection and no remap
         Vector normal = its ? its.shadingNormal : Vector(0.0f);
         Color color_nrml = remap ? (Color(normal) + Color(1)) / 2 : Color(0.5f);
-        // Color color_nrml = remap ? Color((its.shadingNormal + Vector(1.0f)) * 0.5f) : Color(normal);
         return color_nrml;
     }
 

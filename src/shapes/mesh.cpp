@@ -36,11 +36,6 @@ class TriangleMesh : public AccelerationStructure {
 protected:
     int numberOfPrimitives() const override { return int(m_triangles.size()); }
 
-    inline void populate(SurfaceEvent &surf, const Point &position) const
-    {
-        surf.pdf = 0.0f;
-    }
-
     bool intersect(int primitiveIndex, const Ray &ray, Intersection &its,
                    Sampler &rng) const override {
         // NOT_IMPLEMENTED
@@ -95,7 +90,6 @@ protected:
         if (t < Epsilon || t > its.t) return false;
 
         its.t = t;
-        Point position = ray(t);
         its.geometryNormal = normal;
 
         its.uv = interpolateBarycentric(Vector2(u, v), p0.uv, p1.uv, p2.uv);
@@ -108,7 +102,7 @@ protected:
 
         its.tangent = e0.normalized(); // Creating tangent from a vector on the mesh plane
 
-        populate(its, position);
+        its.pdf = 0.0f;
         
         return true;
     
