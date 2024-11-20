@@ -1,4 +1,4 @@
-#include <lightwave.hpp>
+    #include <lightwave.hpp>
 
 #include <vector>
 
@@ -20,12 +20,23 @@ public:
         Point2 warped = Point2(0);
         // hints:
         // * if (m_transform) { transform direction vector from world to local
-        // coordinates }
+        // coordinates }    
         // * find the corresponding pixel coordinate for the given local
         // direction
         // * make use of std::atan2 instead of tangent function.
         // * check out the safe versions of sine and cosine, e.g. safe_acos
         // in math.hpp to avoid problematic edge cases
+        Vector dir_temp;
+        if (m_transform)
+            dir_temp = m_transform->apply(direction);
+
+        dir_temp = dir_temp.normalized();
+        float phi = std::atan2(dir_temp[2], dir_temp[0]);
+        float theta = safe_acos(dir_temp[1]);
+
+        float t_x = (phi + Pi) / (2 * Pi);
+        float t_y = theta / Pi; 
+        warped = Point2(t_x, t_y);
         return {
             .value = m_texture->evaluate(warped),
         };
