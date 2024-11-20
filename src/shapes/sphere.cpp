@@ -30,6 +30,7 @@ public:
         // Ref: https://computergraphics.stackexchange.com/questions/5498/compute-sphere-tangent-for-normal-mapping
         surf.tangent = Vector(-sin(phi), 0.0f, cos(phi)); // Using normalized representation
 
+        surf.position = position;
 
         // Choose an arbitrary vector to create the tangent
         // Vector V = (surf.shadingNormal.dot(Vector(1.0f, 0.0f, 0.0f)) < Epsilon) ? Vector(1.0f, 0.0f, 0.0f) : Vector(0.0f, 1.0f, 0.0f);

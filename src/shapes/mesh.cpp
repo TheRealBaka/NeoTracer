@@ -103,6 +103,7 @@ protected:
         its.tangent = e0.normalized(); // Creating tangent from a vector on the mesh plane
 
         its.pdf = 0.0f;
+        its.position = ray(its.t);
         
         return true;
     

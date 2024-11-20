@@ -11,11 +11,11 @@ void Instance::transformFrame(SurfaceEvent &surf, const Vector &wo) const {
 
     Frame shading_frame = surf.shadingFrame();
 
-    if (shading_frame.normal.dot(wo) < 0){
-        shading_frame.bitangent *= -1;
-        shading_frame.tangent *= -1;
-        shading_frame.normal *= -1;
-    }
+    // if (shading_frame.normal.dot(wo) < 0){
+    //     shading_frame.bitangent *= -1;
+    //     shading_frame.tangent *= -1;
+    //     shading_frame.normal *= -1;
+    // }
     
     // Transform to world coordinate space
     surf.position = m_transform->apply(surf.position);

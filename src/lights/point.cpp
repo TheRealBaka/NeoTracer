@@ -11,7 +11,7 @@ public:
     PointLight(const Properties &properties) : Light(properties) {
         // blender_exporter/lightwave_blender/light.py has two properties for point source: position and power
         m_position = properties.get<Point>("position");
-        m_power = properties.get<Color>("power", Color::black());
+        m_power = properties.get<Color>("power");
     }
 
     DirectLightSample sampleDirect(const Point &origin,

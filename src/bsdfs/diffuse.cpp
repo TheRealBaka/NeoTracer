@@ -15,7 +15,8 @@ public:
         // NOT_IMPLEMENTED
         
         BsdfEval bsdf;
-        bsdf.value = m_albedo->evaluate(uv) / Pi;
+        bsdf.value = m_albedo->evaluate(uv) * InvPi * Frame::absCosTheta(wi.normalized());
+        // bsdf.value = m_albedo->evaluate(uv) * InvPi;
         return bsdf;
     }
 

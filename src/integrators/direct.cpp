@@ -14,29 +14,30 @@ public:
     }
 
     Color Li(const Ray &ray, Sampler &rng) override {
-        Color throughput = Color(1.0f);
+        Color weighted = Color(1.0f);
+        Color final_color = Color(0.0f);
+
+        // (a) First scene intersection
         Intersection its = m_scene->intersect(ray, rng);
 
-        if(!its){
+        // (b) check for no intersection
+        if(!its){  
             EmissionEval x = its.evaluateEmission();
-            throughput = x.value;
-            return throughput;
+            return weighted*x.value;
         }
 
-        LightSample y = m_scene->sampleLight(rng);
-        const Light* z = y.light;
-        DirectLightSample w = z->sampleDirect(its.position, rng); 
+        // (c) SampleLight function
+        LightSample light_sample = m_scene->sampleLight(rng);
+        DirectLightSample dls = light_sample.light->sampleDirect(its.position, rng); 
 
-        Ray shadow_ray = Ray(its.position, w.wi);
-        throughput *= its.evaluateBsdf(ray.direction).value; 
+        // (d) Tracing secondary ray
+        Ray shadow_ray = Ray(its.position, dls.wi);
+        Color bsdf_eval = its.evaluateBsdf(dls.wi).value;
 
-        bool next = m_scene->intersect(shadow_ray, w.distance, rng);
-        if(!next){
-            // throughput = its.evaluateBsdf(ray.direction).value * w.weight;
-            throughput *= w.weight;
-        }
+        bool next = m_scene->intersect(shadow_ray, dls.distance, rng);
+        if(!next) final_color += weighted*dls.weight*bsdf_eval;
 
-        return throughput;
+        return final_color;
 
 
     }
