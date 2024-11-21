@@ -16,7 +16,6 @@ public:
         Frame shading_frame = surf.shadingFrame();
 
         // Creating shading frame coordinate representation (CCW, as in Assignment 1)
-        // Commenting the line below as it is now shifted to src/core/instance.cpp
         buildOrthonormalBasis(shading_frame.normal, shading_frame.tangent, shading_frame.bitangent);
 
         surf.geometryNormal = shading_frame.normal;

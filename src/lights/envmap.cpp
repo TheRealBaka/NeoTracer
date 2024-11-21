@@ -28,14 +28,14 @@ public:
         // in math.hpp to avoid problematic edge cases
         Vector dir_temp;
         if (m_transform)
-            dir_temp = m_transform->apply(direction);
+            dir_temp = m_transform->inverse(direction);
 
         dir_temp = dir_temp.normalized();
         float phi = std::atan2(dir_temp[2], dir_temp[0]);
         float theta = safe_acos(dir_temp[1]);
 
-        float t_x = (phi + Pi) / (2 * Pi);
-        float t_y = theta / Pi; 
+        float t_x = (Pi - phi) * Inv2Pi;
+        float t_y = theta * InvPi; 
         warped = Point2(t_x, t_y);
         return {
             .value = m_texture->evaluate(warped),
