@@ -35,7 +35,7 @@ public:
         Color bsdf_eval = its.evaluateBsdf(dls.wi).value;
 
         bool next = m_scene->intersect(shadow_ray, dls.distance, rng);
-        if(!next) final_color += weighted*dls.weight*bsdf_eval;
+        if(!next) final_color += weighted*dls.weight*bsdf_eval * (1 / light_sample.probability);
 
         return final_color;
 
