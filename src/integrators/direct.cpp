@@ -14,7 +14,7 @@ public:
     }
 
     Color Li(const Ray &ray, Sampler &rng) override {
-        Color weighted = Color(1.0f);
+        // Color weighted = Color(1.0f);
         Color final_color = Color(0.0f);
 
         // (a) First scene intersection
@@ -23,7 +23,7 @@ public:
         // (b) check for no intersection
         if(!its){  
             EmissionEval x = its.evaluateEmission();
-            return weighted*x.value;
+            return x.value;
         }
 
         // (c) SampleLight function
@@ -34,8 +34,14 @@ public:
         Ray shadow_ray = Ray(its.position, dls.wi);
         Color bsdf_eval = its.evaluateBsdf(dls.wi).value;
 
-        bool next = m_scene->intersect(shadow_ray, dls.distance, rng);
-        if(!next) final_color += weighted*dls.weight*bsdf_eval * (1 / light_sample.probability);
+        bool occluded = m_scene->intersect(shadow_ray, dls.distance, rng);
+        if(!occluded) final_color += (1 / light_sample.probability) * dls.weight * bsdf_eval;
+
+        BsdfSample sample_ = its.sampleBsdf(rng);
+        Ray next_ray = Ray(its.position, sample_.wi);
+        Intersection next_its = m_scene->intersect(next_ray, rng);
+        final_color += sample_.weight * next_its.evaluateEmission().value;
+        
 
         return final_color;
 

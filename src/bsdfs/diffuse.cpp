@@ -15,6 +15,8 @@ public:
         // NOT_IMPLEMENTED
         
         BsdfEval bsdf;
+        // if ((wi.normalized()).dot(wo.normalized()) < 0)
+        //     return {.value = Color(0)};
         bsdf.value = m_albedo->evaluate(uv) * InvPi * Frame::absCosTheta(wi.normalized());
         // bsdf.value = m_albedo->evaluate(uv) * InvPi;
         return bsdf;
