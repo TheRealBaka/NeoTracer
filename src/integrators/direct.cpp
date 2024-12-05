@@ -26,22 +26,29 @@ public:
             return x.value;
         }
 
-        // (c) SampleLight function
-        LightSample light_sample = m_scene->sampleLight(rng);
-        DirectLightSample dls = light_sample.light->sampleDirect(its.position, rng); 
+        if(m_scene->hasLights()){
+            // (c) SampleLight function
+            LightSample light_sample = m_scene->sampleLight(rng);
+            DirectLightSample dls = light_sample.light->sampleDirect(its.position, rng); 
 
-        // (d) Tracing secondary ray
-        Ray shadow_ray = Ray(its.position, dls.wi);
-        Color bsdf_eval = its.evaluateBsdf(dls.wi).value;
+            // (d) Tracing secondary ray
+            Ray shadow_ray = Ray(its.position, dls.wi);
+            Color bsdf_eval = its.evaluateBsdf(dls.wi).value;
 
-        bool occluded = m_scene->intersect(shadow_ray, dls.distance, rng);
-        if(!occluded) final_color += (1 / light_sample.probability) * dls.weight * bsdf_eval;
+            bool occluded = m_scene->intersect(shadow_ray, dls.distance, rng);
+            if(!occluded) final_color += (1 / light_sample.probability) * dls.weight * bsdf_eval;
+        }
 
-        BsdfSample sample_ = its.sampleBsdf(rng);
-        Ray next_ray = Ray(its.position, sample_.wi);
-        Intersection next_its = m_scene->intersect(next_ray, rng);
-        final_color += sample_.weight * next_its.evaluateEmission().value;
-        
+        if(its.evaluateEmission().value == Color(0.0f)){
+
+            BsdfSample sample_ = its.sampleBsdf(rng);
+            Ray next_ray = Ray(its.position, sample_.wi);
+            Intersection next_its = m_scene->intersect(next_ray, rng);
+            final_color += sample_.weight * next_its.evaluateEmission().value;
+            // final_color += next_its.evaluateEmission().value; 
+        }   
+        else
+            final_color += its.evaluateEmission().value;  
 
         return final_color;
 

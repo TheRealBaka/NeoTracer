@@ -15,8 +15,8 @@ public:
         // NOT_IMPLEMENTED
         
         BsdfEval bsdf;
-        // if ((wi.normalized()).dot(wo.normalized()) < 0)
-        //     return {.value = Color(0)};
+        if (!Frame::sameHemisphere(wi, wo))
+            return BsdfEval::invalid();
         bsdf.value = m_albedo->evaluate(uv) * InvPi * Frame::absCosTheta(wi.normalized());
         // bsdf.value = m_albedo->evaluate(uv) * InvPi;
         return bsdf;
@@ -26,17 +26,16 @@ public:
                       Sampler &rng) const override {
         // NOT_IMPLEMENTED
 
-        //caution: directions probably reversed in this case
-
         //naive implementation 
 
-        // Vector wi = squareToUniformHemisphere(uv);
-        // BsdfEval f = evaluate(uv, wo, wi);
-        // return {.wi = wi, .weight = f.value * uniformHemispherePdf()};
+        Vector wi = squareToUniformHemisphere(rng.next2D());
+        BsdfEval f = evaluate(uv, wo, wi);
+        return {.wi = wi, .weight = f.value * (1 / uniformHemispherePdf())};
 
-        Vector wi = squareToCosineHemisphere(uv);
-        BsdfEval f = evaluate(uv, wi, wo);
-        return {.wi = wi, .weight = f.value * cosineHemispherePdf(wi)};
+        //TODO: fix this
+        // Vector wi = squareToCosineHemisphere(rng.next2D());
+        // BsdfEval f = evaluate(uv, wi, wo);
+        // return {.wi = wi, .weight = f.value * (1 / cosineHemispherePdf(wi))};
 
     }
 
