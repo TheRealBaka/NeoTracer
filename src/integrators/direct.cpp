@@ -45,7 +45,6 @@ public:
             Ray next_ray = Ray(its.position, sample_.wi);
             Intersection next_its = m_scene->intersect(next_ray, rng);
             final_color += sample_.weight * next_its.evaluateEmission().value;
-            // final_color += next_its.evaluateEmission().value; 
         }   
         else
             final_color += its.evaluateEmission().value;  
