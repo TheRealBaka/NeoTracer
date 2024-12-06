@@ -9,7 +9,8 @@ struct DiffuseLobe {
     Color color;
 
     BsdfEval evaluate(const Vector &wo, const Vector &wi) const {
-        NOT_IMPLEMENTED
+        // NOT_IMPLEMENTED
+        return {color * InvPi * Frame::absCosTheta(wi.normalized())};
 
         // hints:
         // * copy your diffuse bsdf evaluate here
@@ -17,7 +18,9 @@ struct DiffuseLobe {
     }
 
     BsdfSample sample(const Vector &wo, Sampler &rng) const {
-        NOT_IMPLEMENTED
+        // NOT_IMPLEMENTED
+        Vector wi = squareToCosineHemisphere(rng.next2D()).normalized();
+        return {.wi = wi, .weight = color};
 
         // hints:
         // * copy your diffuse bsdf evaluate here
@@ -30,7 +33,16 @@ struct MetallicLobe {
     Color color;
 
     BsdfEval evaluate(const Vector &wo, const Vector &wi) const {
-        NOT_IMPLEMENTED
+        // NOT_IMPLEMENTED
+
+        // NOT_IMPLEMENTED
+        Vector wm = (wi + wo).normalized(); // Microfacet normal
+
+        float D = microfacet::evaluateGGX(alpha, wm); // Microfacet normal distribution
+        float G1_i = microfacet::smithG1(alpha, wm, wi);
+        float G1_o = microfacet::smithG1(alpha, wm, wo);
+
+        return { .value = color * (D * G1_i * G1_o * 0.25) / Frame::absCosTheta(wo)};
 
         // hints:
         // * copy your roughconductor bsdf evaluate here
@@ -40,7 +52,12 @@ struct MetallicLobe {
     }
 
     BsdfSample sample(const Vector &wo, Sampler &rng) const {
-        NOT_IMPLEMENTED
+        // NOT_IMPLEMENTED
+        Vector wm = microfacet::sampleGGXVNDF(alpha, wo, rng.next2D());
+        Vector wi = reflect(wo, wm);
+
+        // Terms canceled after substituting Jacobian with p(wm)
+        return { .wi = wi, .weight = color * microfacet::smithG1(alpha, wm , wi)};
 
         // hints:
         // * copy your roughconductor bsdf sample here
@@ -102,7 +119,10 @@ public:
         PROFILE("Principled")
 
         const auto combination = combine(uv, wo);
-        NOT_IMPLEMENTED
+        // NOT_IMPLEMENTED
+        BsdfEval diffuse_val = combination.diffuse.evaluate(wo, wi);
+        BsdfEval metallic_val = combination.metallic.evaluate(wo, wi);
+        return { .value = diffuse_val.value + metallic_val.value};
 
         // hint: evaluate `combination.diffuse` and `combination.metallic` and
         // combine their results
@@ -113,7 +133,19 @@ public:
         PROFILE("Principled")
 
         const auto combination = combine(uv, wo);
-        NOT_IMPLEMENTED
+        // NOT_IMPLEMENTED
+        BsdfSample val;
+        float select_prob;
+
+        if (rng.next() < combination.diffuseSelectionProb){
+            val = combination.diffuse.sample(wo, rng);
+            select_prob = combination.diffuseSelectionProb;
+        } else {
+            val = combination.diffuse.sample(wo, rng);
+            select_prob = 1.0f - combination.diffuseSelectionProb;         
+        }
+        return { .wi = val.wi, .weight = val.weight / select_prob};  
+
 
         // hint: sample either `combination.diffuse` (probability
         // `combination.diffuseSelectionProb`) or `combination.metallic`

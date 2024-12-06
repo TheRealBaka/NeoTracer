@@ -30,7 +30,7 @@ public:
 
         Vector wi = squareToUniformHemisphere(rng.next2D());
         BsdfEval f = evaluate(uv, wo, wi);
-        return {.wi = wi, .weight = f.value * (1 / uniformHemispherePdf())};
+        return {.wi = wi.normalized(), .weight = f.value * (1 / uniformHemispherePdf())};
 
         //TODO: fix this
         // Vector wi = squareToCosineHemisphere(rng.next2D());

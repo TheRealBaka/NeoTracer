@@ -21,8 +21,15 @@ public:
         // extremely specular distributions (alpha values below 10^-3)
         const auto alpha = std::max(float(1e-3), sqr(m_roughness->scalar(uv)));
 
-        NOT_IMPLEMENTED
+        // NOT_IMPLEMENTED
+        Vector wm = (wi + wo).normalized(); // Microfacet normal
 
+        float D = microfacet::evaluateGGX(alpha, wm); // Microfacet normal distribution
+        float G1_i = microfacet::smithG1(alpha, wm, wi);
+        float G1_o = microfacet::smithG1(alpha, wm, wo);
+
+        // cos(wi) cancels from rendering equation term
+        return { .value = m_reflectance->evaluate(uv) * (D * G1_i * G1_o * 0.25) / Frame::absCosTheta(wo)};
         // hints:
         // * the microfacet normal can be computed from `wi' and `wo'
     }
@@ -31,7 +38,12 @@ public:
                       Sampler &rng) const override {
         const auto alpha = std::max(float(1e-3), sqr(m_roughness->scalar(uv)));
 
-        NOT_IMPLEMENTED
+        // NOT_IMPLEMENTED
+        Vector wm = microfacet::sampleGGXVNDF(alpha, wo, rng.next2D());
+        Vector wi = reflect(wo, wm);
+
+        // 4, |wi.wo| canceled from Jacobian, rest of the terms canceled from p(wm), with cos(wi) included in rendering equation
+        return { .wi = wi, .weight = m_reflectance->evaluate(uv) * microfacet::smithG1(alpha, wm , wi)};
 
         // hints:
         // * do not forget to cancel out as many terms from your equations as

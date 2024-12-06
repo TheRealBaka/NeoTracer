@@ -25,7 +25,16 @@ public:
 
     BsdfSample sample(const Point2 &uv, const Vector &wo,
                       Sampler &rng) const override {
-        NOT_IMPLEMENTED
+        // NOT_IMPLEMENTED
+        float ior = m_ior->scalar(uv);
+        bool entry_order = Frame::absCosTheta(wo) > 0;
+        float eta = entry_order ? ior : 1.0f / ior; // interior->exterior or exterior->interior
+        Vector n = entry_order ? Vector(0.0f, 0.0f, 1.0f) : Vector(0.0f, 0.0f, -1.0f);
+
+        float F = fresnelDielectric(Frame::cosTheta(wo), eta);
+
+        if(rng.next() < F) return {.wi = reflect(wo, n), .weight = m_reflectance->evaluate(uv)};
+        else return {.wi = refract(wo, n, eta), .weight = m_transmittance->evaluate(uv) / sqr(eta)};
     }
 
     std::string toString() const override {
