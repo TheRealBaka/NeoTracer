@@ -27,7 +27,7 @@ public:
                       Sampler &rng) const override {
         // NOT_IMPLEMENTED
         float ior = m_ior->scalar(uv);
-        bool entry_order = Frame::absCosTheta(wo) > 0;
+        bool entry_order = Frame::cosTheta(wo) > 0;
         float eta = entry_order ? ior : 1.0f / ior; // interior->exterior or exterior->interior
         Vector n = entry_order ? Vector(0.0f, 0.0f, 1.0f) : Vector(0.0f, 0.0f, -1.0f);
 

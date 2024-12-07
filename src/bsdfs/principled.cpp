@@ -141,7 +141,7 @@ public:
             val = combination.diffuse.sample(wo, rng);
             select_prob = combination.diffuseSelectionProb;
         } else {
-            val = combination.diffuse.sample(wo, rng);
+            val = combination.metallic.sample(wo, rng);
             select_prob = 1.0f - combination.diffuseSelectionProb;         
         }
         return { .wi = val.wi, .weight = val.weight / select_prob};  
