@@ -43,7 +43,6 @@ public:
         if(its.evaluateEmission().value == Color(0.0f)){
 
             BsdfSample sample_ = its.sampleBsdf(rng);
-            if(sample_.isInvalid()) return final_color;
             Ray next_ray = Ray(its.position, sample_.wi.normalized());
             Intersection next_its = m_scene->intersect(next_ray, rng);
             final_color += sample_.weight * next_its.evaluateEmission().value;
