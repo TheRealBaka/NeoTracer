@@ -8,16 +8,20 @@ namespace lightwave {
 
 class PathTracer : public SamplingIntegrator {
 
+private:
+    int m_depth;
+
 public:
     PathTracer(const Properties &properties)
         : SamplingIntegrator(properties){
+            m_depth = properties.get("depth", 2);
     }
 
     Color Li(const Ray &ray, Sampler &rng) override {
         // Color weighted = Color(1.0f);
         Ray primary_ray = Ray(ray.origin, ray.direction, ray.depth);
         Color final_color = Color(0.0f);
-        // for (int depth = 0; depth < 2; depth++){
+        for (int depth = 0; depth < m_depth; depth++){
             // (a) First scene intersection
             Intersection its = m_scene->intersect(primary_ray, rng);
 
@@ -27,10 +31,16 @@ public:
                 return x.value;
             }
 
-            // final_color += its.evaluateEmission().value;
+            final_color += its.evaluateEmission().value;
+
+            if(depth == m_depth - 1) break;
 
         // int depth_counter = ray.depth;
 
+
+        
+        
+        
         
         
             if(m_scene->hasLights()){
@@ -50,18 +60,14 @@ public:
             if(its.evaluateEmission().value == Color(0.0f)){
 
                 BsdfSample sample_ = its.sampleBsdf(rng);
-                Ray next_ray = Ray(its.position, sample_.wi.normalized());
-                Intersection next_its = m_scene->intersect(next_ray, rng);
-                final_color += sample_.weight * next_its.evaluateEmission().value;
-                // primary_ray.origin = next_its.position;
-                // primary_ray.direction = sample_.wi.normalized();
-                // primary_ray.depth -= 1;
-
-                
+                primary_ray = Ray(its.position, sample_.wi.normalized());
+                // weighted *= sample_.weight;
+                // Intersection next_its = m_scene->intersect(primary_ray, rng);
+                // final_color += sample_.weight * next_its.evaluateEmission().value;
             }   
             else
                 final_color += its.evaluateEmission().value;  
-        // }
+        }
         return final_color;
 
 
