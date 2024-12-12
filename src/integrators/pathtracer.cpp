@@ -19,58 +19,48 @@ public:
 
     Color Li(const Ray &ray, Sampler &rng) override {
         // Color weighted = Color(1.0f);
-        Ray primary_ray = Ray(ray.origin, ray.direction, ray.depth);
+        Ray primary_ray = Ray(ray);
         Color final_color = Color(0.0f);
-        for (int depth = 0; depth < m_depth; depth++){
-            // (a) First scene intersection
+        Color throughput = Color(1.0f);
+        for (int depth = 0; ; ++depth){
+            // Primary ray intersection
             Intersection its = m_scene->intersect(primary_ray, rng);
 
-            // (b) check for no intersection
+            // Check for no intersection
             if(!its){  
                 EmissionEval x = its.evaluateEmission();
-                return x.value;
+                final_color += throughput * x.value;
+                return final_color;
             }
 
-            final_color += its.evaluateEmission().value;
+            if(depth >= m_depth) break;
 
-            if(depth == m_depth - 1) break;
+            // Add emission term
+            final_color += throughput * its.evaluateEmission().value;
 
-        // int depth_counter = ray.depth;
-
-
-        
-        
-        
-        
-        
+            // Direct Lighting
             if(m_scene->hasLights()){
-                // (c) SampleLight function
+                // SampleLight function
                 LightSample light_sample = m_scene->sampleLight(rng);
                 if(!light_sample.isInvalid()){ // Removes segmentation fault
                     DirectLightSample dls = light_sample.light->sampleDirect(its.position, rng); 
-                    // (d) Tracing secondary ray
+                    // Tracing secondary ray
                     Ray shadow_ray = Ray(its.position, dls.wi);
                     Color bsdf_eval = its.evaluateBsdf(dls.wi).value;
 
                     bool occluded = m_scene->intersect(shadow_ray, dls.distance, rng);
-                    if(!occluded) final_color += (1 / light_sample.probability) * dls.weight * bsdf_eval;
+                    if(!occluded) final_color += throughput * (1 / light_sample.probability) * dls.weight * bsdf_eval;
                 }
             }
 
-            if(its.evaluateEmission().value == Color(0.0f)){
-
-                BsdfSample sample_ = its.sampleBsdf(rng);
-                primary_ray = Ray(its.position, sample_.wi.normalized());
-                // weighted *= sample_.weight;
-                // Intersection next_its = m_scene->intersect(primary_ray, rng);
-                // final_color += sample_.weight * next_its.evaluateEmission().value;
-            }   
-            else
-                final_color += its.evaluateEmission().value;  
+            // Sample BSDF and get the new direction 
+            BsdfSample sample_ = its.sampleBsdf(rng);
+            if (sample_.weight == Color(0.0f))
+                break;
+            primary_ray = Ray(its.position, sample_.wi.normalized());
+            throughput *= sample_.weight;
         }
         return final_color;
-
-
     }
 
     /// @brief An optional textual representation of this class, which can be

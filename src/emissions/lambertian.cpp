@@ -12,7 +12,10 @@ public:
 
     EmissionEval evaluate(const Point2 &uv, const Vector &wo) const override {
         // NOT_IMPLEMENTED
-        return {.value = m_emission->evaluate(uv)};
+        if (!Frame::sameHemisphere(Vector(0, 0, 1), wo))
+            return EmissionEval::invalid();
+        else
+            return {.value = m_emission->evaluate(uv)};
     }
 
     std::string toString() const override {
