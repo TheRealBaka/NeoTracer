@@ -3,7 +3,7 @@
 namespace lightwave {
 
 /**
- * @brief Codebase for direct lighting integrator
+ * @brief Codebase for Path tracer
  */
 
 class PathTracer : public SamplingIntegrator {
