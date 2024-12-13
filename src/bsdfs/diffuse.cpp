@@ -35,7 +35,11 @@ public:
         //TODO: fix this
         Vector wi = squareToCosineHemisphere(rng.next2D());
         BsdfEval f = evaluate(uv, wo, wi);
-        return {.wi = wi, .weight = f.value * (1 / cosineHemispherePdf(wi))};
+        float wi_pdf = cosineHemispherePdf(wi);
+        if(wi_pdf <= 0) // Linux machine returning nan on select pixels. Explicit handling seems to fix that
+            return {.wi = wi, .weight = Color(0.0f)};
+        else
+            return {.wi = wi, .weight = f.value * 1 / wi_pdf};
 
     }
 

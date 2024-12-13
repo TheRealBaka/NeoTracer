@@ -1,0 +1,125 @@
+<scene id="scene">
+  <camera type="perspective">
+    <integer name="width" value="1920"/>
+    <integer name="height" value="1080"/>
+    <float name="fov" value="46.397"/>
+    <string name="fovAxis" value="x"/>
+    <transform>
+      <matrix value="0.78366,-0.22708,0.5782,-3.9359,  -0.62119,-0.28644,0.72944,-6.8436,  -2.2694e-05,-0.9308,-0.36553,3.6877,  0,0,0,1"/>
+    </transform>
+  </camera>
+  <light type="point" position="-0.44385,-9.1212,-1.1975" power="2000,2000,2000"/>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/Silver_old_Base Color.jpeg"/>
+      <texture name="roughness" type="image" filename="textures/Silver_old_Roughness.jpeg" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/Silver_old_Metallic.jpeg" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="constant" value="0"/>
+    <shape type="mesh" filename="meshes/Circle.034.ply"/>
+    <transform>
+      <matrix value="15,0,0,0,  0,15,0,0,  0,0,15,0,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf id="metal" type="principled">
+      <texture name="baseColor" type="constant" value="0.74139,0.74139,0.74139"/>
+      <texture name="roughness" type="constant" value="0"/>
+      <texture name="metallic" type="constant" value="1"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <shape type="mesh" filename="meshes/Torus.001.ply"/>
+    <transform>
+      <matrix value="-2.1856e-07,5,-0.0027199,2,  2.3773e-18,-0.0027199,-5,-2.5752,  -5,-2.1856e-07,1.1889e-10,1,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf id="Fine leather black" type="principled">
+      <texture name="baseColor" type="image" filename="textures/Fine_leather_black_Base Color.jpg"/>
+      <texture name="roughness" type="image" filename="textures/Fine_leather_black_Roughness.jpg" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/Fine_leather_black_Metallic.jpg" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" id="Fine leather black.000" type="constant" value="0"/>
+    <shape type="mesh" filename="meshes/_m_0_Cube.003.ply"/>
+    <transform>
+      <matrix value="-2.1856e-07,5,-0.0027199,2,  2.3773e-18,-0.0027199,-5,-2.5752,  -5,-2.1856e-07,1.1889e-10,1,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="metal"/>
+    <shape type="mesh" filename="meshes/_m_1_Cube.003.ply"/>
+    <transform>
+      <matrix value="-2.1856e-07,5,-0.0027199,2,  2.3773e-18,-0.0027199,-5,-2.5752,  -5,-2.1856e-07,1.1889e-10,1,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="Fine leather black"/>
+    <ref name="normal" id="Fine leather black.000"/>
+    <shape type="mesh" filename="meshes/Cube.004.ply"/>
+    <transform>
+      <matrix value="-2.1856e-07,5,-0.0027199,2,  2.3773e-18,-0.0027199,-5,-2.5752,  -5,-2.1856e-07,1.1889e-10,1,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="diffuse">
+      <texture name="albedo" type="constant" value="0.8"/>
+    </bsdf>
+    <shape type="mesh" filename="meshes/Cube.008.ply"/>
+    <transform>
+      <matrix value="-2.1856e-07,5,-0.0027199,2,  2.3773e-18,-0.0027199,-5,-2.5752,  -5,-2.1856e-07,1.1889e-10,1,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/Leather030_2K_Color.jpg"/>
+      <texture name="roughness" type="image" filename="textures/Leather030_2K_Roughness.jpg" linear="true"/>
+      <texture name="metallic" type="constant" value="0"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="constant" value="0"/>
+    <shape type="mesh" filename="meshes/Cube.001.ply"/>
+    <transform>
+      <matrix value="-2.1856e-07,5,-0.0027199,2,  2.3773e-18,-0.0027199,-5,-2.5752,  -5,-2.1856e-07,1.1889e-10,1,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/fabric_127_albedo-2K.jpg"/>
+      <texture name="roughness" type="image" filename="textures/fabric_127_roughness-2K.jpg" linear="true"/>
+      <texture name="metallic" type="constant" value="0"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="constant" value="0"/>
+    <shape type="mesh" filename="meshes/Cube.002.ply"/>
+    <transform>
+      <matrix value="-2.1856e-07,5,-0.0027199,2,  2.3773e-18,-0.0027199,-5,-2.5752,  -5,-2.1856e-07,1.1889e-10,1,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/ground_0025_color_2k.jpg"/>
+      <texture name="roughness" type="image" filename="textures/ground_0025_roughness_2k.jpg" linear="true"/>
+      <texture name="metallic" type="constant" value="0"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/ground_0025_normal_opengl_2k.jpg" linear="true"/>
+    <shape type="mesh" filename="meshes/Cube.005.ply"/>
+    <transform>
+      <matrix value="-2.1856e-07,4.9992,-0.087623,2,  1.9456e-17,-0.087623,-4.9992,-2.5752,  -5,-2.1852e-07,3.8301e-09,1,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <light type="point" position="-2.62,6.1094,4.833" power="10000,10000,10000"/>
+  <light type="envmap">
+    <texture type="constant" value="0.050876,0.050876,0.050876"/>
+    <transform>
+      <matrix value="1,0,0,0,  0,0,1,0,  0,-1,0,0,  0,0,0,1"/>
+    </transform>
+  </light>
+</scene>
+<integrator type="pathtracer" depth="10">
+  <ref id="scene"/>
+  <image id="noisy"/>
+  <sampler type="independent" count="64"/>
+</integrator>

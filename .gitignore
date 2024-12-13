@@ -13,5 +13,7 @@ __pycache__
 .DS_Store
 
 *.pdf
-*.exr
-*.xml
+# *.exr
+# *.xml
+my_first_scene.exr
+my_first_scene.xml
