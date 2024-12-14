@@ -22,12 +22,14 @@ struct DiffuseLobe {
     BsdfSample sample(const Vector &wo, Sampler &rng) const {
         // NOT_IMPLEMENTED
         Vector wi = squareToCosineHemisphere(rng.next2D()).normalized();
-        float wi_pdf = cosineHemispherePdf(wi);
+        // float wi_pdf = cosineHemispherePdf(wi);
         // return {.wi = wi, .weight = color};
-        if(wi_pdf <= 0) // Linux machine returning nan on select pixels. Explicit handling seems to fix that
+        // if(wi_pdf <= 0 || !Frame::sameHemisphere(wi, wo)) // Linux machine returning nan on select pixels. Explicit handling seems to fix that
+        if (!Frame::sameHemisphere(wi, wo))
             return {.wi = wi, .weight = Color(0.0f)};
         else
-            return {.wi = wi, .weight = evaluate(wo, wi).value * 1 / wi_pdf};
+            // return {.wi = wi, .weight = evaluate(wo, wi).value * 1 / wi_pdf};
+            return {.wi = wi, .weight = color};
 
         // hints:
         // * copy your diffuse bsdf evaluate here
@@ -49,7 +51,7 @@ struct MetallicLobe {
         float G1_i = microfacet::smithG1(alpha, wm, wi);
         float G1_o = microfacet::smithG1(alpha, wm, wo);
 
-        return { .value = color * (D * G1_i * G1_o * 0.25) / Frame::absCosTheta(wo)};
+        return { .value = color * (D * G1_i * G1_o * 0.25f) / Frame::absCosTheta(wo)};
 
         // hints:
         // * copy your roughconductor bsdf evaluate here

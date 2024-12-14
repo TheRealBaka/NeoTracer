@@ -18,7 +18,7 @@ public:
         if (!Frame::sameHemisphere(wi, wo))
             return BsdfEval::invalid();
         bsdf.value = m_albedo->evaluate(uv) * InvPi * Frame::absCosTheta(wi.normalized());
-        // bsdf.value = m_albedo->evaluate(uv) * InvPi;
+        // bsdf.value = m_albedo->evaluate(uv);
         return bsdf;
     }
 
@@ -32,14 +32,17 @@ public:
         // BsdfEval f = evaluate(uv, wo, wi);
         // return {.wi = wi.normalized(), .weight = f.value * (1 / uniformHemispherePdf())};
 
-        //TODO: fix this
+        // Cosine Weighted Hemisphere 
+
         Vector wi = squareToCosineHemisphere(rng.next2D());
         BsdfEval f = evaluate(uv, wo, wi);
-        float wi_pdf = cosineHemispherePdf(wi);
-        if(wi_pdf <= 0) // Linux machine returning nan on select pixels. Explicit handling seems to fix that
+        // float wi_pdf = cosineHemispherePdf(wi);
+        // if(wi_pdf <= 0 || !Frame::sameHemisphere(wi, wo)) // Linux machine returning nan on select pixels. Explicit handling seems to fix that
+        if(!Frame::sameHemisphere(wi, wo))
             return {.wi = wi, .weight = Color(0.0f)};
         else
-            return {.wi = wi, .weight = f.value * 1 / wi_pdf};
+        // return {.wi = wi, .weight = f.value * 1 / wi_pdf};
+            return {.wi = wi, .weight = m_albedo->evaluate(uv)};
 
     }
 

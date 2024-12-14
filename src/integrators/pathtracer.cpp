@@ -3,7 +3,7 @@
 namespace lightwave {
 
 /**
- * @brief Codebase for Path tracer
+ * @brief Codebase for path tracer
  */
 
 class PathTracer : public SamplingIntegrator {
@@ -18,7 +18,6 @@ public:
     }
 
     Color Li(const Ray &ray, Sampler &rng) override {
-        // Color weighted = Color(1.0f);
         Ray primary_ray = Ray(ray);
         Color final_color = Color(0.0f);
         Color throughput = Color(1.0f);
