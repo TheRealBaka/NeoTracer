@@ -35,7 +35,7 @@ public:
         // Cosine Weighted Hemisphere 
 
         Vector wi = squareToCosineHemisphere(rng.next2D());
-        BsdfEval f = evaluate(uv, wo, wi);
+        // BsdfEval f = evaluate(uv, wo, wi);
         // float wi_pdf = cosineHemispherePdf(wi);
         // if(wi_pdf <= 0 || !Frame::sameHemisphere(wi, wo)) // Linux machine returning nan on select pixels. Explicit handling seems to fix that
         if(!Frame::sameHemisphere(wi, wo))
