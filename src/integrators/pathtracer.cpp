@@ -33,10 +33,10 @@ public:
                 return final_color;
             }
 
-            if(depth >= m_depth) break;
-
             // Add emission term
             final_color += throughput * its.evaluateEmission().value;
+
+            if(depth >= m_depth - 1) break;
 
             // Direct Lighting
             if(m_scene->hasLights()){

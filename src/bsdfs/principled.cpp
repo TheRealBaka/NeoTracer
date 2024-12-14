@@ -10,6 +10,8 @@ struct DiffuseLobe {
 
     BsdfEval evaluate(const Vector &wo, const Vector &wi) const {
         // NOT_IMPLEMENTED
+        if (!Frame::sameHemisphere(wi, wo))
+            return BsdfEval::invalid();
         return {color * InvPi * Frame::absCosTheta(wi.normalized())};
 
         // hints:
@@ -20,7 +22,12 @@ struct DiffuseLobe {
     BsdfSample sample(const Vector &wo, Sampler &rng) const {
         // NOT_IMPLEMENTED
         Vector wi = squareToCosineHemisphere(rng.next2D()).normalized();
-        return {.wi = wi, .weight = color};
+        float wi_pdf = cosineHemispherePdf(wi);
+        // return {.wi = wi, .weight = color};
+        if(wi_pdf <= 0) // Linux machine returning nan on select pixels. Explicit handling seems to fix that
+            return {.wi = wi, .weight = Color(0.0f)};
+        else
+            return {.wi = wi, .weight = evaluate(wo, wi).value * 1 / wi_pdf};
 
         // hints:
         // * copy your diffuse bsdf evaluate here
