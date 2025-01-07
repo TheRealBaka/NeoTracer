@@ -8,7 +8,7 @@ namespace lightwave {
 void Instance::transformFrame(SurfaceEvent &surf, const Vector &wo) const {
 
     // Create shading frame in object space
-
+    Vector normal;
     Frame shading_frame = surf.shadingFrame();
 
     // if (shading_frame.normal.dot(wo) < 0){
@@ -27,7 +27,13 @@ void Instance::transformFrame(SurfaceEvent &surf, const Vector &wo) const {
     buildOrthonormalBasis(shading_frame.normal, shading_frame.tangent, shading_frame.bitangent);
 
     // Vectors already normalized. Need not normalize again
-    Vector normal = shading_frame.tangent.cross(shading_frame.bitangent);
+    if(m_normal){
+        Color surf_color = m_normal->evaluate(surf.uv);
+        normal = m_transform->applyNormal(shading_frame.toWorld(2.0f * Vector(surf_color.r(), surf_color.g(), surf_color.b()) - Vector(1.0f))).normalized();
+    }
+    else{
+        normal = shading_frame.tangent.cross(shading_frame.bitangent);
+    }
     
     surf.shadingNormal = normal;
     surf.geometryNormal = normal;

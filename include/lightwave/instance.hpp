@@ -42,6 +42,10 @@ class Instance : public Shape {
     /// @brief Tracks whether this instance has been added to the scene, i.e.,
     /// could be hit by ray tracing.
     bool m_visible;
+    /// @brief Shading normal property for normal mapping
+    ref<Texture> m_normal;
+    // /// @brief Alpha masking property
+    // ref<Texture> m_alpha;
 
     /// @brief Transforms the frame from object coordinates to world
     /// coordinates.
@@ -53,6 +57,8 @@ public:
         m_bsdf      = properties.getOptionalChild<Bsdf>();
         m_emission  = properties.getOptionalChild<Emission>();
         m_transform = properties.getOptionalChild<Transform>();
+        m_normal    = properties.get<Texture>("normal", nullptr);
+        // m_alpha     = properties.get<Texture>("alpha", nullptr);
         m_visible = false;
     }
 
