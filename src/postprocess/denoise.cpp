@@ -1,6 +1,6 @@
 #include <lightwave.hpp>
 
-// # ifdef LW_WITH_OIDN
+# ifdef LW_WITH_OIDN // Preprocessor directive added to handle gitlab build
 #include <OpenImageDenoise/oidn.h>
 #include <OpenImageDenoise/oidn.hpp>
 #include <OpenImageDenoise/config.h>
@@ -74,4 +74,4 @@ public:
 }
 REGISTER_POSTPROCESS(ImageDenoising, "denoising")
 
-// #endif 
+#endif 
