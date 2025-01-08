@@ -66,9 +66,7 @@ public:
      * from the surface, in local coordinates.
      */
     virtual BsdfEval evaluate(const Point2 &uv, const Vector &wo,
-                              const Vector &wi) const {
-        NOT_IMPLEMENTED
-    }
+                              const Vector &wi) const = 0;
     /**
      * @brief Samples a direction according to the distribution of the Bsdf in
      * local coordinates (i.e., the normal is assumed to be [0,0,1]).
@@ -81,6 +79,8 @@ public:
      */
     virtual BsdfSample sample(const Point2 &uv, const Vector &wo,
                               Sampler &rng) const = 0;
+    
+    virtual Color albedo(const Point2 &uv) const = 0;
 };
 
 } // namespace lightwave

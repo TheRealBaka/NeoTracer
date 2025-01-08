@@ -37,6 +37,12 @@ public:
         else return {.wi = refract(wo, n, eta), .weight = m_transmittance->evaluate(uv) / sqr(eta)};
     }
 
+    Color albedo(const Point2 &uv) const override {
+        float ior = m_ior->scalar(uv);
+        float F = fresnelDielectric(1.0f, ior);
+        return m_reflectance->evaluate(uv) * F + m_transmittance->evaluate(uv) * (1.0f - F);
+    }
+
     std::string toString() const override {
         return tfm::format(
             "Dielectric[\n"

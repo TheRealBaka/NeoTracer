@@ -25,6 +25,10 @@ public:
         return {.wi = wi, .weight = m_reflectance->evaluate(uv)};
     }
 
+    Color albedo(const Point2 &uv) const override {
+        return m_reflectance->evaluate(uv);
+    }
+
     std::string toString() const override {
         return tfm::format("Conductor[\n"
                            "  reflectance = %s\n"
