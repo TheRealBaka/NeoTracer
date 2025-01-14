@@ -37,7 +37,7 @@ public:
         // Compute tangent and normalize
         // its.tangent = its.shadingNormal.cross(V).normalized();
 
-        surf.pdf = 0.0f;
+        surf.pdf = Inv4Pi;
         }
 
     Sphere(const Properties &properties) {}
@@ -104,7 +104,12 @@ public:
     }
 
     AreaSample sampleArea(Sampler &rng) const override {
-        NOT_IMPLEMENTED
+        // NOT_IMPLEMENTED
+        Point2 rnd = rng.next2D();
+        AreaSample sample;
+        Point position = squareToUniformSphere(rnd);
+        populate(sample, position);
+        return sample;
     }
 
     std::string toString() const override { 

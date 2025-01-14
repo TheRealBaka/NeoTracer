@@ -39,7 +39,7 @@ void Instance::transformFrame(SurfaceEvent &surf, const Vector &wo) const {
     surf.geometryNormal = normal;
     surf.tangent = shading_frame.tangent;
 
-    surf.pdf = 0.0f;
+    surf.pdf /= normal.length();
 }
 
 inline void validateIntersection(const Intersection &its) {
