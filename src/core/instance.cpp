@@ -10,33 +10,25 @@ void Instance::transformFrame(SurfaceEvent &surf, const Vector &wo) const {
     // Create shading frame in object space
     Vector normal;
     Frame shading_frame = surf.shadingFrame();
-
-    // if (shading_frame.normal.dot(wo) < 0){
-    //     shading_frame.bitangent *= -1;
-    //     shading_frame.tangent *= -1;
-    //     shading_frame.normal *= -1;
-    // }
     
     // Transform to world coordinate space
     surf.position = m_transform->apply(surf.position);
-    shading_frame.normal = m_transform->applyNormal(shading_frame.normal).normalized();
-    shading_frame.tangent = m_transform->apply(shading_frame.tangent).normalized();
-    shading_frame.bitangent = m_transform->apply(shading_frame.bitangent).normalized();
 
-    // Create orthonormal basis (updates bitangent)
-    buildOrthonormalBasis(shading_frame.normal, shading_frame.tangent, shading_frame.bitangent);
-
-    // Vectors already normalized. Need not normalize again
     if(m_normal){
         Color surf_color = m_normal->evaluate(surf.uv);
         normal = m_transform->applyNormal(shading_frame.toWorld(2.0f * Vector(surf_color.r(), surf_color.g(), surf_color.b()) - Vector(1.0f))).normalized();
+        buildOrthonormalBasis(normal, shading_frame.tangent, shading_frame.bitangent);
+        shading_frame.normal = normal;
     }
     else{
-        normal = shading_frame.tangent.cross(shading_frame.bitangent);
+        shading_frame.normal = m_transform->applyNormal(shading_frame.normal).normalized();
+        shading_frame.tangent = m_transform->apply(shading_frame.tangent).normalized();
+        shading_frame.bitangent = m_transform->apply(shading_frame.bitangent).normalized();
+        buildOrthonormalBasis(shading_frame.normal, shading_frame.tangent, shading_frame.bitangent);
     }
     
-    surf.shadingNormal = normal;
-    surf.geometryNormal = normal;
+    surf.shadingNormal = shading_frame.normal;
+    surf.geometryNormal = shading_frame.normal;
     surf.tangent = shading_frame.tangent;
 
     surf.pdf /= normal.length();
