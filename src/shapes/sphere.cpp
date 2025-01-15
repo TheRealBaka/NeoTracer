@@ -16,8 +16,7 @@ public:
         Frame shading_frame = surf.shadingFrame();
 
         // Creating shading frame coordinate representation (CCW, as in Assignment 1)
-        buildOrthonormalBasis(surf.shadingNormal, shading_frame.tangent, shading_frame.bitangent);
-        shading_frame.normal = surf.shadingNormal;
+        buildOrthonormalBasis(shading_frame.normal, shading_frame.tangent, shading_frame.bitangent);
 
         surf.geometryNormal = shading_frame.normal;
 
@@ -28,8 +27,8 @@ public:
         surf.uv.y() = theta * InvPi + 0.5; 
 
         // Ref: https://computergraphics.stackexchange.com/questions/5498/compute-sphere-tangent-for-normal-mapping
-        // surf.tangent = Vector(-sin(phi), 0.0f, cos(phi)); // Using normalized representation
-        surf.tangent = shading_frame.tangent;
+        surf.tangent = Vector(-sin(phi), 0.0f, cos(phi)); // Using normalized representation
+
         surf.position = position;
 
         // Choose an arbitrary vector to create the tangent
