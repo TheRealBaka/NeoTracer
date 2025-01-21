@@ -19,12 +19,10 @@ void Instance::transformFrame(SurfaceEvent &surf, const Vector &wo) const {
     
     // Transform to world coordinate space
     surf.position = m_transform->apply(surf.position);
-    shading_frame.normal = m_transform->applyNormal(shading_frame.normal).normalized();
-    shading_frame.tangent = m_transform->apply(shading_frame.tangent).normalized();
-    shading_frame.bitangent = m_transform->apply(shading_frame.bitangent).normalized();
+    Vector world_tangent = m_transform->apply(shading_frame.tangent);
+    Vector world_bitangent = m_transform->apply(shading_frame.bitangent);
 
-    // Create orthonormal basis (updates bitangent)
-    buildOrthonormalBasis(shading_frame.normal, shading_frame.tangent, shading_frame.bitangent);
+    Vector unnorm_normal = world_tangent.cross(world_bitangent);
 
     // Vectors already normalized. Need not normalize again
     if(m_normal){
@@ -32,14 +30,17 @@ void Instance::transformFrame(SurfaceEvent &surf, const Vector &wo) const {
         normal = m_transform->applyNormal(shading_frame.toWorld(2.0f * Vector(surf_color.r(), surf_color.g(), surf_color.b()) - Vector(1.0f))).normalized();
     }
     else{
-        normal = shading_frame.tangent.cross(shading_frame.bitangent);
+        if(m_transform->determinant() < 0) world_bitangent *= -1;
+        normal = world_tangent.normalized().cross(world_bitangent.normalized());
     }
     
-    surf.shadingNormal = normal;
-    surf.geometryNormal = normal;
+    shading_frame = Frame(normal.normalized());
+    
+    surf.shadingNormal = shading_frame.normal;
+    surf.geometryNormal = shading_frame.normal;
     surf.tangent = shading_frame.tangent;
 
-    surf.pdf /= normal.length();
+    surf.pdf /= unnorm_normal.length();
 }
 
 inline void validateIntersection(const Intersection &its) {

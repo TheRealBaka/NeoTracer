@@ -11,25 +11,23 @@ class Sphere : public Shape {
 public:
     inline void populate(SurfaceEvent &surf, const Point &position) const {
 
-        surf.shadingNormal = (position - getCentroid()).normalized();
+        Vector normal = (position - getCentroid()).normalized();
 
-        Frame shading_frame = surf.shadingFrame();
-
-        // Creating shading frame coordinate representation (CCW, as in Assignment 1)
-        buildOrthonormalBasis(shading_frame.normal, shading_frame.tangent, shading_frame.bitangent);
-
-        surf.geometryNormal = shading_frame.normal;
-
-        float phi = atan2(shading_frame.normal.z(), shading_frame.normal.x());
-        float theta = asin(shading_frame.normal.y()); // radius is one, else n_y would be divided with it
+        float phi = atan2(normal.z(), normal.x());
+        float theta = asin(normal.y()); // radius is one, else n_y would be divided with it
 
         surf.uv.x() = phi * Inv2Pi + 0.5;
         surf.uv.y() = theta * InvPi + 0.5; 
 
         // Ref: https://computergraphics.stackexchange.com/questions/5498/compute-sphere-tangent-for-normal-mapping
-        surf.tangent = Vector(-sin(phi), 0.0f, cos(phi)); // Using normalized representation
+        // Vector tangent = Vector(-sin(phi), 0.0f, cos(phi)); // Using normalized representation
 
         surf.position = position;
+
+        Frame shading_frame = Frame(normal.normalized());
+        surf.geometryNormal = shading_frame.normal;
+        surf.shadingNormal = shading_frame.normal;
+        surf.tangent = shading_frame.tangent;
 
         // Choose an arbitrary vector to create the tangent
         // Vector V = (surf.shadingNormal.dot(Vector(1.0f, 0.0f, 0.0f)) < Epsilon) ? Vector(1.0f, 0.0f, 0.0f) : Vector(0.0f, 1.0f, 0.0f);
