@@ -29,6 +29,7 @@
 #include <lightwave/instance.hpp>
 #include <lightwave/integrator.hpp>
 #include <lightwave/light.hpp>
+#include <lightwave/medium.hpp>
 #include <lightwave/postprocess.hpp>
 #include <lightwave/sampler.hpp>
 #include <lightwave/shape.hpp>

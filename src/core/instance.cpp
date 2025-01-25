@@ -5,6 +5,25 @@
 
 namespace lightwave {
 
+void Instance::getLocalFrame(SurfaceEvent &surf, const Vector &wo) const {
+    Frame shading_frame = surf.shadingFrame();
+    surf.position = m_transform->inverse(surf.position);
+
+    Vector local_tangent = m_transform->inverse(shading_frame.tangent);
+    Vector local_bitangent = m_transform->inverse(shading_frame.bitangent);
+
+    if(m_transform->determinant() < 0) local_bitangent *= -1;
+
+    Vector normal = local_tangent.normalized().cross(local_bitangent.normalized());
+
+    shading_frame = Frame(normal.normalized());
+    
+    surf.shadingNormal = shading_frame.normal;
+    surf.geometryNormal = shading_frame.normal;
+    surf.tangent = shading_frame.tangent;
+
+}
+
 void Instance::transformFrame(SurfaceEvent &surf, const Vector &wo) const {
 
     // Create shading frame in object space
@@ -146,6 +165,15 @@ Point Instance::getCentroid() const {
 
 AreaSample Instance::sampleArea(Sampler &rng) const {
     AreaSample sample = m_shape->sampleArea(rng);
+    transformFrame(sample, Vector());
+    return sample;
+}
+
+AreaSample Instance::sampleArea(Sampler &rng, const SurfaceEvent &ref) const {
+    SurfaceEvent ref_inv = ref;
+    // ref_inv.position = m_transform->inverse(ref_inv.position);
+    getLocalFrame(ref_inv, Vector());
+    AreaSample sample = m_shape->sampleArea(rng, ref_inv);
     transformFrame(sample, Vector());
     return sample;
 }

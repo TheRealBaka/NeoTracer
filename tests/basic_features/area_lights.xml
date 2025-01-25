@@ -42,12 +42,13 @@
         </light> -->
         <light type="area">
             <instance>
-            <shape type="rectangle"/>
+            <shape type="sphere"/>
             <transform>
-                <matrix value="0.34733,-0.11114,-0.68413,1.7768,  0.35967,0.10733,0.66066,-2.4888,  0,0.47553,-0.30902,2.3187,  0,0,0,1"/>
+                <scale value="2"/>
+                <translate x="-4" y="-2" z="-1"/>
             </transform>
             <emission type="lambertian">
-                <texture name="emission" type="constant" value="35,0.5,0"/>
+                <texture name="emission" type="constant" value="2.5,7,3"/>
             </emission>
             </instance>
         </light>

@@ -7,6 +7,7 @@
 
 #include <lightwave/core.hpp>
 #include <lightwave/shape.hpp>
+#include <lightwave/medium.hpp>
 
 namespace lightwave {
 
@@ -46,10 +47,14 @@ class Instance : public Shape {
     ref<Texture> m_normal;
     // /// @brief Alpha masking property
     // ref<Texture> m_alpha;
+    /// @brief Medium property for instance
+    ref<Medium> m_medium;
 
     /// @brief Transforms the frame from object coordinates to world
     /// coordinates.
     inline void transformFrame(SurfaceEvent &surf, const Vector &wo) const;
+
+    inline void getLocalFrame(SurfaceEvent &surf, const Vector &wo) const;
 
 public:
     Instance(const Properties &properties) : m_light(nullptr) {
@@ -57,6 +62,7 @@ public:
         m_bsdf      = properties.getOptionalChild<Bsdf>();
         m_emission  = properties.getOptionalChild<Emission>();
         m_transform = properties.getOptionalChild<Transform>();
+        m_medium = properties.getOptionalChild<Medium>();
         m_normal    = properties.get<Texture>("normal", nullptr);
         // m_alpha     = properties.get<Texture>("alpha", nullptr);
         m_visible = false;
@@ -73,6 +79,9 @@ public:
     /// @brief Returns the light object that contains this instance (or null if
     /// this instance is not part of any area light).
     Light *light() const { return m_light; }
+    
+    /// @brief Returns medium property of instance
+    Medium *medium() const { return m_medium.get(); }
 
     /// @brief Returns whether this instance has been added to the scene, i.e.,
     /// could be hit by ray tracing.
@@ -112,6 +121,9 @@ public:
      * @param rng A random number generator used to steer sampling decisions.
      */
     AreaSample sampleArea(Sampler &rng) const override;
+
+    /// @brief Additional sample area format with reference
+    AreaSample sampleArea(Sampler &rng, const SurfaceEvent &ref) const override;
 
     /// @brief Returns a textual representation of this image.
     std::string toString() const override {

@@ -11,10 +11,8 @@ public:
         m_shape = properties.getChild<Instance>();
     }
 
-    DirectLightSample sampleDirect(const Point &origin,
-                                   Sampler &rng) const override {
-        // NOT_IMPLEMENTED  
-        AreaSample sample = m_shape->sampleArea(rng);
+    DirectLightSample sampleDirectMain(const Point &origin,
+                                   const AreaSample sample) const {
         Vector dir = sample.position - origin;
         float dist = dir.length();
         dir = dir.normalized();
@@ -23,7 +21,19 @@ public:
         Color E = m_shape->emission()->evaluate(sample.uv, wo).value;
 
         return { .wi =  dir, .weight = (E * Frame::absCosTheta(wo)) / (sqr(dist) * sample.pdf), .distance = dist};
-        
+    }
+    
+    DirectLightSample sampleDirect(const Point &origin,
+                                   Sampler &rng) const override {
+        // NOT_IMPLEMENTED  
+        AreaSample sample = m_shape->sampleArea(rng);
+        return sampleDirectMain(origin, sample);
+    }
+
+    DirectLightSample sampleDirect(const Point &origin,
+                                   Sampler &rng, const SurfaceEvent &ref) const override {
+        AreaSample sample = m_shape->sampleArea(rng, ref);
+        return sampleDirectMain(origin, sample);
     }
 
     bool canBeIntersected() const override { return false; }

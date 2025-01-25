@@ -42,7 +42,7 @@ public:
                 // SampleLight function
                 LightSample light_sample = m_scene->sampleLight(rng);
                 if(!light_sample.isInvalid()){ // Removes segmentation fault
-                    DirectLightSample dls = light_sample.light->sampleDirect(its.position, rng); 
+                    DirectLightSample dls = light_sample.light->sampleDirect(its.position, rng, its); 
                     // Tracing secondary ray
                     Ray shadow_ray = Ray(its.position, dls.wi);
                     Color bsdf_eval = its.evaluateBsdf(dls.wi).value;

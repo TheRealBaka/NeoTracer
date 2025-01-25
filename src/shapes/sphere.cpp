@@ -7,6 +7,9 @@ namespace lightwave {
 // UV map reference: https://en.wikipedia.org/wiki/UV_mapping
 
 class Sphere : public Shape {
+private:
+    const bool improved_sampling = false; // Implements Fred Akalin's cone sampling strategy
+    // Ref: https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-lighting/introduction-to-lighting-spherical-light-cone-sampling.html
 
 public:
     inline void populate(SurfaceEvent &surf, const Point &position) const {
@@ -103,9 +106,17 @@ public:
 
     AreaSample sampleArea(Sampler &rng) const override {
         // NOT_IMPLEMENTED
-        Point2 rnd = rng.next2D();
         AreaSample sample;
-        Point position = squareToUniformSphere(rnd);
+        Point position = squareToUniformSphere(rng.next2D());
+        populate(sample, position);
+        return sample;
+    }
+
+    AreaSample sampleArea(Sampler &rng, const SurfaceEvent &ref) const override {
+        if(!improved_sampling) return sampleArea(rng);
+
+        AreaSample sample;
+        Point position = squareToUniformSphereCone(rng.next2D(), ref.position);
         populate(sample, position);
         return sample;
     }

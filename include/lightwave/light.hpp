@@ -80,6 +80,10 @@ public:
     virtual DirectLightSample sampleDirect(const Point &origin,
                                            Sampler &rng) const = 0;
 
+    /// @brief Additional function added so it can support sampling where reference is required.
+    virtual DirectLightSample sampleDirect(const Point &origin,
+                                           Sampler &rng, const SurfaceEvent &ref) const { return sampleDirect(origin, rng); }
+
     /// @brief Returns whether this light source can be hit by rays (i.e., has
     /// an area that has been placed within the scene).
     virtual bool canBeIntersected() const { return false; }

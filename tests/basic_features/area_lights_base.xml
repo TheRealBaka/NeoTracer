@@ -14,7 +14,7 @@
         </camera>
 
         <!-- <light type="directional" direction="-0.8,-2,-1" intensity="1,1,0.5"/> -->
-        <light type="point" position="1.7768,-2.4888,2.3187" power="250,700,300" />
+        <light type="point" position="-4,-2,-1" power="250,700,300" />
         <!-- <light type = "area">
         <instance>
             <shape type="sphere"/>

@@ -51,6 +51,28 @@ inline Vector squareToUniformSphere(const Point2 &sample) {
     return { r * cosPhi, r * sinPhi, z };
 }
 
+inline Vector squareToUniformSphereCone(const Point2 &sample, const Point &refpos) {
+    Vector refpos_orig = Point(0.0f) - refpos;
+    float pos_len = refpos_orig.length();
+    float sin_theta_max = 1.0f / pos_len;
+    float sin_theta_max_2 = sqr(sin_theta_max);
+    float cos_theta_max = safe_sqrt(1.0f - sin_theta_max_2);
+
+    float cos_theta = 1.0f + (cos_theta_max - 1) * sample.x();
+    float sin_theta_2 = 1.0f - sqr(cos_theta);
+
+    float cos_alpha = sin_theta_2 / sin_theta_max + cos_theta * safe_sqrt(1.0f - sin_theta_2 / sqr(sin_theta_max));
+    float sin_alpha = safe_sqrt(1.0f - sqr(cos_alpha));
+
+    float phi = 2 * Pi * sample.y();
+
+    Vector n = Vector(sin_alpha * cos(phi), sin_alpha * sin(phi), cos_alpha);
+    
+    Frame refpos_frame = Frame(-refpos_orig.normalized());
+    return refpos_frame.toWorld(n);
+
+}
+
 /**
  * @brief Warps a given point from the unit square ([0,0] to [1,1]) to a unit
  * hemisphere (centered around [0,0,0] with radius 1, pointing in z direction),
