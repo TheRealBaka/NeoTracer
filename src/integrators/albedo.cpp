@@ -7,9 +7,6 @@ namespace lightwave {
  */
 class AlbedoIntegrator : public SamplingIntegrator {
 
-private:
-    bool remap;
-
 public:
     AlbedoIntegrator(const Properties &properties)
         : SamplingIntegrator(properties) {}
@@ -20,9 +17,30 @@ public:
      * potentially with multiple samples for each pixel.
      */
     Color Li(const Ray &ray, Sampler &rng) override {
-        Intersection its = m_scene->intersect(ray, rng);
-        if(!its || !its.instance->bsdf()) return Color(0.f);
-        return its.instance->bsdf()->albedo(its.uv);
+        Ray current_ray = ray;
+
+        while (true) {
+            Intersection its = m_scene->intersect(current_ray, rng);
+
+            // If no intersection, return black
+            if (!its) {
+                return Color(0.f);
+            }
+
+            // If the intersection is with a volume, skip and continue tracing
+            if (its.instance->medium() != nullptr) {
+                current_ray = Ray(its.position, current_ray.direction);
+                continue;
+            }
+
+            // If there's no BSDF at the intersection, return black
+            if (!its.instance->bsdf()) {
+                return Color(0.f);
+            }
+
+            // Return the albedo color for the valid surface intersection
+            return its.instance->bsdf()->albedo(its.uv);
+        }
     }
 
     /// @brief An optional textual representation of this class, which can be

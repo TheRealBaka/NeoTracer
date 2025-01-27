@@ -23,11 +23,28 @@ public:
      * potentially with multiple samples for each pixel.
      */
     Color Li(const Ray &ray, Sampler &rng) override {
-        Intersection its = m_scene->intersect(ray, rng);
-        if(!its && !remap) return Color(0.f); // return 0 for no intersection and no remap
-        Vector normal = its ? its.shadingNormal : Vector(0.0f);
-        Color color_nrml = remap ? (Color(normal) + Color(1)) / 2 : Color(0.5f);
-        return color_nrml;
+        Ray current_ray = ray;
+
+        while (true) {
+            Intersection its = m_scene->intersect(current_ray, rng);
+
+            // If no intersection, return black or default
+            if (!its) {
+                return remap ? Color(0.5f) : Color(0.f);
+            }
+
+            // If the intersection is with a volume, ignore and continue tracing
+            if (its.instance->medium() != nullptr) {
+                // Update the ray to continue past the volume
+                current_ray = Ray(its.position, current_ray.direction);
+                continue;
+            }
+
+            // Handle normal mapping for valid surface intersection
+            Vector normal = its.shadingNormal;
+            Color color_nrml = remap ? (Color(normal) + Color(1)) / 2 : Color(0.5f);
+            return color_nrml;
+        }
     }
 
     /// @brief An optional textual representation of this class, which can be

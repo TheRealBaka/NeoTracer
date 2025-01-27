@@ -37,7 +37,7 @@ public:
     virtual float evalTransmittance(const Ray &ray, const float &its_t, Sampler &rng) const = 0;
 
     /// @brief Implements Henyey-Greenstein phase function
-    virtual float HGPhase(const float &cos_theta) const = 0;
+    virtual float HGPhase(const Vector &wo, const Vector &wi) const = 0;
 
     /// @brief Flag to check homogeneous medium. Code for heterogeneous not implemented at the moment
     // virtual bool isHomogeneous() const = 0;
@@ -47,6 +47,9 @@ public:
 
     /// @brief For homogeneous medium, return scattering coefficient
     virtual float getSigmaS() const = 0;
+
+    /// @brief For homogeneous medium, return transmission coefficient
+    virtual float getSigmaT() const = 0;
 
     /// @brief Return light color
     virtual Color getColor() const = 0;

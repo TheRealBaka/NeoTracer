@@ -44,16 +44,35 @@ public:
     }
 
     float getSigmaS() const override {
-        return m_sigmaS;
+        return m_sigmaS * m_density;
+    }
+
+    float getSigmaT() const override {
+        return m_sigmaT;
     }
 
     float getDensity() const override {
         return m_density;
     }
 
-    float HGPhase(const float &cos_theta) const override {
+    float HGPhase(const Vector &wo, const Vector &wi) const override {
+        // Point2 u = rng.next2D();
+        // float cos_theta;
+        // if(std::abs(m_hg) < 1e-3) {
+        //     cos_theta = 1 - 2 * u.x();
+        // } else {
+        //     const float sqr_term = (1 - sqr(m_hg)) / (1 - m_hg + 2 * m_hg * u.x());
+        //     cos_theta = (1 + sqr(m_hg) - sqr(sqr_term)) / (2 * m_hg);
+        // }
+        // const float sin_theta = sqrt(max(1.0f - sqr(cos_theta), 0.0f));
+        // const float phi = 2 * Pi * u.y();
+        // Vector wi_local = Vector(cos(phi) * sin_theta, cos_theta, sin(phi) * sin_theta);
+
+        float cos_theta = -wo.dot(wi);
+
         float denom = 1 + sqr(m_hg) - 2 * m_hg * cos_theta;
         return Inv4Pi * (1 - sqr(m_hg)) / (denom * sqrtf(denom));
+
     }
 
     std::string toString() const override {
