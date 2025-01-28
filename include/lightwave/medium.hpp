@@ -24,7 +24,7 @@ public:
      *
      * @param ray Ray along which sampling takes place.
      */
-    virtual float sampleDistance(const Ray &ray, Sampler &rng) const = 0;
+    virtual float sampleDistance(Sampler &rng) const = 0;
 
     /**
      * @brief Returns sample attenuation for given scatting coefficients
@@ -38,6 +38,8 @@ public:
 
     /// @brief Implements Henyey-Greenstein phase function
     virtual float HGPhase(const Vector &wo, const Vector &wi) const = 0;
+
+    virtual void sampleDirection(const Vector &wo, Sampler &sampler, Vector &wi) const = 0;
 
     /// @brief Flag to check homogeneous medium. Code for heterogeneous not implemented at the moment
     // virtual bool isHomogeneous() const = 0;

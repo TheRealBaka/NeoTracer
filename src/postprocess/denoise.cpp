@@ -56,9 +56,11 @@ public:
         filter.set("hdr", true);
         filter.commit();
 
+        logger(EDebug, "Using OIDN for image denoising...");
         filter.execute();
 
         m_output->save();
+        logger(EDebug, "Successfully denoised");
 
         // Show image on tev
         Streaming stream { *m_output };

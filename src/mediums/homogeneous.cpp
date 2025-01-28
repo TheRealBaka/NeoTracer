@@ -30,7 +30,7 @@ public:
         return exp(-negLength * m_sigmaT);
     }
 
-    float sampleDistance(const Ray &ray, Sampler &rng) const override {
+    float sampleDistance(Sampler &rng) const override {
         // sample a distance at which we scatter in the volume
         return -std::log(1 - rng.next())/m_sigmaT;
     }
@@ -56,23 +56,48 @@ public:
     }
 
     float HGPhase(const Vector &wo, const Vector &wi) const override {
-        // Point2 u = rng.next2D();
-        // float cos_theta;
-        // if(std::abs(m_hg) < 1e-3) {
-        //     cos_theta = 1 - 2 * u.x();
-        // } else {
-        //     const float sqr_term = (1 - sqr(m_hg)) / (1 - m_hg + 2 * m_hg * u.x());
-        //     cos_theta = (1 + sqr(m_hg) - sqr(sqr_term)) / (2 * m_hg);
-        // }
-        // const float sin_theta = sqrt(max(1.0f - sqr(cos_theta), 0.0f));
-        // const float phi = 2 * Pi * u.y();
-        // Vector wi_local = Vector(cos(phi) * sin_theta, cos_theta, sin(phi) * sin_theta);
 
         float cos_theta = -wo.dot(wi);
 
         float denom = 1 + sqr(m_hg) - 2 * m_hg * cos_theta;
         return Inv4Pi * (1 - sqr(m_hg)) / (denom * sqrtf(denom));
 
+    }
+
+    // inline Vector localToWorld(const Vector& v, const Vector& lx, const Vector& ly,
+    //                       const Vector& lz)
+    //     {
+    //       Vector ret;
+    //       for (int i = 0; i < 3; ++i) {
+    //         ret[i] = v[0] * lx[i] + v[1] * ly[i] + v[2] * lz[i];
+    //       }
+    //       return ret;
+    //     }
+
+    void sampleDirection(const Vector &wo, Sampler &sampler, Vector &wi) const override {
+        const Point2 u = sampler.next2D();
+        float cos_theta;
+        if(std::abs(m_hg) < 1e-3) {
+            cos_theta = 1 - 2 * u.x();
+        } else {
+            const float sqr_term = (1 - sqr(m_hg)) / (1 - m_hg + 2 * m_hg * u.x());
+            cos_theta = (1 + sqr(m_hg) - sqr(sqr_term)) / (2 * m_hg);
+        }
+        const float sin_theta = sqrt(max(1.0f - sqr(cos_theta), 0.0f));
+        const float phi = 2 * Pi * u.y();
+        const Vector wi_local = Vector(cos(phi) * sin_theta, cos_theta, sin(phi) * sin_theta);
+
+        Vector t, b;
+        buildOrthonormalBasis(-wo, t, b);
+
+        // localToWorld
+          for (int i = 0; i < 3; ++i) {
+            wi[i] = wi_local[0] * t[i] + wi_local[1] * -wo[i] + wi_local[2] * b[i];
+          }
+        
+        // wi = localToWorld(wi_local, t, -wo, b);
+        // return HGPhase(wo, wi);
+        return;
     }
 
     std::string toString() const override {

@@ -115,5 +115,5 @@
         </instance>
     </scene>
     <sampler type="independent" count="256"/>
-    <image id="roughdielectric" />
+    <image id="frosted_roughdielectric" />
 </integrator>

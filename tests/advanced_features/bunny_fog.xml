@@ -1,4 +1,4 @@
-<integrator type="volumetracer" depth="5">
+<integrator type="fogtracer" depth="5">
     <scene id="scene">
         <camera type="perspective" id="camera">
             <integer name="width" value="512"/>
@@ -20,7 +20,7 @@
 
             <instance>
                 <shape type="mesh" filename="../meshes/bunny.ply"/>
-                <medium type="homogeneous" sigmaA="0.3" sigmaS="0.3" density="1" hg="0" color="1,0,0"/>
+                <medium type="homogeneous" sigmaA="0.5" sigmaS="0.5" density="2" hg="0" color="0,0,0"/>
                 <transform>
                     <rotate axis="1,0,0" angle="90"/>
                     <translate x="0.18" y="1.03"/>

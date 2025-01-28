@@ -8,8 +8,19 @@ namespace lightwave {
 
 class Sphere : public Shape {
 private:
-    const bool improved_sampling = false; // Implements Fred Akalin's cone sampling strategy
+    const bool improved_sampling = true; // Implements Fred Akalin's cone sampling strategy
     // Ref: https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-lighting/introduction-to-lighting-spherical-light-cone-sampling.html
+
+    inline float ConePdf(SurfaceEvent &surf, const Point &refpos) const {
+        Vector refpos_orig = getCentroid() - refpos;
+        float pos_len = refpos_orig.length();
+        float sin_theta_max = 1.0f / pos_len;
+        float cos_theta_max = safe_sqrt(1.0f - sqr(sin_theta_max));
+        float sur_pdf = Inv2Pi / (1.0f - cos_theta_max);
+
+        auto [distance, wi] = (surf.position - refpos).lengthAndNormalized();
+        return sur_pdf * abs(surf.shadingFrame().normal.dot(-wi)) / sqr(distance);
+    }
 
 public:
     inline void populate(SurfaceEvent &surf, const Point &position) const {
@@ -92,6 +103,8 @@ public:
         its.t = t_hit;
         populate(its,
                  position);
+        
+        its.pdf = ConePdf(its, ray.origin);
 
         return true;
     }
@@ -107,7 +120,7 @@ public:
     AreaSample sampleArea(Sampler &rng) const override {
         // NOT_IMPLEMENTED
         AreaSample sample;
-        Point position = squareToUniformSphere(rng.next2D());
+        Point position = squareToUniformSphere(rng.next2D()).normalized();
         populate(sample, position);
         return sample;
     }
@@ -116,8 +129,11 @@ public:
         if(!improved_sampling) return sampleArea(rng);
 
         AreaSample sample;
-        Point position = squareToUniformSphereCone(rng.next2D(), ref.position);
+        Point position = squareToUniformSphereCone(rng.next2D(), ref.position).normalized();
         populate(sample, position);
+
+        sample.pdf = ConePdf(sample, ref.position);
+
         return sample;
     }
 

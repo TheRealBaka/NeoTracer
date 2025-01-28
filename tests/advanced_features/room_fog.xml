@@ -1,4 +1,4 @@
-<integrator type="volumetracer" depth="25">
+<integrator type="fogtracer" depth="5">
     <scene id="scene">
         <camera type="perspective" id="camera">
             <integer name="width" value="400"/>
@@ -99,6 +99,6 @@
 
     </scene>
     <image id="room_fog"/> 
-    <sampler type="independent" count="512"/>
+    <sampler type="independent" count="128"/>
 </integrator>
 
