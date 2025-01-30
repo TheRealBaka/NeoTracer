@@ -22,7 +22,7 @@ public:
                       Sampler &rng) const override {
         // NOT_IMPLEMENTED 
         Vector wi = reflect(wo, Vector(0, 0, 1));
-        return {.wi = wi, .weight = m_reflectance->evaluate(uv)};
+        return {.wi = wi, .weight = m_reflectance->evaluate(uv), .pdf = Infinity};
     }
 
     Color albedo(const Point2 &uv) const override {

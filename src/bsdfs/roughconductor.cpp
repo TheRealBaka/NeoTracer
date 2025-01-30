@@ -28,8 +28,10 @@ public:
         float G1_i = microfacet::smithG1(alpha, wm, wi);
         float G1_o = microfacet::smithG1(alpha, wm, wo);
 
+        float pdf = clamp(microfacet::pdfGGXVNDF(alpha, wm, wo.normalized()) * microfacet::detReflection(wm, wo.normalized()), Epsilon, Infinity);
+
         // cos(wi) cancels from rendering equation term
-        return { .value = m_reflectance->evaluate(uv) * (D * G1_i * G1_o * 0.25) / Frame::absCosTheta(wo)};
+        return { .value = m_reflectance->evaluate(uv) * (D * G1_i * G1_o * 0.25) / Frame::absCosTheta(wo), .pdf = pdf};
         // hints:
         // * the microfacet normal can be computed from `wi' and `wo'
     }
@@ -42,8 +44,9 @@ public:
         Vector wm = microfacet::sampleGGXVNDF(alpha, wo, rng.next2D());
         Vector wi = reflect(wo, wm);
 
+        float pdf = clamp(microfacet::pdfGGXVNDF(alpha, wm, wo.normalized()) * microfacet::detReflection(wm, wo.normalized()), Epsilon, Infinity);
         // 4, |wi.wo| canceled from Jacobian, rest of the terms canceled from p(wm), with cos(wi) included in rendering equation
-        return { .wi = wi, .weight = m_reflectance->evaluate(uv) * microfacet::smithG1(alpha, wm , wi)};
+        return { .wi = wi, .weight = m_reflectance->evaluate(uv) * microfacet::smithG1(alpha, wm , wi), .pdf = pdf};
 
         // hints:
         // * do not forget to cancel out as many terms from your equations as

@@ -33,8 +33,8 @@ public:
 
         float F = fresnelDielectric(Frame::cosTheta(wo), eta);
 
-        if(rng.next() < F) return {.wi = reflect(wo, n), .weight = m_reflectance->evaluate(uv)};
-        else return {.wi = refract(wo, n, eta), .weight = m_transmittance->evaluate(uv) / sqr(eta)};
+        if(rng.next() < F) return {.wi = reflect(wo, n), .weight = m_reflectance->evaluate(uv), .pdf = 0.0f};
+        else return {.wi = refract(wo, n, eta), .weight = m_transmittance->evaluate(uv) / sqr(eta), .pdf = 0.0f};
     }
 
     Color albedo(const Point2 &uv) const override {

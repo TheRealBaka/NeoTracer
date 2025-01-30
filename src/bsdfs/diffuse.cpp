@@ -39,10 +39,10 @@ public:
         // float wi_pdf = cosineHemispherePdf(wi);
         // if(wi_pdf <= 0 || !Frame::sameHemisphere(wi, wo)) // Linux machine returning nan on select pixels. Explicit handling seems to fix that
         if(!Frame::sameHemisphere(wi, wo))
-            return {.wi = wi, .weight = Color(0.0f)};
+            return {.wi = wi, .weight = Color(0.0f), .pdf = cosineHemispherePdf(wi.normalized())};
         else
         // return {.wi = wi, .weight = f.value * 1 / wi_pdf};
-            return {.wi = wi, .weight = m_albedo->evaluate(uv)};
+            return {.wi = wi, .weight = m_albedo->evaluate(uv), .pdf = cosineHemispherePdf(wi.normalized())};
 
     }
 

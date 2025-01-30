@@ -19,7 +19,7 @@ public:
                                    Sampler &rng) const override {
         // NOT_IMPLEMENTED  
         // return format: direction, sample weight, distance from queried point to sampled point
-        return { .wi =  m_direction.normalized(), .weight = m_intensity, .distance = Infinity, .pdf = 1.f};
+        return { .wi =  m_direction.normalized(), .weight = m_intensity, .distance = Infinity, .pdf = Infinity};
         
     }
 

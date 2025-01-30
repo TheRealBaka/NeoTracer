@@ -10,7 +10,7 @@ class PathTracer : public SamplingIntegrator {
 
 private:
     int m_depth;
-
+    bool m_mis;
     // float balanceHeuristic(float pdfA, float pdfB) {
     //     return pdfA / (pdfA + pdfB);
     // }
@@ -39,6 +39,7 @@ public:
     PathTracer(const Properties &properties)
         : SamplingIntegrator(properties){
             m_depth = properties.get("depth", 2);
+            m_mis = properties.get("mis", false);
     }
 
     Color Li(const Ray &ray, Sampler &rng) override {
@@ -66,8 +67,8 @@ public:
 
             if (depth == 0 || its.instance->light() == nullptr)
                 final_color += throughput * its.evaluateEmission().value;
-            else{
-                p_light = pdfToSolidAngleMeasure(its.pdf, its.t, its.shadingFrame().normal, its.wo) * lightSelectionProb;
+            else if (m_mis){
+                p_light = GetSolidAngle(its.pdf, its.t, its.shadingFrame().normal, its.wo) * lightSelectionProb;
                 float mis_weight = balanceHeuristic(p_bsdf, p_light);
                 final_color += mis_weight * throughput * its.evaluateEmission().value;
             }
@@ -88,11 +89,14 @@ public:
                     bool occluded = m_scene->intersect(shadow_ray, dls.distance, rng);
                     if(!occluded){
                         float mis_weight = 1.0f;
-                        if (true){
+                        if (m_mis){
                             p_light = dls.pdf * lightSelectionProb;
                             mis_weight = balanceHeuristic(p_light, its.evaluateBsdf(dls.wi).pdf);
+                            final_color += mis_weight * throughput * (1 / lightSelectionProb) * dls.weight * bsdf_eval;
                         }
-                        final_color += mis_weight * throughput * (1 / lightSelectionProb) * dls.weight * bsdf_eval;
+                        else {
+                            final_color += mis_weight * throughput * (1 / light_sample.probability) * dls.weight * bsdf_eval;
+                        }
                     }
                 }
             }

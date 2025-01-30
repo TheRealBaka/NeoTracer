@@ -108,7 +108,7 @@ public:
             if (depth == 0 || its.instance->light() == nullptr)
                 final_color += throughput * its.evaluateEmission().value;
             else{
-                p_light = pdfToSolidAngleMeasure(its.pdf, its.t, its.shadingFrame().normal, its.wo) * lightSelectionProb;
+                p_light = GetSolidAngle(its.pdf, its.t, its.shadingFrame().normal, its.wo) * lightSelectionProb;
                 float mis_weight = balanceHeuristic(p_bsdf, p_light);
                 final_color += mis_weight * throughput * its.evaluateEmission().value;
             }

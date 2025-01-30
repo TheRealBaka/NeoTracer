@@ -16,7 +16,7 @@ namespace lightwave {
      * @param n Surface normal.
      * @param wi The direction towards the reference point (e.g, a light source). It does not have to be normalized.
      */
-    inline float pdfToSolidAngleMeasure(const float &pdf, const float &distance, const Vector &n, const Vector &wi)
+    inline float GetSolidAngle(const float &pdf, const float &distance, const Vector &n, const Vector &wi)
     {
         Vector wiNormalized = wi.normalized();
         if (abs(n.dot(-wiNormalized)) <= Epsilon)
@@ -69,7 +69,7 @@ inline Vector squareToUniformSphere(const Point2 &sample) {
 }
 
 inline Vector squareToUniformSphereCone(const Point2 &sample, const Point &refpos) {
-    Vector refpos_orig = Point(0.0f) - refpos;
+    Vector refpos_orig = refpos - Point(0.0f);
     float pos_len = refpos_orig.length();
     float sin_theta_max = 1.0f / pos_len;
     float sin_theta_max_2 = sqr(sin_theta_max);
@@ -83,10 +83,10 @@ inline Vector squareToUniformSphereCone(const Point2 &sample, const Point &refpo
 
     float phi = 2 * Pi * sample.y();
 
-    Vector n = Vector(sin_alpha * cos(phi), sin_alpha * sin(phi), cos_alpha);
+    Vector n = Vector(sin_alpha * cos(phi), cos_alpha * sin(phi), cos_alpha);
     
     Frame refpos_frame = Frame(-refpos_orig.normalized());
-    return refpos_frame.toWorld(n);
+    return refpos_frame.toWorld(-n);
 
 }
 

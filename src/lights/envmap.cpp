@@ -60,7 +60,7 @@ class EnvironmentMap final : public BackgroundLight {
         for (int y = 0; y < m_height; ++y)
         {
             float rowSum = 0;
-            float sinTheta = sin(Pi * static_cast<float>(y + 0.5f) / (float)m_height);
+            // float sinTheta = sin(Pi * static_cast<float>(y + 0.5f) / (float)m_height);
             for (int x = 0; x < m_width; ++x)
             {
                 Point2 uv((x + 0.5f) / m_width, (y + 0.5f) / m_height);

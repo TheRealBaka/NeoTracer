@@ -40,14 +40,14 @@ public:
         float F = fresnelDielectric(wi.dot(wm), eta);
 
         if(same_hemisphere){
-            return { .value = m_reflectance->evaluate(uv) * (F * G1_i * G1_o * D * 0.25) / Frame::absCosTheta(wo)};
+            return { .value = m_reflectance->evaluate(uv) * (F * G1_i * G1_o * D * 0.25) / Frame::absCosTheta(wo), .pdf = 0.0f};
             // .pdf = clamp(microfacet::pdfGGXVNDF(alpha, wm, wo.normalized()) * microfacet::detReflection(wm, wo.normalized()), Epsilon, Infinity)}; // Eqn. 20 of paper
         }
         else {
             float numerator = abs(wi.dot(wm)) * abs(wo.dot(wm)) * sqr(eta) * (1 - F) * G1_i * G1_o * D;
             float denonimator = Frame::absCosTheta(wo) * sqr(wi.dot(wm) + (eta * wo.dot(wm)));
             return { .value = m_transmittance->evaluate(uv) * (numerator/denonimator)
-             }; // Eqn. 21 of paper
+             , .pdf = 0.0f}; // Eqn. 21 of paper
         }
     }
 

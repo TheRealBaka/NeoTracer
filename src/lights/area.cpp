@@ -9,6 +9,7 @@ class AreaLight final : public Light {
 public:
     AreaLight(const Properties &properties) : Light(properties) {
         m_shape = properties.getChild<Instance>();
+        m_shape->setLight(this);
     }
 
     DirectLightSample sampleDirectMain(const Point &origin,
@@ -20,7 +21,7 @@ public:
         Vector wo = sample.shadingFrame().toLocal(-dir).normalized();
         Color E = m_shape->emission()->evaluate(sample.uv, wo).value;
 
-        return { .wi =  dir, .weight = (E * Frame::absCosTheta(wo)) / (sqr(dist) * sample.pdf), .distance = dist, .pdf = pdfToSolidAngleMeasure(sample.pdf, dist, sample.shadingFrame().normal, dir)};
+        return { .wi =  dir, .weight = (E * Frame::absCosTheta(wo)) / (sqr(dist) * sample.pdf), .distance = dist, .pdf = GetSolidAngle(sample.pdf, dist, sample.shadingFrame().normal, dir)};
     }
     
     DirectLightSample sampleDirect(const Point &origin,

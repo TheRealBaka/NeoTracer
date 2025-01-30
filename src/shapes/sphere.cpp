@@ -49,7 +49,7 @@ public:
         // Compute tangent and normalize
         // its.tangent = its.shadingNormal.cross(V).normalized();
 
-        // surf.pdf = Inv4Pi;
+        surf.pdf = Inv4Pi;
         }
 
     Sphere(const Properties &properties) {}
@@ -104,7 +104,7 @@ public:
         populate(its,
                  position);
         
-        its.pdf = ConePdf(its, ray.origin);
+        if(improved_sampling) its.pdf = ConePdf(its, ray.origin);
 
         return true;
     }
