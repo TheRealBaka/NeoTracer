@@ -12,7 +12,7 @@ struct DiffuseLobe {
         // NOT_IMPLEMENTED
         // if (!Frame::sameHemisphere(wi, wo))
         //     return BsdfEval::invalid();
-        return {color * InvPi * Frame::absCosTheta(wi.normalized())};
+        return {.value = color * InvPi * Frame::absCosTheta(wi.normalized()), .pdf = cosineHemispherePdf(wi.normalized())};
 
         // hints:
         // * copy your diffuse bsdf evaluate here
@@ -22,6 +22,7 @@ struct DiffuseLobe {
     BsdfSample sample(const Vector &wo, Sampler &rng) const {
         // NOT_IMPLEMENTED
         Vector wi = squareToCosineHemisphere(rng.next2D()).normalized();
+        float pdf = cosineHemispherePdf(wi.normalized());
         // float wi_pdf = cosineHemispherePdf(wi);
         // return {.wi = wi, .weight = color};
         // if(wi_pdf <= 0 || !Frame::sameHemisphere(wi, wo)) // Linux machine returning nan on select pixels. Explicit handling seems to fix that
@@ -29,7 +30,7 @@ struct DiffuseLobe {
         //     return {.wi = wi, .weight = Color(0.0f)};
         // else
             // return {.wi = wi, .weight = evaluate(wo, wi).value * 1 / wi_pdf};
-        return {.wi = wi, .weight = color};
+        return {.wi = wi, .weight = color, .pdf = pdf};
 
         // hints:
         // * copy your diffuse bsdf evaluate here
@@ -50,8 +51,9 @@ struct MetallicLobe {
         float D = microfacet::evaluateGGX(alpha, wm); // Microfacet normal distribution
         float G1_i = microfacet::smithG1(alpha, wm, wi);
         float G1_o = microfacet::smithG1(alpha, wm, wo);
-
-        return { .value = color * (D * G1_i * G1_o * 0.25f) / Frame::absCosTheta(wo)};
+        float pdf = clamp(microfacet::pdfGGXVNDF(alpha, wm, wo.normalized()) * microfacet::detReflection(wm, wo.normalized()), Epsilon, Infinity);
+        return { .value = color * (D * G1_i * G1_o * 0.25f) / Frame::absCosTheta(wo),
+         .pdf = pdf};
 
         // hints:
         // * copy your roughconductor bsdf evaluate here
@@ -64,9 +66,9 @@ struct MetallicLobe {
         // NOT_IMPLEMENTED
         Vector wm = microfacet::sampleGGXVNDF(alpha, wo, rng.next2D());
         Vector wi = reflect(wo, wm);
-
+        float pdf = clamp(microfacet::pdfGGXVNDF(alpha, wm, wo.normalized()) * microfacet::detReflection(wm, wo.normalized()), Epsilon, Infinity);
         // Terms canceled after substituting Jacobian with p(wm)
-        return { .wi = wi, .weight = color * microfacet::smithG1(alpha, wm , wi)};
+        return { .wi = wi, .weight = color * microfacet::smithG1(alpha, wm , wi), .pdf = pdf};
 
         // hints:
         // * copy your roughconductor bsdf sample here
@@ -131,7 +133,8 @@ public:
         // NOT_IMPLEMENTED
         BsdfEval diffuse_val = combination.diffuse.evaluate(wo, wi);
         BsdfEval metallic_val = combination.metallic.evaluate(wo, wi);
-        return { .value = diffuse_val.value + metallic_val.value};
+        return { .value = diffuse_val.value + metallic_val.value, .pdf = combination.diffuseSelectionProb * diffuse_val.pdf +
+                           (1.0f - combination.diffuseSelectionProb) * metallic_val.pdf};
 
         // hint: evaluate `combination.diffuse` and `combination.metallic` and
         // combine their results
@@ -153,7 +156,7 @@ public:
             val = combination.metallic.sample(wo, rng);
             select_prob = 1.0f - combination.diffuseSelectionProb;         
         }
-        return { .wi = val.wi, .weight = val.weight / select_prob};  
+        return { .wi = val.wi, .weight = val.weight / select_prob, .pdf = select_prob};  
 
 
         // hint: sample either `combination.diffuse` (probability

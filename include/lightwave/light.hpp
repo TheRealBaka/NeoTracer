@@ -23,6 +23,8 @@ struct DirectLightSample {
     /// @brief The distance from the query point to the sampled point on the
     /// light source.
     float distance;
+    /// @brief The Pdf of sampling the light.
+    float pdf;
 
     /// @brief Return an invalid sample, used to denote that sampling has
     /// failed.
@@ -31,6 +33,7 @@ struct DirectLightSample {
             .wi     = Vector(),
             .weight = Color(),
             .distance = 0,
+            .pdf = 0.0f
         };
     }
 

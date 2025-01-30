@@ -20,7 +20,7 @@ public:
         Vector wo = sample.shadingFrame().toLocal(-dir).normalized();
         Color E = m_shape->emission()->evaluate(sample.uv, wo).value;
 
-        return { .wi =  dir, .weight = (E * Frame::absCosTheta(wo)) / (sqr(dist) * sample.pdf), .distance = dist};
+        return { .wi =  dir, .weight = (E * Frame::absCosTheta(wo)) / (sqr(dist) * sample.pdf), .distance = dist, .pdf = pdfToSolidAngleMeasure(sample.pdf, dist, sample.shadingFrame().normal, dir)};
     }
     
     DirectLightSample sampleDirect(const Point &origin,

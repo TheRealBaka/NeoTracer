@@ -32,6 +32,30 @@ private:
         return transmittance;
     }
 
+    // float balanceHeuristic(float pdfA, float pdfB) {
+    //     return pdfA / (pdfA + pdfB);
+    // }
+
+    float balanceHeuristic(float pdf_a, float pdf_b)
+        {
+            // Clamp the Pdfs to avoid floating point innacuracies
+            pdf_a = clamp(pdf_a, Epsilon, Infinity);
+            pdf_b = clamp(pdf_b, Epsilon, Infinity);
+
+            // The sample from technique A should be trusted the most
+            if (pdf_a == Infinity)
+                return 1.0f;
+            // The sample from technique B should be trusted, therefore it is 0.0f for technique A
+            else if (pdf_b == Infinity)
+                return 0.0f;
+            else
+            {
+                float weight_a = pdf_a;
+                float weight_b = pdf_b;
+                return weight_a / (weight_a + weight_b);
+            }
+        }
+
 public:
     FogTracer(const Properties &properties)
         : SamplingIntegrator(properties){
@@ -48,6 +72,8 @@ public:
         int depth = 0;
         int volume_counter = 0;
         float medium_throughput;
+        float p_bsdf = Infinity, p_light = 0.0f;
+        float lightSelectionProb = m_scene->lightSelectionProbability(nullptr);
 
         // for (int depth = 0; ; ++depth){
         while(depth < m_depth){
@@ -79,7 +105,13 @@ public:
                 its = m_scene->intersect(primary_ray, rng);
             }
 
-            final_color += throughput * its.evaluateEmission().value;
+            if (depth == 0 || its.instance->light() == nullptr)
+                final_color += throughput * its.evaluateEmission().value;
+            else{
+                p_light = pdfToSolidAngleMeasure(its.pdf, its.t, its.shadingFrame().normal, its.wo) * lightSelectionProb;
+                float mis_weight = balanceHeuristic(p_bsdf, p_light);
+                final_color += mis_weight * throughput * its.evaluateEmission().value;
+            }
 
             // Distance sampling
             if(medium_type != nullptr) sampled_dist = medium_type->sampleDistance(rng);
@@ -90,9 +122,12 @@ public:
             }
             else{
                 is_scattered = true;
+                Vector new_dir;
+                medium_type->sampleDirection(-primary_ray.direction, rng, new_dir);
                 float pdf_dist = medium_type->getSigmaT() * medium_type->sampleAttenuation(sampled_dist);
                 medium_throughput = medium_type->sampleAttenuation(sampled_dist) * medium_type->getSigmaS() / pdf_dist;
-                float phase = medium_type->HGPhase(its.shadingFrame().toLocal(its.wo), squareToUniformSphere(rng.next2D()));
+                // float phase = medium_type->HGPhase(its.shadingFrame().toLocal(its.wo), squareToUniformSphere(rng.next2D()));
+                float phase = medium_type->HGPhase(-primary_ray.direction, new_dir);
 
                 if(m_scene->hasLights()){
                     // SampleLight function
@@ -102,9 +137,14 @@ public:
                         // Tracing secondary ray
                         Ray shadow_ray = Ray(its.position, dls.wi);
                         Color medium_transmittance = isVisible(shadow_ray, medium_type, dls, rng);
+                        float mis_weight = 1.0f;
                         if(medium_transmittance != Color(0.f)) {
                             // ask about medium color
-                            final_color += medium_transmittance * medium_throughput * phase * dls.weight * medium_type->getDensity() * medium_type->getColor();
+                            if(true){
+                                p_light = dls.pdf * lightSelectionProb;
+                                mis_weight = balanceHeuristic(p_light, phase);
+                            }
+                            final_color += mis_weight * medium_transmittance * (1 / lightSelectionProb) * medium_throughput * phase * dls.weight * medium_type->getColor();
                             // final_color += medium_throughput * medium_color * medium_transmittance * phase;
 
                         }
@@ -113,8 +153,8 @@ public:
                 // }
                 // advance ray via in-scattering
                 // ray.origin = ray(sampled_dist);
-                Vector new_dir;
-                medium_type->sampleDirection(-primary_ray.direction, rng, new_dir);
+                // Vector new_dir;
+                // medium_type->sampleDirection(-primary_ray.direction, rng, new_dir);
                 // ray.direction = new_dir;
                 primary_ray = Ray(Point(primary_ray(sampled_dist)), new_dir);
 
@@ -131,13 +171,19 @@ public:
                         DirectLightSample dls = light_sample.light->sampleDirect(its.position, rng, its); 
                         // Tracing secondary ray
                         Ray shadow_ray = Ray(its.position, dls.wi);
-                        Color bsdf_eval = its.evaluateBsdf(dls.wi).value;
+                        BsdfEval bsdf_eval = its.evaluateBsdf(dls.wi);
+                        // p_bsdf = its.evaluateBsdf(dls.wi).pdf;
 
                         // bool occluded = m_scene->intersect(shadow_ray, dls.distance, rng);
                         // if(!occluded) final_color += throughput * (1 / light_sample.probability) * dls.weight * bsdf_eval;
                         Color medium_transmittance = isVisible(shadow_ray, medium_type, dls, rng);
+                        float mis_weight = 1.0f; 
                         if(medium_transmittance != Color(0.f)) {
-                            final_color += throughput * medium_transmittance * (1 / light_sample.probability) * dls.weight * bsdf_eval;
+                            if (true){
+                                p_light = dls.pdf * lightSelectionProb;
+                                mis_weight = balanceHeuristic(p_light, bsdf_eval.pdf);
+                            }
+                            final_color += mis_weight * throughput * medium_transmittance * (1 / lightSelectionProb) * dls.weight * bsdf_eval.value;
                             is_reflected = true;
                         // }
                     }
@@ -154,6 +200,7 @@ public:
                 break;
             primary_ray = Ray(its.position, sample_.wi.normalized());
             throughput *= sample_.weight;
+            p_bsdf = sample_.pdf;
         }
         if (is_scattered || is_reflected) { depth++; }
         }

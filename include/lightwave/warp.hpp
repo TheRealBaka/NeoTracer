@@ -10,6 +10,23 @@
 namespace lightwave {
 
 /**
+     * @brief Returns the Pdf value in solid angle measure, from a value in spatial units.
+     * @param pdf Spatial Pdf.
+     * @param distance Distance between the shading point and the reference point.
+     * @param n Surface normal.
+     * @param wi The direction towards the reference point (e.g, a light source). It does not have to be normalized.
+     */
+    inline float pdfToSolidAngleMeasure(const float &pdf, const float &distance, const Vector &n, const Vector &wi)
+    {
+        Vector wiNormalized = wi.normalized();
+        if (abs(n.dot(-wiNormalized)) <= Epsilon)
+            return Infinity;
+
+        float result = pdf * sqr(distance) / abs(n.dot(-wiNormalized));
+        return clamp(result, Epsilon, Infinity); 
+    }
+
+/**
  * @brief Warps a given point from the unit square ([0,0] to [1,1]) to a unit
  * circle (centered around [0,0] with radius 1), with uniform density given by
  * @code 1 / Pi @endcode .

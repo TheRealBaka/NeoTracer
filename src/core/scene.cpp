@@ -89,6 +89,7 @@ Scene::Scene(const Properties &properties) {
     m_camera     = properties.getChild<Camera>();
     m_background = properties.getOptionalChild<BackgroundLight>();
     m_lightSampling = std::make_shared<LightSampling>(properties.getChildren<Light>());
+    m_lights = properties.getChildren<Light>();
 
     const std::vector<ref<Shape>> entities = properties.getChildren<Shape>();
     if (entities.size() == 1) {
@@ -140,6 +141,9 @@ bool Scene::hasLights() const {
 
 Bounds Scene::getBoundingBox() const { return m_shape->getBoundingBox(); }
 
-} // namespace lightwave
+float Scene::lightSelectionProbability(const Light *light) const {
+    return float(1) / m_lights.size();
 
+} // namespace lightwave
+}
 REGISTER_CLASS(Scene, "scene", "default")

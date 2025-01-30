@@ -42,6 +42,11 @@ class Scene : public Object {
     /// @brief An optional background light, which provides color when rays exit
     /// the scene.
     ref<BackgroundLight> m_background;
+    /**
+     * @brief A list of light sources that can be sampled.
+     * @note Emissive objects will only be part of this list if explicitly requested (i.e., an AreaLight has been created for them).
+     */
+    std::vector<ref<Light>> m_lights;
 
     class LightSampling;
     /// @brief Contains all necessary data structures to randomly pick light
@@ -66,6 +71,8 @@ public:
 
     /// @brief Randomly picks a light from the list of sampleable light sources.
     LightSample sampleLight(Sampler &rng) const;
+    /// @brief Returns the probability of randomly picking a light source via @ref sampleLight .
+    float lightSelectionProbability(const Light *light) const;
     /// @brief Returns the bounding box of the scene geometry.
     Bounds getBoundingBox() const;
 };

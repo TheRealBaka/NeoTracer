@@ -24,7 +24,7 @@ public:
         // Convert power to intensity (Ref. Pg. 28 lecture slides)
         Color intensity = (m_power * Inv4Pi) / sqr(dist);
 
-        return { .wi =  dir.normalized(), .weight = intensity, .distance = dist};
+        return { .wi =  dir.normalized(), .weight = intensity, .distance = dist, .pdf = Infinity};
         
     }
 

@@ -11,6 +11,30 @@ class PathTracer : public SamplingIntegrator {
 private:
     int m_depth;
 
+    // float balanceHeuristic(float pdfA, float pdfB) {
+    //     return pdfA / (pdfA + pdfB);
+    // }
+
+    float balanceHeuristic(float pdf_a, float pdf_b)
+        {
+            // Clamp the Pdfs to avoid floating point innacuracies
+            pdf_a = clamp(pdf_a, Epsilon, Infinity);
+            pdf_b = clamp(pdf_b, Epsilon, Infinity);
+
+            // The sample from technique A should be trusted the most
+            if (pdf_a == Infinity)
+                return 1.0f;
+            // The sample from technique B should be trusted, therefore it is 0.0f for technique A
+            else if (pdf_b == Infinity)
+                return 0.0f;
+            else
+            {
+                float weight_a = pdf_a;
+                float weight_b = pdf_b;
+                return weight_a / (weight_a + weight_b);
+            }
+        }
+
 public:
     PathTracer(const Properties &properties)
         : SamplingIntegrator(properties){
@@ -21,6 +45,9 @@ public:
         Ray primary_ray = Ray(ray);
         Color final_color = Color(0.0f);
         Color throughput = Color(1.0f);
+        float p_bsdf = Infinity, p_light = 0.0f;
+        float lightSelectionProb = m_scene->lightSelectionProbability(nullptr);
+
         for (int depth = 0; ; ++depth){
             // Primary ray intersection
             Intersection its = m_scene->intersect(primary_ray, rng);
@@ -28,12 +55,22 @@ public:
             // Check for no intersection
             if(!its){  
                 EmissionEval x = its.evaluateEmission();
+                // if (depth == 0 && its.background == nullptr)
+                //     return final_color;
                 final_color += throughput * x.value;
                 return final_color;
             }
 
             // Add emission term
-            final_color += throughput * its.evaluateEmission().value;
+            // final_color += throughput * its.evaluateEmission().value;
+
+            if (depth == 0 || its.instance->light() == nullptr)
+                final_color += throughput * its.evaluateEmission().value;
+            else{
+                p_light = pdfToSolidAngleMeasure(its.pdf, its.t, its.shadingFrame().normal, its.wo) * lightSelectionProb;
+                float mis_weight = balanceHeuristic(p_bsdf, p_light);
+                final_color += mis_weight * throughput * its.evaluateEmission().value;
+            }
 
             if(depth >= m_depth - 1) break;
 
@@ -46,9 +83,17 @@ public:
                     // Tracing secondary ray
                     Ray shadow_ray = Ray(its.position, dls.wi);
                     Color bsdf_eval = its.evaluateBsdf(dls.wi).value;
+                    
 
                     bool occluded = m_scene->intersect(shadow_ray, dls.distance, rng);
-                    if(!occluded) final_color += throughput * (1 / light_sample.probability) * dls.weight * bsdf_eval;
+                    if(!occluded){
+                        float mis_weight = 1.0f;
+                        if (true){
+                            p_light = dls.pdf * lightSelectionProb;
+                            mis_weight = balanceHeuristic(p_light, its.evaluateBsdf(dls.wi).pdf);
+                        }
+                        final_color += mis_weight * throughput * (1 / lightSelectionProb) * dls.weight * bsdf_eval;
+                    }
                 }
             }
 
@@ -58,6 +103,7 @@ public:
                 break;
             primary_ray = Ray(its.position, sample_.wi.normalized());
             throughput *= sample_.weight;
+            p_bsdf = sample_.pdf;
         }
         return final_color;
     }

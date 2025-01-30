@@ -40,12 +40,14 @@ public:
         float F = fresnelDielectric(wi.dot(wm), eta);
 
         if(same_hemisphere){
-            return { .value = m_reflectance->evaluate(uv) * (F * G1_i * G1_o * D * 0.25) / Frame::absCosTheta(wo)}; // Eqn. 20 of paper
+            return { .value = m_reflectance->evaluate(uv) * (F * G1_i * G1_o * D * 0.25) / Frame::absCosTheta(wo)};
+            // .pdf = clamp(microfacet::pdfGGXVNDF(alpha, wm, wo.normalized()) * microfacet::detReflection(wm, wo.normalized()), Epsilon, Infinity)}; // Eqn. 20 of paper
         }
         else {
             float numerator = abs(wi.dot(wm)) * abs(wo.dot(wm)) * sqr(eta) * (1 - F) * G1_i * G1_o * D;
             float denonimator = Frame::absCosTheta(wo) * sqr(wi.dot(wm) + (eta * wo.dot(wm)));
-            return { .value = m_transmittance->evaluate(uv) * (numerator/denonimator)}; // Eqn. 21 of paper
+            return { .value = m_transmittance->evaluate(uv) * (numerator/denonimator)
+             }; // Eqn. 21 of paper
         }
     }
 
@@ -65,12 +67,12 @@ public:
         if(rng.next() < F) {
             wi = reflect(wo, wm);
             float G1_i = microfacet::smithG1(alpha, wm, wi);
-            return {.wi = wi, .weight = m_reflectance->evaluate(uv) * G1_i};
+            return {.wi = wi, .weight = m_reflectance->evaluate(uv) * G1_i, .pdf = F};
         }
         else {
             wi = refract(wo, wm, eta);
             float G1_i = microfacet::smithG1(alpha, wm, wi);
-            return { .wi = wi, .weight = (m_transmittance->evaluate(uv) / sqr(eta)) * G1_i};
+            return { .wi = wi, .weight = (m_transmittance->evaluate(uv) / sqr(eta)) * G1_i, .pdf = 1.0f - F};
         }
         
     }
