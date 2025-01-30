@@ -5,6 +5,7 @@ class FogTracer : public SamplingIntegrator {
 
 private:
     int m_depth;
+    bool m_mis;
     Color isVisible(Ray &ray, Medium* &medium_type, DirectLightSample &dls, Sampler &rng) {
         // Medium-aware visibility check
         Color transmittance = Color(1.0f);
@@ -60,6 +61,7 @@ public:
     FogTracer(const Properties &properties)
         : SamplingIntegrator(properties){
             m_depth = properties.get("depth", 2);
+            m_mis = properties.get("mis", false);
     }
 
     Color Li(const Ray &ray, Sampler &rng) override {
@@ -107,7 +109,7 @@ public:
 
             if (depth == 0 || its.instance->light() == nullptr)
                 final_color += throughput * its.evaluateEmission().value;
-            else{
+            else if(m_mis){
                 p_light = GetSolidAngle(its.pdf, its.t, its.shadingFrame().normal, its.wo) * lightSelectionProb;
                 float mis_weight = balanceHeuristic(p_bsdf, p_light);
                 final_color += mis_weight * throughput * its.evaluateEmission().value;
@@ -140,7 +142,7 @@ public:
                         float mis_weight = 1.0f;
                         if(medium_transmittance != Color(0.f)) {
                             // ask about medium color
-                            if(true){
+                            if(m_mis){
                                 p_light = dls.pdf * lightSelectionProb;
                                 mis_weight = balanceHeuristic(p_light, phase);
                             }
@@ -179,7 +181,7 @@ public:
                         Color medium_transmittance = isVisible(shadow_ray, medium_type, dls, rng);
                         float mis_weight = 1.0f; 
                         if(medium_transmittance != Color(0.f)) {
-                            if (true){
+                            if (m_mis){
                                 p_light = dls.pdf * lightSelectionProb;
                                 mis_weight = balanceHeuristic(p_light, bsdf_eval.pdf);
                             }
