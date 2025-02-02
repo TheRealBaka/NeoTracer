@@ -103,21 +103,7 @@ public:
     EnvironmentMap(const Properties &properties) : BackgroundLight(properties) {
         m_texture   = properties.getChild<Texture>();
         m_transform = properties.getOptionalChild<Transform>();
-        providedEnvironmentMap = false;
-            if (true)
-            {
-                // auto imageTexture = dynamic_cast<Texture * >(m_texture.get());
-                if (true)
-                {
-                    // Point2i m_resolution = imageTexture->m_image->resolution();
-                    // m_width = m_resolution.x();
-                    // m_height = m_resolution.y();
-                    m_width = 2048;
-                    m_height = 4096;
-                    providedEnvironmentMap = true;
-                    initializeDistribution2D();
-                }
-            }
+        // providedEnvironmentMap = false;
     }
 
     EmissionEval evaluate(const Vector &direction) const override {
@@ -160,25 +146,6 @@ public:
             .distance = Infinity,
             .pdf = Infinity
         };
-
-        // Improved Environment Sampling routine
-        // float pdfRow, pdfCol;
-        // float uRow = rng.next();
-        // float uCol = rng.next();
-        // float u = sampleContinuousDistribution(m_rowDistribution, uRow, pdfRow);
-        // float v = sampleContinuousDistribution(m_colDistributions[static_cast<int>(u * m_height)], uCol, pdfCol);
-        // float mapPdf = pdfRow * pdfCol;
-        // // Return an invalid sample, just in case
-        // if (mapPdf == 0.0f)
-        //     return DirectLightSample::invalid();
-        // Point2 uv(u, v);
-        // auto [direction, pdf] = uvToDirection(uv, mapPdf);
-        // // Return an invalid sample, just in case
-        // if (pdf == 0.0f)
-        //     return DirectLightSample::invalid();
-        // // Lookup the environment map using the uv coordinates
-        // auto E = m_texture->evaluate(uv);
-        // return {.wi = direction, .weight = E / pdf * Inv4Pi, .distance = Infinity};
     }
 
     std::string toString() const override {

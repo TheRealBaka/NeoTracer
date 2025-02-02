@@ -1,8 +1,8 @@
 <integrator type="pathtracer" depth="4">
     <scene id="scene">
         <camera type="perspective" id="camera">
-            <integer name="width" value="512"/>
-            <integer name="height" value="512"/>
+            <integer name="width" value="800"/>
+            <integer name="height" value="800"/>
 
             <string name="fovAxis" value="x"/>
             <float name="fov" value="30"/>
@@ -57,6 +57,6 @@
             </transform>
         </instance>
     </scene>
-    <sampler type="independent" count="64"/>
+    <sampler type="independent" count="128"/>
     <image id="area_point"/>
 </integrator>

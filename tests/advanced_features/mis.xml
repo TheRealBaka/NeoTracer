@@ -36,10 +36,6 @@
             <texture name="reflectance" type="constant" value="0.4" />
         </bsdf>
 
-        <!-- <light type="envmap">
-            <texture type="constant" value="0.4"/>
-        </light> -->
-
         <instance id="light_small">
             <shape type="sphere" />
             <emission type="lambertian">

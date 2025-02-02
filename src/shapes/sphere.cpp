@@ -8,7 +8,7 @@ namespace lightwave {
 
 class Sphere : public Shape {
 private:
-    const bool improved_sampling = true; // Implements Fred Akalin's cone sampling strategy
+    bool m_improved; // Implements Fred Akalin's cone sampling strategy
     // Ref: https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-lighting/introduction-to-lighting-spherical-light-cone-sampling.html
 
     inline float ConePdf(SurfaceEvent &surf, const Point &refpos) const {
@@ -52,7 +52,9 @@ public:
         surf.pdf = Inv4Pi;
         }
 
-    Sphere(const Properties &properties) {}
+    Sphere(const Properties &properties) {
+        m_improved = properties.get<bool>("improved", true); // Defaults to true
+    }
 
     bool intersect(const Ray &ray, Intersection &its,
                    Sampler &rng) const override {
@@ -104,7 +106,7 @@ public:
         populate(its,
                  position);
         
-        if(improved_sampling) its.pdf = ConePdf(its, ray.origin);
+        if(m_improved) its.pdf = ConePdf(its, ray.origin);
 
         return true;
     }
@@ -126,7 +128,7 @@ public:
     }
 
     AreaSample sampleArea(Sampler &rng, const SurfaceEvent &ref) const override {
-        if(!improved_sampling) return sampleArea(rng);
+        if(!m_improved) return sampleArea(rng);
 
         AreaSample sample;
         Point position = squareToUniformSphereCone(rng.next2D(), ref.position).normalized();

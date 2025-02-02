@@ -101,20 +101,20 @@
             </transform>
         </instance>
     </scene>
-    <sampler type="independent" count="512"/>
+    <sampler type="independent" count="128"/>
     <image id="noisy" />
 </integrator>
 
 <integrator type="normals">
     <ref id="scene"/>
     <image id="normals"/>
-    <sampler type="independent" count="256"/>
+    <sampler type="independent" count="128"/>
 </integrator>
 
 <integrator type="albedo">
     <ref id="scene"/>
     <image id="albedo"/>
-    <sampler type="independent" count="256"/>
+    <sampler type="independent" count="128"/>
 </integrator>
 
 <postprocess type="denoising">

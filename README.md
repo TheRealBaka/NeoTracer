@@ -47,6 +47,21 @@ Lightwave supports you in this endeavour by supplying tedious to implement boile
 * A Blender exporter
   * You can easily build and render your own scenes
 
+## Additional features
+
+Besides the assignments, the following features were also implemented:
+* Basic features
+  * Shading normals: `tests/basic_features/shading_normals.xml`, `tests/basic_features/normal_map.xml`.
+  * Image denoising: `tests/basic_features/image_denoising.xml`.
+  * Rough dielectric: `tests/basic_features/bunny_frosted.xml` (compare with `tests/basic_features/bunny_glass.xml` with glass)
+  * Area lights: `tests/basic_features/bunny_area.xml` (compare with `tests/basic_features/bunny_point.xml`)
+  * Improved area lights: `tests/basic_features/bunny_area_improved.xml` (compare with `tests/basic_features/bunny_area.xml`)
+  * Bloom: `tests/basic_features/bloom.xml`
+* Advanced features
+  * Bunny fog (homogeneous participating medium): `tests/advanced_features/bunny_fog.xml`
+  * Room fog (homogeneous participating medium): `tests/advanced_features/room_fog.xml`
+  * MIS path tracer: `tests/advanced_features/mis.xml` (compare with `tests/advanced_features/no-mis.xml`). We try the path tracer on test based on Eric Veach's thesis.
+
 ## Contributors
 Lightwave was written by [Alexander Rath](https://graphics.cg.uni-saarland.de/people/rath.html), with contributions from [Ömercan Yazici](https://graphics.cg.uni-saarland.de/people/yazici.html) and [Philippe Weier](https://graphics.cg.uni-saarland.de/people/weier.html).
 Many of our design decisions were heavily inspired by [Nori](https://wjakob.github.io/nori/), a great educational renderer developed by Wenzel Jakob.

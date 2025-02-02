@@ -1,8 +1,8 @@
 <integrator type="pathtracer" depth="4">
     <scene id="scene">
         <camera type="perspective" id="camera">
-            <integer name="width" value="512"/>
-            <integer name="height" value="512"/>
+            <integer name="width" value="800"/>
+            <integer name="height" value="800"/>
 
             <string name="fovAxis" value="x"/>
             <float name="fov" value="30"/>
@@ -15,7 +15,7 @@
 
         <light type="area">
             <instance>
-                <shape type="sphere"/>
+                <shape type="sphere" improved="false"/>
                 <emission type="lambertian">
                     <texture name="emission" type="constant" value="0.2,0.7,12"/>
                 </emission>
@@ -28,7 +28,7 @@
 
         <light type="area">
             <instance>
-            <shape type="sphere"/>
+            <shape type="sphere" improved="false"/>
             <emission type="lambertian">
                 <texture name="emission" type="constant" value="2,0.5,0.1"/>
             </emission>
@@ -61,6 +61,6 @@
             </transform>
         </instance>
     </scene>
-    <sampler type="independent" count="64"/>
+    <sampler type="independent" count="128"/>
     <image id="area_area"/>
 </integrator>

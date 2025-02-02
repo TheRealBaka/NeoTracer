@@ -11,20 +11,14 @@ class PathTracer : public SamplingIntegrator {
 private:
     int m_depth;
     bool m_mis;
-    // float balanceHeuristic(float pdfA, float pdfB) {
-    //     return pdfA / (pdfA + pdfB);
-    // }
 
-    float balanceHeuristic(float pdf_a, float pdf_b)
+    float BalancedHeuristic(float pdf_a, float pdf_b)
         {
-            // Clamp the Pdfs to avoid floating point innacuracies
             pdf_a = clamp(pdf_a, Epsilon, Infinity);
             pdf_b = clamp(pdf_b, Epsilon, Infinity);
 
-            // The sample from technique A should be trusted the most
             if (pdf_a == Infinity)
                 return 1.0f;
-            // The sample from technique B should be trusted, therefore it is 0.0f for technique A
             else if (pdf_b == Infinity)
                 return 0.0f;
             else
@@ -69,7 +63,7 @@ public:
                 final_color += throughput * its.evaluateEmission().value;
             else if (m_mis){
                 p_light = GetSolidAngle(its.pdf, its.t, its.shadingFrame().normal, its.wo) * lightSelectionProb;
-                float mis_weight = balanceHeuristic(p_bsdf, p_light);
+                float mis_weight = BalancedHeuristic(p_bsdf, p_light);
                 final_color += mis_weight * throughput * its.evaluateEmission().value;
             }
 
@@ -91,7 +85,7 @@ public:
                         float mis_weight = 1.0f;
                         if (m_mis){
                             p_light = dls.pdf * lightSelectionProb;
-                            mis_weight = balanceHeuristic(p_light, its.evaluateBsdf(dls.wi).pdf);
+                            mis_weight = BalancedHeuristic(p_light, its.evaluateBsdf(dls.wi).pdf);
                             final_color += mis_weight * throughput * (1 / lightSelectionProb) * dls.weight * bsdf_eval;
                         }
                         else {

@@ -33,20 +33,13 @@ private:
         return transmittance;
     }
 
-    // float balanceHeuristic(float pdfA, float pdfB) {
-    //     return pdfA / (pdfA + pdfB);
-    // }
-
-    float balanceHeuristic(float pdf_a, float pdf_b)
+    float BalancedHeuristic(float pdf_a, float pdf_b)
         {
-            // Clamp the Pdfs to avoid floating point innacuracies
             pdf_a = clamp(pdf_a, Epsilon, Infinity);
             pdf_b = clamp(pdf_b, Epsilon, Infinity);
 
-            // The sample from technique A should be trusted the most
             if (pdf_a == Infinity)
                 return 1.0f;
-            // The sample from technique B should be trusted, therefore it is 0.0f for technique A
             else if (pdf_b == Infinity)
                 return 0.0f;
             else
@@ -89,6 +82,13 @@ public:
                 EmissionEval x = its.evaluateEmission();
                 final_color += throughput * x.value;
                 return final_color;
+            } else {
+                if (depth > 2) {
+                    float russian_roulette_prob = std::min((throughput.r() + throughput.g() + throughput.b()) / 3.0f, 1.0f);
+                    if (rng.next() >= russian_roulette_prob) break;
+                    throughput /= russian_roulette_prob;
+                }
+
             }
 
             if(its.instance->medium() != nullptr) {
@@ -111,7 +111,7 @@ public:
                 final_color += throughput * its.evaluateEmission().value;
             else if(m_mis){
                 p_light = GetSolidAngle(its.pdf, its.t, its.shadingFrame().normal, its.wo) * lightSelectionProb;
-                float mis_weight = balanceHeuristic(p_bsdf, p_light);
+                float mis_weight = BalancedHeuristic(p_bsdf, p_light);
                 final_color += mis_weight * throughput * its.evaluateEmission().value;
             }
 
@@ -144,7 +144,7 @@ public:
                             // ask about medium color
                             if(m_mis){
                                 p_light = dls.pdf * lightSelectionProb;
-                                mis_weight = balanceHeuristic(p_light, phase);
+                                mis_weight = BalancedHeuristic(p_light, phase);
                             }
                             final_color += mis_weight * medium_transmittance * (1 / lightSelectionProb) * medium_throughput * phase * dls.weight * medium_type->getColor();
                             // final_color += medium_throughput * medium_color * medium_transmittance * phase;
@@ -183,7 +183,7 @@ public:
                         if(medium_transmittance != Color(0.f)) {
                             if (m_mis){
                                 p_light = dls.pdf * lightSelectionProb;
-                                mis_weight = balanceHeuristic(p_light, bsdf_eval.pdf);
+                                mis_weight = BalancedHeuristic(p_light, bsdf_eval.pdf);
                             }
                             final_color += mis_weight * throughput * medium_transmittance * (1 / lightSelectionProb) * dls.weight * bsdf_eval.value;
                             is_reflected = true;
