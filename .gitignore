@@ -18,6 +18,7 @@ __pycache__
 # *.xml
 my_first_scene.exr
 my_first_scene.xml
+additional_features/*/*.exr
 
 # final_scene
 OneDrive_1_1-19-2025

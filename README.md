@@ -48,16 +48,18 @@ Lightwave supports you in this endeavour by supplying tedious to implement boile
 
 Besides the assignments, the following features were also implemented:
 * Basic features
-  * Shading normals: `tests/basic_features/shading_normals.xml`, `tests/basic_features/normal_map.xml`.
-  * Image denoising: `tests/basic_features/image_denoising.xml`.
-  * Rough dielectric: `tests/basic_features/bunny_frosted.xml` (compare with `tests/basic_features/bunny_glass.xml` with glass)
-  * Area lights: `tests/basic_features/bunny_area.xml` (compare with `tests/basic_features/bunny_point.xml`)
-  * Improved area lights: `tests/basic_features/bunny_area_improved.xml` (compare with `tests/basic_features/bunny_area.xml`)
-  * Bloom: `tests/basic_features/bloom.xml`
+  * Shading normals: `additional_features/basic_features/shading_normals.xml`, `additional_features/basic_features/normal_map.xml`.
+  * Image denoising: `additional_features/basic_features/image_denoising.xml`.
+  * Rough dielectric: `additional_features/basic_features/bunny_frosted.xml` (compare with `additional_features/basic_features/bunny_glass.xml` with glass)
+  * Area lights: `additional_features/basic_features/bunny_area.xml` (compare with `additional_features/basic_features/bunny_point.xml`)
+  * Improved area lights: `additional_features/basic_features/bunny_area_improved.xml` (compare with `additional_features/basic_features/bunny_area.xml`)
+  * Bloom: `additional_features/basic_features/bloom.xml`
 * Advanced features
-  * Bunny fog (homogeneous participating medium): `tests/advanced_features/bunny_fog.xml`
-  * Room fog (homogeneous participating medium): `tests/advanced_features/room_fog.xml`
-  * MIS path tracer: `tests/advanced_features/mis.xml` (compare with `tests/advanced_features/no-mis.xml`). We try the path tracer on test based on Eric Veach's thesis.
+  * Bunny fog (homogeneous participating medium): `additional_features/advanced_features/bunny_fog.xml`
+  * Room fog (homogeneous participating medium): `additional_features/advanced_features/room_fog.xml`
+  * MIS path tracer: `additional_features/advanced_features/mis.xml` (compare with `additional_features/advanced_features/no-mis.xml`). We try the path tracer on test based on Eric Veach's thesis.
+
+These `xml` files can be moved to test directory if required to run with `run_tests.py`.
 
 ## Contributors
 Lightwave was written by [Alexander Rath](https://graphics.cg.uni-saarland.de/people/rath.html), with contributions from [Ömercan Yazici](https://graphics.cg.uni-saarland.de/people/yazici.html) and [Philippe Weier](https://graphics.cg.uni-saarland.de/people/weier.html).
