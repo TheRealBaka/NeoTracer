@@ -1,18 +1,13 @@
+# NeoTracer: A stroll through the blinding lights of Cyber City
+
+NeoTracer is a ray tracer that we created, written on top of _lightwave_ for Computer Graphics I course (Winter 2024/25). Besides 
+basic features for a typical ray tracer, neotracer also supports volumetric path tracing with MIS support.
+
 # lightwave
 
 Welcome to _lightwave_, an educational framework for writing ray tracers that can render photo-realistic images!
 Lightwave provides the boring boilerplate, so you can focus on writing the insightful parts.
 It aims to be minimal enough to remain comprehensible, yet flexible enough to provide a solid foundation even for sophisticated rendering algorithms.
-
-## Assignments
-We want you to make this renderer truly your own. Our assignments provide ample opportunities to customize your renderer with features that you personally find interesting, and you are welcome to change each and every line of your renderer as you see fit, including all of its interfaces. The only **hard requirement** is that your renderer remains capable of reading our test scene files, and outputs the right images for those.
-
-You are encouraged to publish your renderer (e.g., on Github) after the course ends, but during the course you are not allowed to share code with other groups. Copying code from other sources is equally prohibited, as blindly copying code defeats the purpose of this project:
-
-We want you to have fun writing your very own ray tracer, producing renders that you can be proud of, and to learn and prepare you for the final exam!
-
-## Overview
-
 
 ## What's Included
 Out of the box, lightwave is unable to produce any images, as it lacks all necessary rendering functionality to do so.
