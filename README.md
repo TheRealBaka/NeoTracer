@@ -1,7 +1,9 @@
-# NeoTracer: A stroll through the blinding lights of Cyber City
+# NeoTracer
 
 NeoTracer is a ray tracer that we created, written on top of _lightwave_ for Computer Graphics I course (Winter 2024/25). Besides 
 basic features for a typical ray tracer, neotracer also supports volumetric path tracing with MIS support.
+
+![NeoTracer](neontracer_images/neotracer_final.jpeg)
 
 # lightwave
 
