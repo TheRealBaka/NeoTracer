@@ -1,0 +1,11 @@
+<postprocess type="denoising">
+    <image name="input" filename="noisy_final.exr"/>
+    <image name="normals" filename="normals_final.exr"/>
+    <image name="albedo" filename="albedo_final.exr"/>
+    <image id="denoised_final"/>
+</postprocess>
+
+<postprocess type="bloom" kernelSize="3" iterations="2" threshold="0.85" scale="0.5">
+    <ref name="input" id="denoised_final"/>
+    <image id="bloom_final"/>
+</postprocess>

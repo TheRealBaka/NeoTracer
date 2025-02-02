@@ -1,0 +1,2291 @@
+<scene id="scene">
+  <camera type="perspective">
+    <integer name="width" value="2565"/>
+    <integer name="height" value="1440"/>
+    <float name="fov" value="39.598"/>
+    <string name="fovAxis" value="x"/>
+    <transform>
+      <matrix value="0.47562,0.13154,0.86976,-140.33,  -0.87965,0.071123,0.47027,-50.877,  -7.7875e-08,-0.98876,0.14954,6.5091,  0,0,0,1"/>
+    </transform>
+  </camera>
+  <instance>
+    <emission id="Red NEON" type="lambertian">
+      <texture name="emission" type="constant" value="17.263,0,0.0072538"/>
+    </emission>
+    <shape id="Text_013" type="mesh" filename="meshes/Text.013.ply"/>
+    <transform>
+      <matrix value="6.0638,0.037866,0.025371,-6.6362,  0.083041,0.10336,-1.8388,53.143,  -0.038113,6.2497,0.030258,49.26,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="Red NEON"/>
+    <ref id="Text_013"/>
+    <transform>
+      <matrix value="6.0638,0.037866,0.025371,-6.6362,  0.083041,0.10336,-1.8388,53.143,  -0.038113,6.2497,0.030258,49.26,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <emission id="Dark Blue Neon" type="lambertian">
+      <texture name="emission" type="constant" value="0.93299,20,15.855"/>
+    </emission>
+    <shape id="Text_006" type="mesh" filename="meshes/Text.006.ply"/>
+    <transform>
+      <matrix value="6.0638,0.037866,0.025371,-17.358,  0.083041,0.10336,-1.8388,52.994,  -0.038113,6.2497,0.030258,49.187,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="Dark Blue Neon"/>
+    <ref id="Text_006"/>
+    <transform>
+      <matrix value="6.0638,0.037866,0.025371,-17.358,  0.083041,0.10336,-1.8388,52.994,  -0.038113,6.2497,0.030258,49.187,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_AirCon_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_AirCon_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_AirCon_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_AirCon_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_0_KB3D_NEC_BldgLG_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.778,  0,1,0,68.177,  0,0,1,34.103,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_DarkPanels_basecolor.png"/>
+      <texture name="roughness" type="constant" value="0.14955"/>
+      <texture name="metallic" type="constant" value="0.63444"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_DarkPanels_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_1_KB3D_NEC_BldgLG_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.778,  0,1,0,68.177,  0,0,1,34.103,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_GalvanizedSteelDirt_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_GalvanizedSteelDirt_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_GalvanizedSteelDirt_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_GalvanizedSteelDirt_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_2_KB3D_NEC_BldgLG_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.778,  0,1,0,68.177,  0,0,1,34.103,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <emission type="lambertian">
+      <texture name="emission" type="constant" value="0"/>
+    </emission>
+    <shape type="mesh" filename="meshes/_m_3_KB3D_NEC_BldgLG_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.778,  0,1,0,68.177,  0,0,1,34.103,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <emission type="lambertian">
+      <texture name="emission" type="constant" value="0"/>
+    </emission>
+    <shape type="mesh" filename="meshes/_m_4_KB3D_NEC_BldgLG_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.778,  0,1,0,68.177,  0,0,1,34.103,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_MetalDarkWorn_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_MetalDarkWorn_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_MetalDarkWorn_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_MetalDarkWorn_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_5_KB3D_NEC_BldgLG_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.778,  0,1,0,68.177,  0,0,1,34.103,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_MetalLightGreyWorn_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_MetalLightGreyWorn_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_MetalLightGreyWorn_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_MetalLightGreyWorn_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_6_KB3D_NEC_BldgLG_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.778,  0,1,0,68.177,  0,0,1,34.103,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_MetalPaintRed_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_MetalPaintRed_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_MetalPaintRed_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_MetalPaintRed_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_7_KB3D_NEC_BldgLG_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.778,  0,1,0,68.177,  0,0,1,34.103,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_MetalPaintWhiteWorn_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_MetalPaintWhiteWorn_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_MetalPaintWhiteWorn_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_MetalPaintWhiteWorn_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_8_KB3D_NEC_BldgLG_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.778,  0,1,0,68.177,  0,0,1,34.103,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_MetalPaintWorn_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_MetalPaintWorn_roughness.png" linear="true"/>
+      <texture name="metallic" type="constant" value="0"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_MetalPaintWorn_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_9_KB3D_NEC_BldgLG_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.778,  0,1,0,68.177,  0,0,1,34.103,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_MetalPaintYellow_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_MetalPaintYellow_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_MetalPaintYellow_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_MetalPaintYellow_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_10_KB3D_NEC_BldgLG_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.778,  0,1,0,68.177,  0,0,1,34.103,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_TarpA_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_TarpA_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_TarpA_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_TarpA_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_11_KB3D_NEC_BldgLG_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.778,  0,1,0,68.177,  0,0,1,34.103,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_WhitePanels_basecolor.png"/>
+      <texture name="roughness" type="constant" value="0.028701"/>
+      <texture name="metallic" type="constant" value="0.9577"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_WhitePanels_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_12_KB3D_NEC_BldgLG_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.778,  0,1,0,68.177,  0,0,1,34.103,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_WoodDarkGreyTower_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_WoodDarkGreyTower_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_WoodDarkGreyTower_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_WoodDarkGreyTower_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_13_KB3D_NEC_BldgLG_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.778,  0,1,0,68.177,  0,0,1,34.103,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_AsphaltHexagonRoof_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_AsphaltHexagonRoof_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_AsphaltHexagonRoof_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_AsphaltHexagonRoof_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_0_KB3D_NEC_BldgMD_C_Main.001.ply"/>
+    <transform>
+      <matrix value="0.99997,0.0076174,0,26.313,  -0.0076174,0.99997,0,64.198,  0,0,1,28.231,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_GalvanizedSteel_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_GalvanizedSteel_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_GalvanizedSteel_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_GalvanizedSteel_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_1_KB3D_NEC_BldgMD_C_Main.001.ply"/>
+    <transform>
+      <matrix value="0.99997,0.0076174,0,26.313,  -0.0076174,0.99997,0,64.198,  0,0,1,28.231,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <emission type="lambertian">
+      <texture name="emission" type="constant" value="0"/>
+    </emission>
+    <shape type="mesh" filename="meshes/_m_2_KB3D_NEC_BldgMD_C_Main.001.ply"/>
+    <transform>
+      <matrix value="0.99997,0.0076174,0,26.313,  -0.0076174,0.99997,0,64.198,  0,0,1,28.231,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="constant" value="0.80048,0.050558,0.044806"/>
+      <texture name="roughness" type="constant" value="0.5"/>
+      <texture name="metallic" type="constant" value="0"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <shape type="mesh" filename="meshes/_m_3_KB3D_NEC_BldgMD_C_Main.001.ply"/>
+    <transform>
+      <matrix value="0.99997,0.0076174,0,26.313,  -0.0076174,0.99997,0,64.198,  0,0,1,28.231,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_Letters_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_Letters_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_Letters_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_Letters_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_4_KB3D_NEC_BldgMD_C_Main.001.ply"/>
+    <transform>
+      <matrix value="0.99997,0.0076174,0,26.313,  -0.0076174,0.99997,0,64.198,  0,0,1,28.231,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_LightsA_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_LightsA_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_LightsA_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_LightsA_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_5_KB3D_NEC_BldgMD_C_Main.001.ply"/>
+    <transform>
+      <matrix value="0.99997,0.0076174,0,26.313,  -0.0076174,0.99997,0,64.198,  0,0,1,28.231,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_MetalAccent_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_MetalAccent_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_MetalAccent_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_MetalAccent_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_6_KB3D_NEC_BldgMD_C_Main.001.ply"/>
+    <transform>
+      <matrix value="0.99997,0.0076174,0,26.313,  -0.0076174,0.99997,0,64.198,  0,0,1,28.231,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_MetalGrating_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_MetalGrating_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_MetalGrating_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_MetalGrating_normal.png" linear="true"/>
+    <texture name="alpha" type="image" filename="textures/KB3D_NEC_MetalGrating_opacity.png"/>
+    <shape type="mesh" filename="meshes/_m_7_KB3D_NEC_BldgMD_C_Main.001.ply"/>
+    <transform>
+      <matrix value="0.99997,0.0076174,0,26.313,  -0.0076174,0.99997,0,64.198,  0,0,1,28.231,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_OxidizedSteel_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_OxidizedSteel_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_OxidizedSteel_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_OxidizedSteel_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_8_KB3D_NEC_BldgMD_C_Main.001.ply"/>
+    <transform>
+      <matrix value="0.99997,0.0076174,0,26.313,  -0.0076174,0.99997,0,64.198,  0,0,1,28.231,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_PaintedMetal_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_PaintedMetal_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_PaintedMetal_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_PaintedMetal_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_9_KB3D_NEC_BldgMD_C_Main.001.ply"/>
+    <transform>
+      <matrix value="0.99997,0.0076174,0,26.313,  -0.0076174,0.99997,0,64.198,  0,0,1,28.231,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_SatinSteel_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_SatinSteel_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_SatinSteel_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_SatinSteel_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_10_KB3D_NEC_BldgMD_C_Main.001.ply"/>
+    <transform>
+      <matrix value="0.99997,0.0076174,0,26.313,  -0.0076174,0.99997,0,64.198,  0,0,1,28.231,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_ConcreteA_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_ConcreteA_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_ConcreteA_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_ConcreteA_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_11_KB3D_NEC_BldgMD_C_Main.001.ply"/>
+    <transform>
+      <matrix value="0.99997,0.0076174,0,26.313,  -0.0076174,0.99997,0,64.198,  0,0,1,28.231,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_ConcreteB_basecolor.png"/>
+      <texture name="roughness" type="constant" value="0.11631"/>
+      <texture name="metallic" type="constant" value="0.66163"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_ConcreteB_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_12_KB3D_NEC_BldgMD_C_Main.001.ply"/>
+    <transform>
+      <matrix value="0.99997,0.0076174,0,26.313,  -0.0076174,0.99997,0,64.198,  0,0,1,28.231,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_AsphaltHexagonRoof_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_AsphaltHexagonRoof_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_AsphaltHexagonRoof_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_AsphaltHexagonRoof_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_0_KB3D_NEC_BldgLG_C_Main.001.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,104.64,  -0.0035251,-0.99999,0.00016055,106.68,  0.012304,0.00011716,0.99992,71.499,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_GalvanizedSteel_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_GalvanizedSteel_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_GalvanizedSteel_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_GalvanizedSteel_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_1_KB3D_NEC_BldgLG_C_Main.001.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,104.64,  -0.0035251,-0.99999,0.00016055,106.68,  0.012304,0.00011716,0.99992,71.499,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <emission type="lambertian">
+      <texture name="emission" type="constant" value="0"/>
+    </emission>
+    <shape type="mesh" filename="meshes/_m_2_KB3D_NEC_BldgLG_C_Main.001.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,104.64,  -0.0035251,-0.99999,0.00016055,106.68,  0.012304,0.00011716,0.99992,71.499,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_BannerA_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_BannerA_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_BannerA_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_BannerA_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_3_KB3D_NEC_BldgLG_C_Main.001.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,104.64,  -0.0035251,-0.99999,0.00016055,106.68,  0.012304,0.00011716,0.99992,71.499,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_LightsA_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_LightsA_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_LightsA_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_LightsA_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_4_KB3D_NEC_BldgLG_C_Main.001.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,104.64,  -0.0035251,-0.99999,0.00016055,106.68,  0.012304,0.00011716,0.99992,71.499,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_MetalAccent_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_MetalAccent_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_MetalAccent_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_MetalAccent_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_5_KB3D_NEC_BldgLG_C_Main.001.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,104.64,  -0.0035251,-0.99999,0.00016055,106.68,  0.012304,0.00011716,0.99992,71.499,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_MetalGrating_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_MetalGrating_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_MetalGrating_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_MetalGrating_normal.png" linear="true"/>
+    <texture name="alpha" type="image" filename="textures/KB3D_NEC_MetalGrating_opacity.png"/>
+    <shape type="mesh" filename="meshes/_m_6_KB3D_NEC_BldgLG_C_Main.001.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,104.64,  -0.0035251,-0.99999,0.00016055,106.68,  0.012304,0.00011716,0.99992,71.499,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_OxidizedSteel_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_OxidizedSteel_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_OxidizedSteel_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_OxidizedSteel_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_7_KB3D_NEC_BldgLG_C_Main.001.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,104.64,  -0.0035251,-0.99999,0.00016055,106.68,  0.012304,0.00011716,0.99992,71.499,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_PaintedMetal_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_PaintedMetal_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_PaintedMetal_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_PaintedMetal_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_8_KB3D_NEC_BldgLG_C_Main.001.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,104.64,  -0.0035251,-0.99999,0.00016055,106.68,  0.012304,0.00011716,0.99992,71.499,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_SatinSteel_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_SatinSteel_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_SatinSteel_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_SatinSteel_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_9_KB3D_NEC_BldgLG_C_Main.001.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,104.64,  -0.0035251,-0.99999,0.00016055,106.68,  0.012304,0.00011716,0.99992,71.499,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_ConcreteA_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_ConcreteA_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_ConcreteA_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_ConcreteA_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_10_KB3D_NEC_BldgLG_C_Main.001.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,104.64,  -0.0035251,-0.99999,0.00016055,106.68,  0.012304,0.00011716,0.99992,71.499,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_ConcreteAccent_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_ConcreteAccent_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_ConcreteAccent_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_ConcreteAccent_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_11_KB3D_NEC_BldgLG_C_Main.001.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,104.64,  -0.0035251,-0.99999,0.00016055,106.68,  0.012304,0.00011716,0.99992,71.499,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_ConcreteB_basecolor.png"/>
+      <texture name="roughness" type="constant" value="0.13444"/>
+      <texture name="metallic" type="constant" value="0.65559"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_ConcreteB_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_12_KB3D_NEC_BldgLG_C_Main.001.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,104.64,  -0.0035251,-0.99999,0.00016055,106.68,  0.012304,0.00011716,0.99992,71.499,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_AsphaltHexagonRoof_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_AsphaltHexagonRoof_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_AsphaltHexagonRoof_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_AsphaltHexagonRoof_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_0_KB3D_NEC_BldgLG_C_Main.002.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.28,  -0.0035251,-0.99999,0.00016055,70.954,  0.012304,0.00011716,0.99992,71.22,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_GalvanizedSteel_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_GalvanizedSteel_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_GalvanizedSteel_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_GalvanizedSteel_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_1_KB3D_NEC_BldgLG_C_Main.002.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.28,  -0.0035251,-0.99999,0.00016055,70.954,  0.012304,0.00011716,0.99992,71.22,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <emission type="lambertian">
+      <texture name="emission" type="constant" value="0"/>
+    </emission>
+    <shape type="mesh" filename="meshes/_m_2_KB3D_NEC_BldgLG_C_Main.002.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.28,  -0.0035251,-0.99999,0.00016055,70.954,  0.012304,0.00011716,0.99992,71.22,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_BannerA_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_BannerA_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_BannerA_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_BannerA_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_3_KB3D_NEC_BldgLG_C_Main.002.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.28,  -0.0035251,-0.99999,0.00016055,70.954,  0.012304,0.00011716,0.99992,71.22,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_LightsA_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_LightsA_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_LightsA_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_LightsA_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_4_KB3D_NEC_BldgLG_C_Main.002.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.28,  -0.0035251,-0.99999,0.00016055,70.954,  0.012304,0.00011716,0.99992,71.22,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_MetalAccent_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_MetalAccent_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_MetalAccent_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_MetalAccent_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_5_KB3D_NEC_BldgLG_C_Main.002.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.28,  -0.0035251,-0.99999,0.00016055,70.954,  0.012304,0.00011716,0.99992,71.22,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_MetalGrating_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_MetalGrating_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_MetalGrating_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_MetalGrating_normal.png" linear="true"/>
+    <texture name="alpha" type="image" filename="textures/KB3D_NEC_MetalGrating_opacity.png"/>
+    <shape type="mesh" filename="meshes/_m_6_KB3D_NEC_BldgLG_C_Main.002.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.28,  -0.0035251,-0.99999,0.00016055,70.954,  0.012304,0.00011716,0.99992,71.22,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_OxidizedSteel_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_OxidizedSteel_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_OxidizedSteel_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_OxidizedSteel_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_7_KB3D_NEC_BldgLG_C_Main.002.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.28,  -0.0035251,-0.99999,0.00016055,70.954,  0.012304,0.00011716,0.99992,71.22,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_PaintedMetal_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_PaintedMetal_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_PaintedMetal_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_PaintedMetal_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_8_KB3D_NEC_BldgLG_C_Main.002.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.28,  -0.0035251,-0.99999,0.00016055,70.954,  0.012304,0.00011716,0.99992,71.22,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_SatinSteel_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_SatinSteel_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_SatinSteel_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_SatinSteel_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_9_KB3D_NEC_BldgLG_C_Main.002.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.28,  -0.0035251,-0.99999,0.00016055,70.954,  0.012304,0.00011716,0.99992,71.22,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_ConcreteA_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_ConcreteA_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_ConcreteA_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_ConcreteA_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_10_KB3D_NEC_BldgLG_C_Main.002.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.28,  -0.0035251,-0.99999,0.00016055,70.954,  0.012304,0.00011716,0.99992,71.22,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_ConcreteAccent_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_ConcreteAccent_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_ConcreteAccent_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_ConcreteAccent_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_11_KB3D_NEC_BldgLG_C_Main.002.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.28,  -0.0035251,-0.99999,0.00016055,70.954,  0.012304,0.00011716,0.99992,71.22,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_ConcreteB_basecolor.png"/>
+      <texture name="roughness" type="constant" value="0.13444"/>
+      <texture name="metallic" type="constant" value="0.65559"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_ConcreteB_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_12_KB3D_NEC_BldgLG_C_Main.002.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.28,  -0.0035251,-0.99999,0.00016055,70.954,  0.012304,0.00011716,0.99992,71.22,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_AsphaltHexagonRoof_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_AsphaltHexagonRoof_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_AsphaltHexagonRoof_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_AsphaltHexagonRoof_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_0_KB3D_NEC_BldgLG_C_Main.003.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.65,  -0.0035251,-0.99999,0.00016055,34.15,  0.012304,0.00011716,0.99992,71.986,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_GalvanizedSteel_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_GalvanizedSteel_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_GalvanizedSteel_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_GalvanizedSteel_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_1_KB3D_NEC_BldgLG_C_Main.003.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.65,  -0.0035251,-0.99999,0.00016055,34.15,  0.012304,0.00011716,0.99992,71.986,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <emission type="lambertian">
+      <texture name="emission" type="constant" value="0"/>
+    </emission>
+    <shape type="mesh" filename="meshes/_m_2_KB3D_NEC_BldgLG_C_Main.003.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.65,  -0.0035251,-0.99999,0.00016055,34.15,  0.012304,0.00011716,0.99992,71.986,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_BannerA_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_BannerA_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_BannerA_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_BannerA_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_3_KB3D_NEC_BldgLG_C_Main.003.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.65,  -0.0035251,-0.99999,0.00016055,34.15,  0.012304,0.00011716,0.99992,71.986,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_LightsA_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_LightsA_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_LightsA_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_LightsA_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_4_KB3D_NEC_BldgLG_C_Main.003.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.65,  -0.0035251,-0.99999,0.00016055,34.15,  0.012304,0.00011716,0.99992,71.986,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_MetalAccent_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_MetalAccent_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_MetalAccent_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_MetalAccent_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_5_KB3D_NEC_BldgLG_C_Main.003.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.65,  -0.0035251,-0.99999,0.00016055,34.15,  0.012304,0.00011716,0.99992,71.986,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_MetalGrating_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_MetalGrating_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_MetalGrating_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_MetalGrating_normal.png" linear="true"/>
+    <texture name="alpha" type="image" filename="textures/KB3D_NEC_MetalGrating_opacity.png"/>
+    <shape type="mesh" filename="meshes/_m_6_KB3D_NEC_BldgLG_C_Main.003.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.65,  -0.0035251,-0.99999,0.00016055,34.15,  0.012304,0.00011716,0.99992,71.986,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_OxidizedSteel_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_OxidizedSteel_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_OxidizedSteel_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_OxidizedSteel_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_7_KB3D_NEC_BldgLG_C_Main.003.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.65,  -0.0035251,-0.99999,0.00016055,34.15,  0.012304,0.00011716,0.99992,71.986,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_PaintedMetal_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_PaintedMetal_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_PaintedMetal_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_PaintedMetal_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_8_KB3D_NEC_BldgLG_C_Main.003.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.65,  -0.0035251,-0.99999,0.00016055,34.15,  0.012304,0.00011716,0.99992,71.986,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_SatinSteel_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_SatinSteel_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_SatinSteel_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_SatinSteel_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_9_KB3D_NEC_BldgLG_C_Main.003.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.65,  -0.0035251,-0.99999,0.00016055,34.15,  0.012304,0.00011716,0.99992,71.986,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_ConcreteA_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_ConcreteA_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_ConcreteA_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_ConcreteA_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_10_KB3D_NEC_BldgLG_C_Main.003.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.65,  -0.0035251,-0.99999,0.00016055,34.15,  0.012304,0.00011716,0.99992,71.986,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_ConcreteAccent_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_ConcreteAccent_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_ConcreteAccent_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_ConcreteAccent_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_11_KB3D_NEC_BldgLG_C_Main.003.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.65,  -0.0035251,-0.99999,0.00016055,34.15,  0.012304,0.00011716,0.99992,71.986,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_ConcreteB_basecolor.png"/>
+      <texture name="roughness" type="constant" value="0.13444"/>
+      <texture name="metallic" type="constant" value="0.65559"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_ConcreteB_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_12_KB3D_NEC_BldgLG_C_Main.003.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,105.65,  -0.0035251,-0.99999,0.00016055,34.15,  0.012304,0.00011716,0.99992,71.986,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_AirCon_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_AirCon_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_AirCon_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_AirCon_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_0_KB3D_NEC_BldgMD_B_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,69.07,  0,1,0,64.8,  0,0,1,28.495,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_ConcreteWall_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_ConcreteWall_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_ConcreteWall_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_ConcreteWall_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_1_KB3D_NEC_BldgMD_B_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,69.07,  0,1,0,64.8,  0,0,1,28.495,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_DecorConcreteCBeige_basecolor.png"/>
+      <texture name="roughness" type="constant" value="0.11027"/>
+      <texture name="metallic" type="constant" value="0.65861"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_DecorConcreteCBeige_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_2_KB3D_NEC_BldgMD_B_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,69.07,  0,1,0,64.8,  0,0,1,28.495,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_DecorConcreteCWhite_basecolor.png"/>
+      <texture name="roughness" type="constant" value="0.16767"/>
+      <texture name="metallic" type="constant" value="0.65257"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_DecorConcreteCWhite_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_3_KB3D_NEC_BldgMD_B_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,69.07,  0,1,0,64.8,  0,0,1,28.495,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_GalvanizedSteelDirt_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_GalvanizedSteelDirt_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_GalvanizedSteelDirt_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_GalvanizedSteelDirt_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_4_KB3D_NEC_BldgMD_B_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,69.07,  0,1,0,64.8,  0,0,1,28.495,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <emission type="lambertian">
+      <texture name="emission" type="constant" value="0"/>
+    </emission>
+    <shape type="mesh" filename="meshes/_m_5_KB3D_NEC_BldgMD_B_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,69.07,  0,1,0,64.8,  0,0,1,28.495,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_LeavesBush_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_LeavesBush_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_LeavesBush_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_LeavesBush_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_6_KB3D_NEC_BldgMD_B_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,69.07,  0,1,0,64.8,  0,0,1,28.495,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_MetalDarkWorn_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_MetalDarkWorn_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_MetalDarkWorn_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_MetalDarkWorn_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_7_KB3D_NEC_BldgMD_B_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,69.07,  0,1,0,64.8,  0,0,1,28.495,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_MetalLightGreyWorn_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_MetalLightGreyWorn_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_MetalLightGreyWorn_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_MetalLightGreyWorn_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_8_KB3D_NEC_BldgMD_B_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,69.07,  0,1,0,64.8,  0,0,1,28.495,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_MetalPaintWhiteWorn_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_MetalPaintWhiteWorn_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_MetalPaintWhiteWorn_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_MetalPaintWhiteWorn_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_9_KB3D_NEC_BldgMD_B_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,69.07,  0,1,0,64.8,  0,0,1,28.495,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_MetalPaintWorn_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_MetalPaintWorn_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_MetalPaintWorn_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_MetalPaintWorn_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_10_KB3D_NEC_BldgMD_B_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,69.07,  0,1,0,64.8,  0,0,1,28.495,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_TarpA_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_TarpA_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_TarpA_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_TarpA_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_11_KB3D_NEC_BldgMD_B_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,69.07,  0,1,0,64.8,  0,0,1,28.495,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_WhitePanels_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_WhitePanels_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_WhitePanels_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_WhitePanels_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_12_KB3D_NEC_BldgMD_B_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,69.07,  0,1,0,64.8,  0,0,1,28.495,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_WoodDarkGreyTower_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_WoodDarkGreyTower_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_WoodDarkGreyTower_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_WoodDarkGreyTower_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_13_KB3D_NEC_BldgMD_B_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,69.07,  0,1,0,64.8,  0,0,1,28.495,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/asphalt_02_diff_2k.jpg"/>
+      <texture name="roughness" type="image" filename="textures/asphalt_02_rough_2k.jpg"/>
+      <texture name="metallic" type="constant" value="0.67069"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/asphalt_02_nor_gl_2k.exr.png.exr"/>
+    <shape type="mesh" filename="meshes/Plane.ply"/>
+    <transform>
+      <matrix value="18.5,0,0,-36.574,  0,18.5,0,-24.741,  0,0,1,0.15736,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <light type="area">
+    <instance>
+      <shape type="sphere"/>
+      <transform>
+        <scale value="5.91"/>
+        <translate x="-16.725" y="7.3826" z="48.937"/>
+      </transform>
+      <emission type="lambertian">
+        <texture name="emission" type="constant" value="6.845,1.0796,7.2521"/>
+      </emission>
+    </instance>
+  </light>
+  <light type="area">
+    <instance>
+      <shape type="sphere"/>
+      <transform>
+        <scale value="7.5"/>
+        <!-- <translate x="41.739" y="111.21" z="23.844"/> -->
+        <translate x="74.483" y="114.23" z="108.67"/>
+      </transform>
+      <emission type="lambertian">
+        <texture name="emission" type="constant" value="112.58,18.483,18.804"/>
+      </emission>
+    </instance>
+  </light>
+  <light type="area">
+    <instance>
+      <shape type="sphere"/>
+      <transform>
+        <scale value="0.5"/>
+        <translate x="75.263" y="33.692" z="16.491"/>
+      </transform>
+      <emission type="lambertian">
+        <texture name="emission" type="constant" value="10132,940.32,1046.7"/>
+      </emission>
+    </instance>
+  </light>
+  <light type="point" position="-12.59,28.393,19.205" power="556.58,7793.4,10000"/>
+  <instance>
+    <emission id="Yellow Neon" type="lambertian">
+      <texture name="emission" type="constant" value="20,11.463,0.74707"/>
+    </emission>
+    <shape id="Text_007" type="mesh" filename="meshes/Text.007.ply"/>
+    <transform>
+      <matrix value="-0.31038,-0.06103,0.9995,91.879,  -9.9904,-0.30759,-0.031212,36.987,  0.30934,-9.9951,-0.0051424,51.563,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="Yellow Neon"/>
+    <ref id="Text_007"/>
+    <transform>
+      <matrix value="-0.31038,-0.06103,0.9995,91.879,  -9.9904,-0.30759,-0.031212,36.987,  0.30934,-9.9951,-0.0051424,51.563,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <emission id="CYANneon" type="lambertian">
+      <texture name="emission" type="constant" value="0.38204,6.105,8.5499"/>
+    </emission>
+    <shape id="Text_009" type="mesh" filename="meshes/Text.009.ply"/>
+    <transform>
+      <matrix value="7.4986,0.0015225,-0.036113,31.94,  -0.1427,0.26713,-1.896,63.27,  0.0035627,7.4952,0.06758,45.735,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="CYANneon"/>
+    <ref id="Text_009"/>
+    <transform>
+      <matrix value="7.4986,0.0015225,-0.036113,31.94,  -0.1427,0.26713,-1.896,63.27,  0.0035627,7.4952,0.06758,45.735,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <shape id="Text_010" type="mesh" filename="meshes/Text.010.ply"/>
+    <transform>
+      <matrix value="7.4986,-0.011237,-0.034477,31.94,  -0.14136,0.4645,-1.8576,63.27,  0.019836,7.4469,0.85201,45.735,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="Text_010"/>
+    <transform>
+      <matrix value="7.4986,-0.011237,-0.034477,31.94,  -0.14136,0.4645,-1.8576,63.27,  0.019836,7.4469,0.85201,45.735,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <emission id="Orange Neon" type="lambertian">
+      <texture name="emission" type="constant" value="30,6.7488,1.3453"/>
+    </emission>
+    <shape id="Text_005" type="mesh" filename="meshes/Text.005.ply"/>
+    <transform>
+      <matrix value="-0.00057868,-0.041017,-1.6473,92.234,  -9,-5.4187e-05,0.00010596,72.781,  -5.6825e-05,8.9999,-0.0075074,83.679,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="Orange Neon"/>
+    <ref id="Text_005"/>
+    <transform>
+      <matrix value="-0.00057868,-0.041017,-1.6473,92.234,  -9,-5.4187e-05,0.00010596,72.781,  -5.6825e-05,8.9999,-0.0075074,83.679,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <emission id="Purple Neon" type="lambertian">
+      <texture name="emission" type="constant" value="11.488,1.5434,20"/>
+    </emission>
+    <shape id="Text_008" type="mesh" filename="meshes/Text.008.ply"/>
+    <transform>
+      <matrix value="-1.5299e-07,-1.5299e-07,-1,91.225,  -3.5,6.6874e-15,4.3711e-08,107.64,  0,3.5,-4.3711e-08,83.846,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="Purple Neon"/>
+    <ref id="Text_008"/>
+    <transform>
+      <matrix value="-1.5299e-07,-1.5299e-07,-1,91.225,  -3.5,6.6874e-15,4.3711e-08,107.64,  0,3.5,-4.3711e-08,83.846,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <emission id="Yellow Neon_001" type="lambertian">
+      <texture name="emission" type="constant" value="20,11.463,0.74707"/>
+    </emission>
+    <shape id="BezierCurve" type="mesh" filename="meshes/_m_0_BezierCurve.ply"/>
+    <transform>
+      <matrix value="1,0,0,3.6509,  0,1,0,2.287,  0,0,1,0,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <emission id="Dark Orange" type="lambertian">
+      <texture name="emission" type="constant" value="10,2.5106,0"/>
+    </emission>
+    <shape id="BezierCurve.000" type="mesh" filename="meshes/_m_1_BezierCurve.ply"/>
+    <transform>
+      <matrix value="1,0,0,3.6509,  0,1,0,2.287,  0,0,1,0,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="Yellow Neon_001"/>
+    <ref id="BezierCurve"/>
+    <transform>
+      <matrix value="1,0,0,3.6509,  0,1,0,2.287,  0,0,1,0,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="Dark Orange"/>
+    <ref id="BezierCurve.000"/>
+    <transform>
+      <matrix value="1,0,0,3.6509,  0,1,0,2.287,  0,0,1,0,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <emission id="Blue neon" type="lambertian">
+      <texture name="emission" type="constant" value="0.063752,2.5945,10"/>
+    </emission>
+    <shape id="NurbsPath" type="mesh" filename="meshes/NurbsPath.ply"/>
+    <transform>
+      <matrix value="-0.064977,-1.311e-07,-0.99977,55.075,  -2.9993,2.8402e-09,0.021659,59.931,  0,3,-4.3711e-08,41.98,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="Blue neon"/>
+    <ref id="NurbsPath"/>
+    <transform>
+      <matrix value="-0.064977,-1.311e-07,-0.99977,55.075,  -2.9993,2.8402e-09,0.021659,59.931,  0,3,-4.3711e-08,41.98,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <emission type="lambertian">
+      <texture name="emission" type="constant" value="20,0.6749,6.4489"/>
+    </emission>
+    <shape type="mesh" filename="meshes/_m_0_Circle.ply"/>
+    <transform>
+      <matrix value="-0.064977,-1.311e-07,-0.99977,55.075,  -2.9993,2.8402e-09,0.021659,59.931,  0,3,-4.3711e-08,41.98,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="Blue neon"/>
+    <shape type="mesh" filename="meshes/_m_1_Circle.ply"/>
+    <transform>
+      <matrix value="-0.064977,-1.311e-07,-0.99977,55.075,  -2.9993,2.8402e-09,0.021659,59.931,  0,3,-4.3711e-08,41.98,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/TrashCan_BaseColor.png.png"/>
+      <texture name="roughness" type="image" filename="textures/TrashCan_Roughness.png.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/TrashCan_Metallic.png.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/TrashCan_Normal.png.png.001.png.exr"/>
+    <shape type="mesh" filename="meshes/Plane.003.ply"/>
+    <transform>
+      <matrix value="2,0,0,-5.4061,  0,2,0,43.27,  0,0,2,0.73206,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <emission id="Highblueneon" type="lambertian">
+      <texture name="emission" type="constant" value="1.699,6.5832,30"/>
+    </emission>
+    <shape id="Text_019" type="mesh" filename="meshes/Text.019.ply"/>
+    <transform>
+      <matrix value="7,0,0,68.494,  0,0.77744,-1.9678,52.752,  0,6.9567,0.21991,44.552,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="Highblueneon"/>
+    <ref id="Text_019"/>
+    <transform>
+      <matrix value="7,0,0,68.494,  0,0.77744,-1.9678,52.752,  0,6.9567,0.21991,44.552,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <light type="area">
+    <instance>
+      <shape type="sphere"/>
+      <transform>
+        <scale value="3"/>
+        <translate x="50.037" y="-7.2154" z="82.931"/>
+      </transform>
+      <emission type="lambertian">
+        <texture name="emission" type="constant" value="28.145,28.145,28.145"/>
+      </emission>
+    </instance>
+  </light>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_AsphaltHexagonRoof_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_AsphaltHexagonRoof_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_AsphaltHexagonRoof_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_AsphaltHexagonRoof_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_0_KB3D_NEC_BldgLG_C_Main.005.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,106.22,  -0.0035251,-0.99999,0.00016055,0.18031,  0.012304,0.00011716,0.99992,71.585,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_GalvanizedSteel_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_GalvanizedSteel_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_GalvanizedSteel_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_GalvanizedSteel_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_1_KB3D_NEC_BldgLG_C_Main.005.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,106.22,  -0.0035251,-0.99999,0.00016055,0.18031,  0.012304,0.00011716,0.99992,71.585,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <emission type="lambertian">
+      <texture name="emission" type="constant" value="0"/>
+    </emission>
+    <shape type="mesh" filename="meshes/_m_2_KB3D_NEC_BldgLG_C_Main.005.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,106.22,  -0.0035251,-0.99999,0.00016055,0.18031,  0.012304,0.00011716,0.99992,71.585,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_BannerA_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_BannerA_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_BannerA_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_BannerA_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_3_KB3D_NEC_BldgLG_C_Main.005.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,106.22,  -0.0035251,-0.99999,0.00016055,0.18031,  0.012304,0.00011716,0.99992,71.585,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_LightsA_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_LightsA_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_LightsA_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_LightsA_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_4_KB3D_NEC_BldgLG_C_Main.005.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,106.22,  -0.0035251,-0.99999,0.00016055,0.18031,  0.012304,0.00011716,0.99992,71.585,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_MetalAccent_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_MetalAccent_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_MetalAccent_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_MetalAccent_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_5_KB3D_NEC_BldgLG_C_Main.005.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,106.22,  -0.0035251,-0.99999,0.00016055,0.18031,  0.012304,0.00011716,0.99992,71.585,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_MetalGrating_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_MetalGrating_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_MetalGrating_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_MetalGrating_normal.png" linear="true"/>
+    <texture name="alpha" type="image" filename="textures/KB3D_NEC_MetalGrating_opacity.png"/>
+    <shape type="mesh" filename="meshes/_m_6_KB3D_NEC_BldgLG_C_Main.005.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,106.22,  -0.0035251,-0.99999,0.00016055,0.18031,  0.012304,0.00011716,0.99992,71.585,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_OxidizedSteel_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_OxidizedSteel_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_OxidizedSteel_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_OxidizedSteel_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_7_KB3D_NEC_BldgLG_C_Main.005.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,106.22,  -0.0035251,-0.99999,0.00016055,0.18031,  0.012304,0.00011716,0.99992,71.585,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_PaintedMetal_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_PaintedMetal_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_PaintedMetal_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_PaintedMetal_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_8_KB3D_NEC_BldgLG_C_Main.005.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,106.22,  -0.0035251,-0.99999,0.00016055,0.18031,  0.012304,0.00011716,0.99992,71.585,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_SatinSteel_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_SatinSteel_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_SatinSteel_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_SatinSteel_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_9_KB3D_NEC_BldgLG_C_Main.005.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,106.22,  -0.0035251,-0.99999,0.00016055,0.18031,  0.012304,0.00011716,0.99992,71.585,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_ConcreteA_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_ConcreteA_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_ConcreteA_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_ConcreteA_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_10_KB3D_NEC_BldgLG_C_Main.005.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,106.22,  -0.0035251,-0.99999,0.00016055,0.18031,  0.012304,0.00011716,0.99992,71.585,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_ConcreteAccent_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_ConcreteAccent_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_ConcreteAccent_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_ConcreteAccent_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_11_KB3D_NEC_BldgLG_C_Main.005.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,106.22,  -0.0035251,-0.99999,0.00016055,0.18031,  0.012304,0.00011716,0.99992,71.585,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_ConcreteB_basecolor.png"/>
+      <texture name="roughness" type="constant" value="0.13444"/>
+      <texture name="metallic" type="constant" value="0.65559"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_ConcreteB_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_12_KB3D_NEC_BldgLG_C_Main.005.ply"/>
+    <transform>
+      <matrix value="-0.99992,0.0035268,0.012304,106.22,  -0.0035251,-0.99999,0.00016055,0.18031,  0.012304,0.00011716,0.99992,71.585,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <emission id="Red NEON_001" type="lambertian">
+      <texture name="emission" type="constant" value="14.42,0.92336,17.268"/>
+    </emission>
+    <shape type="mesh" filename="meshes/Plane.001.ply"/>
+    <transform>
+      <matrix value="-5.6623e-07,-3.2784e-07,-1,88.994,  7.5,6.5567e-07,-7.5498e-08,1.5563,  6.5567e-07,-7.5,4.3711e-08,74.148,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="Red NEON_001"/>
+    <shape id="Text" type="mesh" filename="meshes/Text.ply"/>
+    <transform>
+      <matrix value="-3.2784e-07,9.5056e-07,-1,89.031,  -5.6623e-07,-12.591,-7.5498e-08,1.4542,  -7.5,9.5056e-07,4.3711e-08,46.631,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="Red NEON_001"/>
+    <ref id="Text"/>
+    <transform>
+      <matrix value="-3.2784e-07,9.5056e-07,-1,89.031,  -5.6623e-07,-12.591,-7.5498e-08,1.4542,  -7.5,9.5056e-07,4.3711e-08,46.631,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf id="motors" type="principled">
+      <texture name="baseColor" type="constant" value="0.13735,0.073384,0.025155"/>
+      <texture name="roughness" type="constant" value="0.3"/>
+      <texture name="metallic" type="constant" value="1"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <shape id="Cylinder_001" type="mesh" filename="meshes/Cylinder.001.ply"/>
+    <transform>
+      <matrix value="1,0,0,1.8027,  0,-1.6292e-07,-1,-0.91007,  0,1,-1.6292e-07,-0.45729,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="motors"/>
+    <ref id="Cylinder_001"/>
+    <transform>
+      <matrix value="1,0,0,-2.0104,  0,-1.6292e-07,-1,-0.91007,  0,1,-1.6292e-07,-0.45729,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf id="KB3D_NEC_DecalSheet" type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_DecalSheet_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_DecalSheet_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_DecalSheet_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" id="KB3D_NEC_DecalSheet.000" type="image" filename="textures/KB3D_NEC_DecalSheet_normal.png" linear="true"/>
+    <texture name="alpha" id="KB3D_NEC_DecalSheet.001" type="image" filename="textures/KB3D_NEC_DecalSheet_opacity.png"/>
+    <shape type="mesh" filename="meshes/_m_0_KB3D_NEC_BldgSM_C_Stool.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-0.2562,  -8.7423e-08,-1,0,-25.629,  0,0,1,0.37166,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <emission id="KB3D_NEC_GlassBottle" type="lambertian">
+      <texture name="emission" type="constant" value="0"/>
+    </emission>
+    <shape type="mesh" filename="meshes/_m_1_KB3D_NEC_BldgSM_C_Stool.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-0.2562,  -8.7423e-08,-1,0,-25.629,  0,0,1,0.37166,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf id="KB3D_NEC_Wood" type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_Wood_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_Wood_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_Wood_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" id="KB3D_NEC_Wood.000" type="image" filename="textures/KB3D_NEC_Wood_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_2_KB3D_NEC_BldgSM_C_Stool.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-0.2562,  -8.7423e-08,-1,0,-25.629,  0,0,1,0.37166,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_DecalSheet"/>
+    <ref name="normal" id="KB3D_NEC_DecalSheet.000"/>
+    <ref name="alpha" id="KB3D_NEC_DecalSheet.001"/>
+    <shape type="mesh" filename="meshes/_m_0_KB3D_NEC_BldgSM_C_Shelf.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.2338,  -8.7423e-08,-1,0,-27.442,  0,0,1,1.1785,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_GlassBottle"/>
+    <shape type="mesh" filename="meshes/_m_1_KB3D_NEC_BldgSM_C_Shelf.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.2338,  -8.7423e-08,-1,0,-27.442,  0,0,1,1.1785,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_Wood"/>
+    <ref name="normal" id="KB3D_NEC_Wood.000"/>
+    <shape type="mesh" filename="meshes/_m_2_KB3D_NEC_BldgSM_C_Shelf.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.2338,  -8.7423e-08,-1,0,-27.442,  0,0,1,1.1785,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf id="KB3D_NEC_WoodLacquered" type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_WoodLacquered_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_WoodLacquered_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_WoodLacquered_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" id="KB3D_NEC_WoodLacquered.000" type="image" filename="textures/KB3D_NEC_WoodLacquered_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_3_KB3D_NEC_BldgSM_C_Shelf.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.2338,  -8.7423e-08,-1,0,-27.442,  0,0,1,1.1785,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_DecalSheet"/>
+    <ref name="normal" id="KB3D_NEC_DecalSheet.000"/>
+    <ref name="alpha" id="KB3D_NEC_DecalSheet.001"/>
+    <shape type="mesh" filename="meshes/_m_0_KB3D_NEC_BldgSM_C_Pipes.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-3.547,  -8.7423e-08,-1,0,-29.371,  0,0,1,1.3046,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf id="KB3D_NEC_PaintBlue" type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_PaintBlue_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_PaintBlue_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_PaintBlue_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" id="KB3D_NEC_PaintBlue.000" type="image" filename="textures/KB3D_NEC_PaintBlue_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_1_KB3D_NEC_BldgSM_C_Pipes.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-3.547,  -8.7423e-08,-1,0,-29.371,  0,0,1,1.3046,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf id="KB3D_NEC_SteelRaw" type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_SteelRaw_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_SteelRaw_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_SteelRaw_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" id="KB3D_NEC_SteelRaw.000" type="image" filename="textures/KB3D_NEC_SteelRaw_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_2_KB3D_NEC_BldgSM_C_Pipes.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-3.547,  -8.7423e-08,-1,0,-29.371,  0,0,1,1.3046,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_DecalSheet"/>
+    <ref name="normal" id="KB3D_NEC_DecalSheet.000"/>
+    <ref name="alpha" id="KB3D_NEC_DecalSheet.001"/>
+    <shape type="mesh" filename="meshes/_m_0_KB3D_NEC_BldgSM_C_NeonSignC.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-3.8308,  -8.7423e-08,-1,0,-25.02,  0,0,1,1.7128,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf id="KB3D_NEC_LightRed" type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_LightRed_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_LightRed_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_LightRed_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" id="KB3D_NEC_LightRed.000" type="image" filename="textures/KB3D_NEC_LightRed_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_1_KB3D_NEC_BldgSM_C_NeonSignC.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-3.8308,  -8.7423e-08,-1,0,-25.02,  0,0,1,1.7128,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf id="KB3D_NEC_PaintBlack" type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_PaintBlack_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_PaintBlack_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_PaintBlack_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" id="KB3D_NEC_PaintBlack.000" type="image" filename="textures/KB3D_NEC_PaintBlack_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_2_KB3D_NEC_BldgSM_C_NeonSignC.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-3.8308,  -8.7423e-08,-1,0,-25.02,  0,0,1,1.7128,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_PaintBlue"/>
+    <ref name="normal" id="KB3D_NEC_PaintBlue.000"/>
+    <shape type="mesh" filename="meshes/_m_3_KB3D_NEC_BldgSM_C_NeonSignC.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-3.8308,  -8.7423e-08,-1,0,-25.02,  0,0,1,1.7128,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf id="KB3D_NEC_PaintRed" type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_PaintRed_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_PaintRed_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_PaintRed_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" id="KB3D_NEC_PaintRed.000" type="image" filename="textures/KB3D_NEC_PaintRed_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_4_KB3D_NEC_BldgSM_C_NeonSignC.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-3.8308,  -8.7423e-08,-1,0,-25.02,  0,0,1,1.7128,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf id="KB3D_NEC_Rubber" type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_Rubber_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_Rubber_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_Rubber_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" id="KB3D_NEC_Rubber.000" type="image" filename="textures/KB3D_NEC_Rubber_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_5_KB3D_NEC_BldgSM_C_NeonSignC.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-3.8308,  -8.7423e-08,-1,0,-25.02,  0,0,1,1.7128,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf id="KB3D_NEC_Screens" type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_Screens_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_Screens_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_Screens_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" id="KB3D_NEC_Screens.000" type="image" filename="textures/KB3D_NEC_Screens_normal.png" linear="true"/>
+    <texture name="alpha" id="KB3D_NEC_Screens.001" type="image" filename="textures/KB3D_NEC_Screens_opacity.png"/>
+    <shape type="mesh" filename="meshes/_m_6_KB3D_NEC_BldgSM_C_NeonSignC.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-3.8308,  -8.7423e-08,-1,0,-25.02,  0,0,1,1.7128,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_SteelRaw"/>
+    <ref name="normal" id="KB3D_NEC_SteelRaw.000"/>
+    <shape type="mesh" filename="meshes/_m_7_KB3D_NEC_BldgSM_C_NeonSignC.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-3.8308,  -8.7423e-08,-1,0,-25.02,  0,0,1,1.7128,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_PaintBlue"/>
+    <ref name="normal" id="KB3D_NEC_PaintBlue.000"/>
+    <shape type="mesh" filename="meshes/_m_0_KB3D_NEC_BldgSM_C_NeonSignB.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,0.8668,  -8.7423e-08,-1,0,-27.211,  0,0,1,3.0898,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_Screens"/>
+    <ref name="normal" id="KB3D_NEC_Screens.000"/>
+    <ref name="alpha" id="KB3D_NEC_Screens.001"/>
+    <shape type="mesh" filename="meshes/_m_1_KB3D_NEC_BldgSM_C_NeonSignB.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,0.8668,  -8.7423e-08,-1,0,-27.211,  0,0,1,3.0898,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_DecalSheet"/>
+    <ref name="normal" id="KB3D_NEC_DecalSheet.000"/>
+    <ref name="alpha" id="KB3D_NEC_DecalSheet.001"/>
+    <shape type="mesh" filename="meshes/_m_0_KB3D_NEC_BldgSM_C_NeonSignA.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-2.3721,  -8.7423e-08,-1,0,-25.266,  0,0,1,3.4191,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_LightRed"/>
+    <ref name="normal" id="KB3D_NEC_LightRed.000"/>
+    <shape type="mesh" filename="meshes/_m_1_KB3D_NEC_BldgSM_C_NeonSignA.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-2.3721,  -8.7423e-08,-1,0,-25.266,  0,0,1,3.4191,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_PaintBlack"/>
+    <ref name="normal" id="KB3D_NEC_PaintBlack.000"/>
+    <shape type="mesh" filename="meshes/_m_2_KB3D_NEC_BldgSM_C_NeonSignA.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-2.3721,  -8.7423e-08,-1,0,-25.266,  0,0,1,3.4191,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_PaintBlue"/>
+    <ref name="normal" id="KB3D_NEC_PaintBlue.000"/>
+    <shape type="mesh" filename="meshes/_m_3_KB3D_NEC_BldgSM_C_NeonSignA.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-2.3721,  -8.7423e-08,-1,0,-25.266,  0,0,1,3.4191,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_Rubber"/>
+    <ref name="normal" id="KB3D_NEC_Rubber.000"/>
+    <shape type="mesh" filename="meshes/_m_4_KB3D_NEC_BldgSM_C_NeonSignA.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-2.3721,  -8.7423e-08,-1,0,-25.266,  0,0,1,3.4191,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_ConcreteTiles_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_ConcreteTiles_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_ConcreteTiles_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_ConcreteTiles_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_0_KB3D_NEC_BldgSM_C_Main.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.242,  -8.7423e-08,-1,0,-27.224,  0,0,1,1.9136,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_DecalSheet"/>
+    <ref name="normal" id="KB3D_NEC_DecalSheet.000"/>
+    <ref name="alpha" id="KB3D_NEC_DecalSheet.001"/>
+    <shape type="mesh" filename="meshes/_m_1_KB3D_NEC_BldgSM_C_Main.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.242,  -8.7423e-08,-1,0,-27.224,  0,0,1,1.9136,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_GlassBottle"/>
+    <shape type="mesh" filename="meshes/_m_2_KB3D_NEC_BldgSM_C_Main.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.242,  -8.7423e-08,-1,0,-27.224,  0,0,1,1.9136,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf id="KB3D_NEC_LightBlue" type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_LightBlue_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_LightBlue_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_LightBlue_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" id="KB3D_NEC_LightBlue.000" type="image" filename="textures/KB3D_NEC_LightBlue_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_3_KB3D_NEC_BldgSM_C_Main.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.242,  -8.7423e-08,-1,0,-27.224,  0,0,1,1.9136,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_LightRed"/>
+    <ref name="normal" id="KB3D_NEC_LightRed.000"/>
+    <shape type="mesh" filename="meshes/_m_4_KB3D_NEC_BldgSM_C_Main.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.242,  -8.7423e-08,-1,0,-27.224,  0,0,1,1.9136,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_LightWhite_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_LightWhite_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_LightWhite_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_LightWhite_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_5_KB3D_NEC_BldgSM_C_Main.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.242,  -8.7423e-08,-1,0,-27.224,  0,0,1,1.9136,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_PaintBlack"/>
+    <ref name="normal" id="KB3D_NEC_PaintBlack.000"/>
+    <shape type="mesh" filename="meshes/_m_6_KB3D_NEC_BldgSM_C_Main.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.242,  -8.7423e-08,-1,0,-27.224,  0,0,1,1.9136,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_PaintBlue"/>
+    <ref name="normal" id="KB3D_NEC_PaintBlue.000"/>
+    <shape type="mesh" filename="meshes/_m_7_KB3D_NEC_BldgSM_C_Main.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.242,  -8.7423e-08,-1,0,-27.224,  0,0,1,1.9136,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_PaintRed"/>
+    <ref name="normal" id="KB3D_NEC_PaintRed.000"/>
+    <shape type="mesh" filename="meshes/_m_8_KB3D_NEC_BldgSM_C_Main.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.242,  -8.7423e-08,-1,0,-27.224,  0,0,1,1.9136,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_PlasticBlack_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_PlasticBlack_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_PlasticBlack_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_PlasticBlack_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_9_KB3D_NEC_BldgSM_C_Main.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.242,  -8.7423e-08,-1,0,-27.224,  0,0,1,1.9136,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf id="KB3D_NEC_PlasticWhite" type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_PlasticWhite_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_PlasticWhite_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_PlasticWhite_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" id="KB3D_NEC_PlasticWhite.000" type="image" filename="textures/KB3D_NEC_PlasticWhite_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_10_KB3D_NEC_BldgSM_C_Main.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.242,  -8.7423e-08,-1,0,-27.224,  0,0,1,1.9136,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_Rubber"/>
+    <ref name="normal" id="KB3D_NEC_Rubber.000"/>
+    <shape type="mesh" filename="meshes/_m_11_KB3D_NEC_BldgSM_C_Main.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.242,  -8.7423e-08,-1,0,-27.224,  0,0,1,1.9136,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_SteelRaw"/>
+    <ref name="normal" id="KB3D_NEC_SteelRaw.000"/>
+    <shape type="mesh" filename="meshes/_m_12_KB3D_NEC_BldgSM_C_Main.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.242,  -8.7423e-08,-1,0,-27.224,  0,0,1,1.9136,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_Wood"/>
+    <ref name="normal" id="KB3D_NEC_Wood.000"/>
+    <shape type="mesh" filename="meshes/_m_13_KB3D_NEC_BldgSM_C_Main.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.242,  -8.7423e-08,-1,0,-27.224,  0,0,1,1.9136,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_Concrete_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_Concrete_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_Concrete_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_Concrete_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_14_KB3D_NEC_BldgSM_C_Main.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.242,  -8.7423e-08,-1,0,-27.224,  0,0,1,1.9136,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_WoodLacquered"/>
+    <ref name="normal" id="KB3D_NEC_WoodLacquered.000"/>
+    <shape type="mesh" filename="meshes/_m_15_KB3D_NEC_BldgSM_C_Main.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.242,  -8.7423e-08,-1,0,-27.224,  0,0,1,1.9136,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_PaintBlack"/>
+    <ref name="normal" id="KB3D_NEC_PaintBlack.000"/>
+    <shape type="mesh" filename="meshes/_m_0_KB3D_NEC_BldgSM_C_Fan.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-4.5034,  -8.7423e-08,-1,0,-25.337,  0,0,1,1.3764,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_PlasticWhite"/>
+    <ref name="normal" id="KB3D_NEC_PlasticWhite.000"/>
+    <shape type="mesh" filename="meshes/_m_1_KB3D_NEC_BldgSM_C_Fan.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-4.5034,  -8.7423e-08,-1,0,-25.337,  0,0,1,1.3764,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_Rubber"/>
+    <ref name="normal" id="KB3D_NEC_Rubber.000"/>
+    <shape type="mesh" filename="meshes/_m_2_KB3D_NEC_BldgSM_C_Fan.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-4.5034,  -8.7423e-08,-1,0,-25.337,  0,0,1,1.3764,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_SteelRaw"/>
+    <ref name="normal" id="KB3D_NEC_SteelRaw.000"/>
+    <shape type="mesh" filename="meshes/_m_3_KB3D_NEC_BldgSM_C_Fan.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-4.5034,  -8.7423e-08,-1,0,-25.337,  0,0,1,1.3764,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_Wood"/>
+    <ref name="normal" id="KB3D_NEC_Wood.000"/>
+    <shape type="mesh" filename="meshes/KB3D_NEC_BldgSM_C_CratesB.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.7904,  -8.7423e-08,-1,0,-25.998,  0,0,1,4.0649,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_DecalSheet"/>
+    <ref name="normal" id="KB3D_NEC_DecalSheet.000"/>
+    <ref name="alpha" id="KB3D_NEC_DecalSheet.001"/>
+    <shape type="mesh" filename="meshes/_m_0_KB3D_NEC_BldgSM_C_CratesA.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-0.76629,  -8.7423e-08,-1,0,-29.753,  0,0,1,0.87986,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_GlassBottle"/>
+    <shape type="mesh" filename="meshes/_m_1_KB3D_NEC_BldgSM_C_CratesA.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-0.76629,  -8.7423e-08,-1,0,-29.753,  0,0,1,0.87986,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_Wood"/>
+    <ref name="normal" id="KB3D_NEC_Wood.000"/>
+    <shape type="mesh" filename="meshes/_m_2_KB3D_NEC_BldgSM_C_CratesA.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-0.76629,  -8.7423e-08,-1,0,-29.753,  0,0,1,0.87986,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_PaintBlack"/>
+    <ref name="normal" id="KB3D_NEC_PaintBlack.000"/>
+    <shape type="mesh" filename="meshes/_m_0_KB3D_NEC_BldgSM_C_Containers.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-3.5001,  -8.7423e-08,-1,0,-26.409,  0,0,1,0.47499,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_PaintRed"/>
+    <ref name="normal" id="KB3D_NEC_PaintRed.000"/>
+    <shape type="mesh" filename="meshes/_m_1_KB3D_NEC_BldgSM_C_Containers.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-3.5001,  -8.7423e-08,-1,0,-26.409,  0,0,1,0.47499,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf id="KB3D_NEC_PaintWhiteRusty" type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_PaintWhiteRusty_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_PaintWhiteRusty_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_PaintWhiteRusty_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" id="KB3D_NEC_PaintWhiteRusty.000" type="image" filename="textures/KB3D_NEC_PaintWhiteRusty_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_2_KB3D_NEC_BldgSM_C_Containers.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-3.5001,  -8.7423e-08,-1,0,-26.409,  0,0,1,0.47499,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_DecalSheet"/>
+    <ref name="normal" id="KB3D_NEC_DecalSheet.000"/>
+    <ref name="alpha" id="KB3D_NEC_DecalSheet.001"/>
+    <shape type="mesh" filename="meshes/_m_0_KB3D_NEC_BldgSM_C_Boxes.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-2.9829,  -8.7423e-08,-1,0,-27.705,  0,0,1,0.53348,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_RedWhiteStripes_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_RedWhiteStripes_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_RedWhiteStripes_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_RedWhiteStripes_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_1_KB3D_NEC_BldgSM_C_Boxes.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-2.9829,  -8.7423e-08,-1,0,-27.705,  0,0,1,0.53348,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_Cardboard_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_Cardboard_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_Cardboard_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_Cardboard_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_2_KB3D_NEC_BldgSM_C_Boxes.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-2.9829,  -8.7423e-08,-1,0,-27.705,  0,0,1,0.53348,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_DecalSheet"/>
+    <ref name="normal" id="KB3D_NEC_DecalSheet.000"/>
+    <ref name="alpha" id="KB3D_NEC_DecalSheet.001"/>
+    <shape type="mesh" filename="meshes/_m_0_KB3D_NEC_BldgSM_C_AC.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.151,  -8.7423e-08,-1,0,-29.226,  0,0,1,2.6756,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_LightBlue"/>
+    <ref name="normal" id="KB3D_NEC_LightBlue.000"/>
+    <shape type="mesh" filename="meshes/_m_1_KB3D_NEC_BldgSM_C_AC.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.151,  -8.7423e-08,-1,0,-29.226,  0,0,1,2.6756,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_PaintBlack"/>
+    <ref name="normal" id="KB3D_NEC_PaintBlack.000"/>
+    <shape type="mesh" filename="meshes/_m_2_KB3D_NEC_BldgSM_C_AC.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.151,  -8.7423e-08,-1,0,-29.226,  0,0,1,2.6756,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_PaintBlue"/>
+    <ref name="normal" id="KB3D_NEC_PaintBlue.000"/>
+    <shape type="mesh" filename="meshes/_m_3_KB3D_NEC_BldgSM_C_AC.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.151,  -8.7423e-08,-1,0,-29.226,  0,0,1,2.6756,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_PaintWhiteRusty"/>
+    <ref name="normal" id="KB3D_NEC_PaintWhiteRusty.000"/>
+    <shape type="mesh" filename="meshes/_m_4_KB3D_NEC_BldgSM_C_AC.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.151,  -8.7423e-08,-1,0,-29.226,  0,0,1,2.6756,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_Rubber"/>
+    <ref name="normal" id="KB3D_NEC_Rubber.000"/>
+    <shape type="mesh" filename="meshes/_m_5_KB3D_NEC_BldgSM_C_AC.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.151,  -8.7423e-08,-1,0,-29.226,  0,0,1,2.6756,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <ref id="KB3D_NEC_SteelRaw"/>
+    <ref name="normal" id="KB3D_NEC_SteelRaw.000"/>
+    <shape type="mesh" filename="meshes/_m_6_KB3D_NEC_BldgSM_C_AC.ply"/>
+    <transform>
+      <matrix value="-1,8.7423e-08,0,-1.151,  -8.7423e-08,-1,0,-29.226,  0,0,1,2.6756,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_DecalSheet_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_DecalSheet_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_DecalSheet_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_DecalSheet_normal.png" linear="true"/>
+    <texture name="alpha" type="image" filename="textures/KB3D_NEC_DecalSheet_opacity.png"/>
+    <shape type="mesh" filename="meshes/_m_0_KB3D_NEC_BldgSM_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.11,  0,1,0,-19.883,  0,0,1,4.1194,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_LightBlue_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_LightBlue_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_LightBlue_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_LightBlue_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_1_KB3D_NEC_BldgSM_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.11,  0,1,0,-19.883,  0,0,1,4.1194,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_LightRed_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_LightRed_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_LightRed_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_LightRed_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_2_KB3D_NEC_BldgSM_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.11,  0,1,0,-19.883,  0,0,1,4.1194,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_LightWhite_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_LightWhite_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_LightWhite_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_LightWhite_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_3_KB3D_NEC_BldgSM_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.11,  0,1,0,-19.883,  0,0,1,4.1194,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_PaintBlack_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_PaintBlack_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_PaintBlack_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_PaintBlack_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_4_KB3D_NEC_BldgSM_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.11,  0,1,0,-19.883,  0,0,1,4.1194,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_PaintBlue_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_PaintBlue_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_PaintBlue_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_PaintBlue_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_5_KB3D_NEC_BldgSM_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.11,  0,1,0,-19.883,  0,0,1,4.1194,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_PaintRed_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_PaintRed_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_PaintRed_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_PaintRed_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_6_KB3D_NEC_BldgSM_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.11,  0,1,0,-19.883,  0,0,1,4.1194,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_PlasticBlack_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_PlasticBlack_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_PlasticBlack_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_PlasticBlack_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_7_KB3D_NEC_BldgSM_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.11,  0,1,0,-19.883,  0,0,1,4.1194,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_PlasticWhite_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_PlasticWhite_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_PlasticWhite_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_PlasticWhite_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_8_KB3D_NEC_BldgSM_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.11,  0,1,0,-19.883,  0,0,1,4.1194,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_PlasticYellow_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_PlasticYellow_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_PlasticYellow_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_PlasticYellow_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_9_KB3D_NEC_BldgSM_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.11,  0,1,0,-19.883,  0,0,1,4.1194,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_RedWhiteStripes_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_RedWhiteStripes_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_RedWhiteStripes_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_RedWhiteStripes_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_10_KB3D_NEC_BldgSM_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.11,  0,1,0,-19.883,  0,0,1,4.1194,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_Rubber_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_Rubber_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_Rubber_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_Rubber_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_11_KB3D_NEC_BldgSM_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.11,  0,1,0,-19.883,  0,0,1,4.1194,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <bsdf type="principled">
+      <texture name="baseColor" type="image" filename="textures/KB3D_NEC_SteelRaw_basecolor.png"/>
+      <texture name="roughness" type="image" filename="textures/KB3D_NEC_SteelRaw_roughness.png" linear="true"/>
+      <texture name="metallic" type="image" filename="textures/KB3D_NEC_SteelRaw_metallic.png" linear="true"/>
+      <texture name="specular" type="constant" value="0"/>
+    </bsdf>
+    <texture name="normal" type="image" filename="textures/KB3D_NEC_SteelRaw_normal.png" linear="true"/>
+    <shape type="mesh" filename="meshes/_m_12_KB3D_NEC_BldgSM_A_Main.ply"/>
+    <transform>
+      <matrix value="1,0,0,-16.11,  0,1,0,-19.883,  0,0,1,4.1194,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <instance>
+    <emission type="lambertian">
+      <texture name="emission" type="constant" value="17.281,0,0"/>
+    </emission>
+    <shape type="mesh" filename="meshes/sign_neon_24h.ply"/>
+    <transform>
+      <matrix value="-0.12623,0.081031,-9.6596e-09,-26.752,  -0.081031,-0.12623,1.5048e-08,62.702,  0,1.7881e-08,0.15,47.381,  0,0,0,1"/>
+    </transform>
+  </instance>
+  <light type="point" position="-52.287,54.748,25.058" power="556.58,7793.4,10000"/>
+  <instance>
+    <shape type="mesh" filename="meshes/Cube.ply"/>
+    <medium type="homogeneous" sigmaA="0.1" sigmaS="0.9" density="0.002" hg="-0.5" color="1,1,1"/>
+    <transform>
+      <matrix value="120,0,0,61.004,  0,120,0,44.012,  0,0,120,32.017,  0,0,0,1"/>
+    </transform>
+  </instance>
+</scene>
+
+<integrator type="fogtracer" depth="15" mis="true">
+  <ref id="scene"/>
+  <image id="noisy_final"/>
+  <sampler type="independent" count="512"/>
+</integrator>
