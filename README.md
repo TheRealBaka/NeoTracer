@@ -1,7 +1,7 @@
 # NeoTracer
 
 NeoTracer is a ray tracer that we created, written on top of _lightwave_ for Computer Graphics I course (Winter 2024/25). Besides 
-basic features for a typical ray tracer, NeoTracer also supports volumetric path tracing with MIS. Our rendered images which you can see below was awarded the 3rd place in the rendering competition conducted at the end of the course.
+basic features for a typical ray tracer, NeoTracer also supports volumetric path tracing with MIS. Our rendered image which you can see below was awarded the 3rd place in the rendering competition conducted at the end of the course.
 
 ![NeoTracer](neontracer_images/neotracer_final.jpeg)
 
